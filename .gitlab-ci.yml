@@ -10,15 +10,6 @@ stages:
 
   - deploy
 
-ver:
-
-  stage: ver
-
-  script:
-
-    - node --version
-
-    - whoami
 
 init:
 
