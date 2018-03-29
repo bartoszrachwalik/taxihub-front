@@ -14,6 +14,7 @@ import { CorporationComponent } from './corporation/corporation.component';
 import { DriversComponent } from './corporation/drivers/drivers.component';
 import { ShowOrderComponent } from './driver/show-order/show-order.component';
 import { MakeOrderComponent } from './client/make-order/make-order.component';
+import { DriversListComponent } from './drivers-list/drivers-list.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     CorporationComponent,
     DriversComponent,
     ShowOrderComponent,
-    MakeOrderComponent
+    MakeOrderComponent,
+    DriversListComponent
   ],
   imports: [
     BrowserModule,
