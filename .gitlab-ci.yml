@@ -31,28 +31,6 @@ init:
     - npm run build
 
 
-deploy_staging:
-
-  stage: deploy
-
-  script:
-
-    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/taxihub-frontend.git
-
-    - git push heroku master
-
-    - echo "Deployed to staging server"
-
-  environment:
-
-  name: staging
-
-  url: https://taxihub-frontend.herokuapp.com/
-
-  only:
-
-    - master
-
 deploy_production:
 
   stage: deploy
@@ -67,11 +45,6 @@ deploy_production:
 
   environment:
 
-  name: production
-
-  url: https://taxihub-frontend.herokuapp.com/
-
-  when: manual
 
   only:
 
