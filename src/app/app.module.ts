@@ -3,13 +3,16 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import {RouterModule} from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { MainComponent } from './main/main.component';
+import {LoginComponent} from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    MainComponent,
     LoginComponent
   ],
   imports: [

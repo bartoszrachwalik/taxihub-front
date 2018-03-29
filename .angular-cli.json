@@ -19,6 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../src/assets/material-kit.css",
         "styles.css"
       ],
       "scripts": [],
