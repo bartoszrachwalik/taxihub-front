@@ -46,7 +46,7 @@ deploy_staging:
 
   script:
 
-    - git remote add heroku https://heroku:$f078039f-7081-417c-8fc1-4d2fa7b4eedb@git.heroku.com/taxihub-stagingfront.git
+    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/taxihub-frontend.git
 
     - git push heroku master
 
@@ -56,7 +56,7 @@ deploy_staging:
 
   name: staging
 
-  url: https://taxihub-stagingfront.herokuapp.com/
+  url: https://taxihub-frontend.herokuapp.com/
 
   only:
 
@@ -68,7 +68,7 @@ deploy_production:
 
   script:
 
-    - git remote add heroku https://heroku:$f078039f-7081-417c-8fc1-4d2fa7b4eedb@git.heroku.com/taxihub-prodfront.git
+    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/taxihub-frontend.git
 
     - git push heroku master
 
@@ -78,7 +78,7 @@ deploy_production:
 
   name: production
 
-  url: https://taxihub-prodfront.herokuapp.com/
+  url: https://taxihub-frontend.herokuapp.com/
 
   when: manual
 
