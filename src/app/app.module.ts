@@ -6,6 +6,23 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import {LoginComponent} from './login/login.component';
+import {RouterModule, Routes} from '@angular/router';
+import { DriverComponent } from './driver/driver.component';
+import { OrdersComponent } from './driver/orders/orders.component';
+import { ClientComponent } from './client/client.component';
+import { OrderComponent } from './client/order/order.component';
+import { OrderHistoryComponent } from './client/order-history/order-history.component';
+import { CorporationComponent } from './corporation/corporation.component';
+import { DriversComponent } from './corporation/drivers/drivers.component';
+import { ShowOrderComponent } from './driver/show-order/show-order.component';
+import { MakeOrderComponent } from './client/make-order/make-order.component';
+
+const appRoutes: Routes = [
+  {path: '', component: LoginComponent},
+  {path: 'main', component: MainComponent},
+  {path: 'login', component: LoginComponent},
+  {path: '**', component: MainComponent}
+];
 
 
 @NgModule({
@@ -13,10 +30,20 @@ import {LoginComponent} from './login/login.component';
     AppComponent,
     HeaderComponent,
     MainComponent,
-    LoginComponent
+    LoginComponent,
+    DriverComponent,
+    OrdersComponent,
+    ClientComponent,
+    OrderComponent,
+    OrderHistoryComponent,
+    CorporationComponent,
+    DriversComponent,
+    ShowOrderComponent,
+    MakeOrderComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
