@@ -26,19 +26,10 @@ init:
 
   script:
 
-    - npm cache clean
-
-    - rm -rf node-modules
 
     - npm install
+    - npm run build
 
-run_tests:
-
-  stage: tests
-
-  script:
-
-    - npm test
 
 deploy_staging:
 
