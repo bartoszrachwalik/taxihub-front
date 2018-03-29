@@ -28,7 +28,7 @@ deploy_production:
 
   script:
 
-    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/taxihub-frontend.git
+    - git remote add heroku https://heroku:$HEROKU_API_KEYS@git.heroku.com/taxihub-frontend.git
 
     - git push heroku master
 
