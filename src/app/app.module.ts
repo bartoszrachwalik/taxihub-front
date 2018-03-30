@@ -8,9 +8,7 @@ import { MainComponent } from './main/main.component';
 import {LoginComponent} from './login/login.component';
 import {RouterModule, Routes} from '@angular/router';
 import { DriverComponent } from './driver/driver.component';
-import { OrdersComponent } from './driver/orders/orders.component';
 import { ClientComponent } from './client/client.component';
-import { OrderComponent } from './client/order/order.component';
 import { OrderHistoryComponent } from './client/order-history/order-history.component';
 import { CorporationComponent } from './corporation/corporation.component';
 import { DriversComponent } from './corporation/drivers/drivers.component';
@@ -19,8 +17,10 @@ import { MakeOrderComponent } from './client/make-order/make-order.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'main', component: MainComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'client', component: ClientComponent},
+  {path: 'driver', component: DriverComponent},
+  {path: 'corporation', component: CorporationComponent},
   {path: '**', component: MainComponent}
 ];
 
@@ -32,9 +32,7 @@ const appRoutes: Routes = [
     MainComponent,
     LoginComponent,
     DriverComponent,
-    OrdersComponent,
     ClientComponent,
-    OrderComponent,
     OrderHistoryComponent,
     CorporationComponent,
     DriversComponent,
