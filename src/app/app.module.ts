@@ -13,7 +13,7 @@ import {CorporationComponent} from './corporation/corporation.component';
 import {DriversComponent} from './corporation/drivers/drivers.component';
 import {ShowOrderComponent} from './driver/show-order/show-order.component';
 import {MakeOrderComponent} from './client/make-order/make-order.component';
-import {PageNotFoundComponentComponent} from './page-not-found/page-not-found.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import { DriverDetailsComponent } from './corporation/drivers/driver-details/driver-details.component';
 
 const appRoutes: Routes = [
@@ -26,7 +26,7 @@ const appRoutes: Routes = [
   ]
   },
   {path: 'login', component: LoginComponent},
-  {path: '**', component: PageNotFoundComponentComponent}
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 
@@ -43,7 +43,8 @@ const appRoutes: Routes = [
     DriversComponent,
     ShowOrderComponent,
     MakeOrderComponent,
-    PageNotFoundComponentComponent,
+    PageNotFoundComponent,
+    MakeOrderComponent,
     DriverDetailsComponent
   ],
   imports: [
