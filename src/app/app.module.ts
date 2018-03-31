@@ -14,6 +14,7 @@ import {DriversComponent} from './corporation/drivers/drivers.component';
 import {ShowOrderComponent} from './driver/show-order/show-order.component';
 import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponentComponent} from './page-not-found-component/page-not-found-component.component';
+import { DriverDetailsComponent } from './corporation/drivers/driver-details/driver-details.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     DriversComponent,
     ShowOrderComponent,
     MakeOrderComponent,
-    PageNotFoundComponentComponent
+    PageNotFoundComponentComponent,
+    DriverDetailsComponent
   ],
   imports: [
     BrowserModule,
