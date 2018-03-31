@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
     if (login.value === 'corporation') {
       this.router.navigate(['/main/corporation']);
     } else {
+      // todo
+      // it does not redirect to login page when empty, random or 'login' input
       this.router.navigate(['/login']);
     }
   }
