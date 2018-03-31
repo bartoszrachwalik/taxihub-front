@@ -14,21 +14,22 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router) {
   }
+
   ngOnInit() {
   }
 
   onLogin(login: HTMLInputElement, password: HTMLInputElement) {
     console.log(login.value);
     if (login.value === 'client') {
-      this.router.navigate(['/client']);
+      this.router.navigate(['/main/client']);
       return;
     }
     if (login.value === 'driver') {
-      this.router.navigate(['/driver']);
+      this.router.navigate(['/main/driver']);
       return;
     }
     if (login.value === 'corporation') {
-      this.router.navigate(['/corporation']);
+      this.router.navigate(['/main/corporation']);
     } else {
       this.router.navigate(['/login']);
     }
