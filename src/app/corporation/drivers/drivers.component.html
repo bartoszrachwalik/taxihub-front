@@ -1,3 +1,9 @@
-<p>
-  drivers works!
-</p>
+<div class="container">
+  <div>
+    <ul>
+      <li *ngFor="let driver of drivers">
+        {{driver.name}} {{driver.surname}}
+      </li>
+    </ul>
+  </div>
+</div>
