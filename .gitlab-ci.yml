@@ -10,15 +10,6 @@ stages:
 
   - deploy
 
-ver:
-
-  stage: ver
-
-  script:
-
-    - node --version
-
-    - whoami
 
 init:
 
@@ -26,41 +17,10 @@ init:
 
   script:
 
-    - npm cache clean
-
-    - rm -rf node-modules
 
     - npm install
+    - npm run build
 
-run_tests:
-
-  stage: tests
-
-  script:
-
-    - npm test
-
-deploy_staging:
-
-  stage: deploy
-
-  script:
-
-    - git remote add heroku https://heroku:$f078039f-7081-417c-8fc1-4d2fa7b4eedb@git.heroku.com/taxihub-stagingfront.git
-
-    - git push heroku master
-
-    - echo "Deployed to staging server"
-
-  environment:
-
-  name: staging
-
-  url: https://taxihub-stagingfront.herokuapp.com/
-
-  only:
-
-    - master
 
 deploy_production:
 
@@ -68,7 +28,7 @@ deploy_production:
 
   script:
 
-    - git remote add heroku https://heroku:$f078039f-7081-417c-8fc1-4d2fa7b4eedb@git.heroku.com/taxihub-prodfront.git
+    - git remote add heroku https://heroku:$HEROKU_API_KEYS@git.heroku.com/taxihub-frontend.git
 
     - git push heroku master
 
@@ -76,11 +36,6 @@ deploy_production:
 
   environment:
 
-  name: production
-
-  url: https://taxihub-prodfront.herokuapp.com/
-
-  when: manual
 
   only:
 
