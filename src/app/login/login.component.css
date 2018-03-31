@@ -1,12 +1,13 @@
-.container_login {
-  margin: 70px auto 0;
-
+.container_login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .login_page {
   background: url(../../assets/img/bg2.jpg) no-repeat;
   background-size: cover;
-  height: 100vh;
 }
 
 .login_input {
