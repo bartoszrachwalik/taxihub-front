@@ -16,8 +16,10 @@ import {MakeOrderComponent} from './client/make-order/make-order.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'main', component: MainComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'client', component: ClientComponent},
+  {path: 'driver', component: DriverComponent},
+  {path: 'corporation', component: CorporationComponent},
   {path: '**', component: MainComponent}
 ];
 
@@ -34,7 +36,7 @@ const appRoutes: Routes = [
     CorporationComponent,
     DriversComponent,
     ShowOrderComponent,
-    MakeOrderComponent,
+    MakeOrderComponent
   ],
   imports: [
     BrowserModule,
