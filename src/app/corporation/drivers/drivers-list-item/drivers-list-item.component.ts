@@ -7,7 +7,7 @@ import {Driver} from '../../../driver/driver.model';
   styleUrls: ['./drivers-list-item.component.css']
 })
 export class DriversListItemComponent implements OnInit {
-  @Input() driver: Driver
+  @Input() driver: Driver;
 
   constructor() {
   }

@@ -13,7 +13,7 @@ export class DriversComponent implements OnInit {
     new Driver(3, 1, 'Driver 3', 'Driver 3', 'https://c1.staticflickr.com/7/6005/5912538026_f4bfd7bc80_b.jpg'),
     new Driver(4, 1, 'Driver 4', 'Driver 4', 'https://c1.staticflickr.com/7/6005/5912538026_f4bfd7bc80_b.jpg'),
     new Driver(5, 1, 'Driver 5', 'Driver 5', 'https://c1.staticflickr.com/7/6005/5912538026_f4bfd7bc80_b.jpg'),
-  ]
+  ];
 
   constructor() {
   }
