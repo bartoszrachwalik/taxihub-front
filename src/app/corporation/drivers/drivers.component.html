@@ -1,9 +1,11 @@
-<div class="container">
-  <div>
-    <ul>
-      <li *ngFor="let driver of drivers">
-        {{driver.name}} {{driver.surname}}
-      </li>
-    </ul>
+<a href="#"
+   class="list-group-item clearfix"
+   (click)="onSelected()">
+  <div class="pull-left">
+    <div *ngFor="let driver of drivers" class="list-group-item-text">
+      <h4 class="list-group-item-text">{{driver.name}} {{driver.surname}}</h4>
+    </div>
   </div>
-</div>
+</a>
+
+
