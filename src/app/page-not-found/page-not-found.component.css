@@ -1,0 +1,14 @@
+.container_page_not_found {
+  margin: 70px auto 0;
+
+}
+
+.page_not_found {
+  background: url(../../assets/img/bg2.jpg) no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.card-header {
+  margin-bottom: 25px;
+}
