@@ -1,1 +1,45 @@
-<p>Header</p>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <span class="navbar-text" id="logo">
+        TaxiHub
+      </span>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <div class="inset">
+          <img src="https://image.ibb.co/ffF3QS/23756321_2088088871205083_494723355_n.jpg" class="rounded-circle">
+        </div>
+      </li>
+      <span class="navbar-text">
+        {{user}}
+    </span>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="true">
+        </a>
+        <div *ngIf="user=='client'" class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" routerLink="#">CLIENT ACTION</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Logout</a>
+        </div>
+        <div *ngIf="user=='driver'" class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" routerLink="#">DRIVER ACTION</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Logout</a>
+        </div>
+        <div *ngIf="user=='corporation'" class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" routerLink="#">CORPORATION ACTION</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
