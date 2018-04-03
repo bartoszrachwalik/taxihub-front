@@ -20,6 +20,11 @@ init:
 
     - npm install
     - npm run build
+    
+      only:
+
+    - master
+
 
 
 deploy_production:
