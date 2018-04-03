@@ -1,7 +1,7 @@
 <div class="login_page">
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12 container_login">
+    <div class="row container_login">
+      <div class="col-xs-12">
         <div class="card card-signup">
           <form class="form" method="post" action="">
             <div class="card-header card-header-primary text-center">
@@ -32,7 +32,7 @@
             <div class="card-footer justify-content-center">
               <button type="submit" class="btn btn-link btn-primary btn-lg" (click)="onLogin(login,password)">Log in
               </button>
-              <a href="#" class="btn btn-link btn-primary btn-lg">Register</a>
+              <a routerLink="/registration" class="btn btn-link btn-primary btn-lg">Register</a>
             </div>
           </form>
         </div>
