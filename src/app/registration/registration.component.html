@@ -1,0 +1,90 @@
+<div class="registration_page" xmlns="http://www.w3.org/1999/html">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 container_registration">
+        <div class="card card-signup">
+          <form class="form" method="post" [formGroup]="registrationForm" #f="ngForm" novalidate>
+
+            <div class="card-header card-header-primary text-center">
+              <h4>Registration</h4>
+            </div>
+
+            <div class="card-body">
+              <fieldset formGroupName="name">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="material-icons">face</i></span>
+                  <label for="client_firstName"></label>
+                  <input
+                    type="text"
+                    class="form-control login_input"
+                    placeholder="Enter your first name.."
+                    name="firstName"
+                    formControlName="firstName"
+                    id="client_firstName">
+                </div>
+
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="material-icons">face</i></span>
+                  <label for="client_lastName"></label>
+                  <input
+                    type="text"
+                    class="form-control login_input"
+                    placeholder="Enter your last name.."
+                    name="lastName"
+                    formControlName="lastName"
+                    id="client_lastName">
+                </div>
+              </fieldset>
+              <div
+                class="input-group">
+              <!--[ngClass]="{'has-danger': registrationForm.controls.email.invalid,-->
+              <!--'has-success': registrationForm.controls.email.valid}"-->
+
+              <span class="input-group-addon"><i class="material-icons">email</i></span>
+              <label for="client_email"></label>
+              <input
+                type="email"
+                class="form-control login_input"
+                placeholder="Enter your email address"
+                formControlName="email"
+                id="client_email">
+            </div>
+
+            <div
+              class="input-group"
+            >
+              <span class="input-group-addon"><i class="material-icons">lock_outline</i></span>
+              <label for="client_password"></label>
+              <input
+                type="password"
+                class="form-control login_input"
+                placeholder="Create your password"
+                formControlName="password"
+                id="client_password">
+            </div>
+
+            <div class="input-group">
+              <span class="input-group-addon"><i class="material-icons">lock_outline</i></span>
+              <label for="client_password_confirmation"></label>
+              <input
+                type="password"
+                class="form-control login_input"
+                placeholder="Confirm your password"
+                id="client_password_confirmation">
+            </div>
+
+        </div>
+
+        <div class="card-footer justify-content-center">
+          <button type="submit" class="btn btn-link btn-primary btn-lg">Register</button>
+        </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<pre>{{registrationForm.value | json}}</pre>
+

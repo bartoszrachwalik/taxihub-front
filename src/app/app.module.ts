@@ -15,18 +15,22 @@ import {ShowOrderComponent} from './driver/show-order/show-order.component';
 import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
+import {RegistrationComponent} from './registration/registration.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   {
     path: 'main', component: MainComponent, children: [
-    {path: 'client', component: ClientComponent},
-    {path: 'driver', component: DriverComponent},
-    {path: 'corporation', component: CorporationComponent},
-  ]
+      {path: 'client', component: ClientComponent},
+      {path: 'driver', component: DriverComponent},
+      {path: 'corporation', component: CorporationComponent},
+    ]
   },
   {path: 'login', component: LoginComponent},
+  {path: 'registration', component: RegistrationComponent},
   {path: '**', component: PageNotFoundComponent}
+
 ];
 
 
@@ -45,10 +49,13 @@ const appRoutes: Routes = [
     MakeOrderComponent,
     PageNotFoundComponent,
     MakeOrderComponent,
-    DriversListItemComponent
+    DriversListItemComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
