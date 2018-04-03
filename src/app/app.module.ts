@@ -16,30 +16,31 @@ import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
 import {LoginServiceService} from './services/login-service.service';
+import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   {
     path: 'main', component: MainComponent, children: [
-      {path: 'client', component: ClientComponent},
-      {path: 'driver', component: DriverComponent},
-      {path: 'corporation', component: CorporationComponent},
-    ]
+    {path: 'client', component: ClientComponent},
+    {path: 'driver', component: DriverComponent},
+    {path: 'corporation', component: CorporationComponent},
+  ]
   },
   {
     path: 'main/client', component: ClientComponent, children: [
-      {path: '#', component: PageNotFoundComponent}
-    ]
+    {path: '#', component: PageNotFoundComponent}
+  ]
   },
   {
     path: 'main/driver', component: DriverComponent, children: [
-      {path: '#', component: PageNotFoundComponent}
-    ]
+    {path: '#', component: PageNotFoundComponent}
+  ]
   },
   {
-    path: 'main/corporation', component: CorporationComponent, children:[
-      {path: '#', component: PageNotFoundComponent}
-    ]
+    path: 'main/corporation', component: CorporationComponent, children: [
+    {path: '#', component: PageNotFoundComponent}
+  ]
   },
   {path: 'login', component: LoginComponent},
   {path: '**', component: PageNotFoundComponent}
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
     MakeOrderComponent,
     PageNotFoundComponent,
     MakeOrderComponent,
-    DriversListItemComponent
+    DriversListItemComponent,
+    OrderItemComponent
   ],
   imports: [
     BrowserModule,
