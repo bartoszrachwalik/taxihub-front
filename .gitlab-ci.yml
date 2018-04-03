@@ -2,11 +2,7 @@ image: node:6.10.3
 
 stages:
 
-  - ver
-
   - init
-
-  - tests
 
   - deploy
 
@@ -39,7 +35,6 @@ deploy_production:
 
     - echo "Deployed to production server"
 
-  environment:
 
 
   only:
