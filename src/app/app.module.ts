@@ -28,17 +28,19 @@ const appRoutes: Routes = [
   },
   {
     path: 'main/client', component: ClientComponent, children: [
-      {path: '#', component: PageNotFoundComponent}
+      {path: 'make-order', component: MakeOrderComponent},
+      {path: 'order-history', component: OrderHistoryComponent}
     ]
   },
   {
     path: 'main/driver', component: DriverComponent, children: [
-      {path: '#', component: PageNotFoundComponent}
+      {path: 'show-order', component: ShowOrderComponent},
+      {path: 'order-history', component: OrderHistoryComponent}
     ]
   },
   {
     path: 'main/corporation', component: CorporationComponent, children:[
-      {path: '#', component: PageNotFoundComponent}
+      {path: 'drivers', component: DriversComponent}
     ]
   },
   {path: 'login', component: LoginComponent},
