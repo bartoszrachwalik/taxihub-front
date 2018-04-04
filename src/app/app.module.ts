@@ -8,7 +8,6 @@ import {LoginComponent} from './login/login.component';
 import {RouterModule, Routes} from '@angular/router';
 import {DriverComponent} from './driver/driver.component';
 import {ClientComponent} from './client/client.component';
-import {OrderHistoryComponent} from './client/order-history/order-history.component';
 import {CorporationComponent} from './corporation/corporation.component';
 import {DriversComponent} from './corporation/drivers/drivers.component';
 import {ShowOrderComponent} from './driver/show-order/show-order.component';
@@ -16,6 +15,8 @@ import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
 import {LoginServiceService} from './services/login-service.service';
+import {OrderHistoryComponent} from './client/order-history/order-history.component';
+import { DriverOrderHistoryComponent } from './driver/driver-order-history/driver-order-history.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -35,11 +36,11 @@ const appRoutes: Routes = [
   {
     path: 'main/driver', component: DriverComponent, children: [
       {path: 'show-order', component: ShowOrderComponent},
-      {path: 'order-history', component: OrderHistoryComponent}
+      {path: 'driver-order-history', component: DriverOrderHistoryComponent}
     ]
   },
   {
-    path: 'main/corporation', component: CorporationComponent, children:[
+    path: 'main/corporation', component: CorporationComponent, children: [
       {path: 'drivers', component: DriversComponent}
     ]
   },
@@ -56,14 +57,15 @@ const appRoutes: Routes = [
     LoginComponent,
     DriverComponent,
     ClientComponent,
-    OrderHistoryComponent,
     CorporationComponent,
     DriversComponent,
     ShowOrderComponent,
     MakeOrderComponent,
     PageNotFoundComponent,
     MakeOrderComponent,
-    DriversListItemComponent
+    DriversListItemComponent,
+    OrderHistoryComponent,
+    DriverOrderHistoryComponent
   ],
   imports: [
     BrowserModule,
