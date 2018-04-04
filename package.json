@@ -25,6 +25,7 @@
     "npm": "^5.8.0",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
+    "express": "^4.15.3"
   },
   "devDependencies": {
     "@angular/cli": "~1.7.3",
