@@ -8,7 +8,6 @@ import {LoginComponent} from './login/login.component';
 import {RouterModule, Routes} from '@angular/router';
 import {DriverComponent} from './driver/driver.component';
 import {ClientComponent} from './client/client.component';
-import {OrderHistoryComponent} from './client/order-history/order-history.component';
 import {CorporationComponent} from './corporation/corporation.component';
 import {DriversComponent} from './corporation/drivers/drivers.component';
 import {ShowOrderComponent} from './driver/show-order/show-order.component';
@@ -16,6 +15,8 @@ import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
 import {LoginServiceService} from './services/login-service.service';
+import {OrderHistoryComponent} from './client/order-history/order-history.component';
+import { DriverOrderHistoryComponent } from './driver/driver-order-history/driver-order-history.component';
 import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
 
 const appRoutes: Routes = [
@@ -29,18 +30,20 @@ const appRoutes: Routes = [
   },
   {
     path: 'main/client', component: ClientComponent, children: [
-    {path: '#', component: PageNotFoundComponent}
-  ]
+      {path: 'make-order', component: MakeOrderComponent},
+      {path: 'order-history', component: OrderHistoryComponent}
+    ]
   },
   {
     path: 'main/driver', component: DriverComponent, children: [
-    {path: '#', component: PageNotFoundComponent}
-  ]
+      {path: 'show-order', component: ShowOrderComponent},
+      {path: 'driver-order-history', component: DriverOrderHistoryComponent}
+    ]
   },
   {
     path: 'main/corporation', component: CorporationComponent, children: [
-    {path: '#', component: PageNotFoundComponent}
-  ]
+      {path: 'drivers', component: DriversComponent}
+    ]
   },
   {path: 'login', component: LoginComponent},
   {path: '**', component: PageNotFoundComponent}
@@ -55,7 +58,6 @@ const appRoutes: Routes = [
     LoginComponent,
     DriverComponent,
     ClientComponent,
-    OrderHistoryComponent,
     CorporationComponent,
     DriversComponent,
     ShowOrderComponent,
@@ -63,6 +65,8 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     MakeOrderComponent,
     DriversListItemComponent,
+    OrderHistoryComponent,
+    DriverOrderHistoryComponent,
     OrderItemComponent
   ],
   imports: [

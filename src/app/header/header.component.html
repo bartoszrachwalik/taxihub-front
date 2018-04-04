@@ -1,45 +1,59 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-  <a class="navbar-brand" href="#"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav mr-auto">
-      <span class="navbar-text" id="logo">
-        TaxiHub
-      </span>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-        <div class="inset">
-          <img src="https://image.ibb.co/ffF3QS/23756321_2088088871205083_494723355_n.jpg" class="rounded-circle">
-        </div>
-      </li>
-      <span class="navbar-text">
+<div class="card card-nav-tabs card-plain">
+  <div class="card-header card-header-primary">
+    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+    <div class="nav-tabs-navigation">
+      <div class="nav-tabs-wrapper">
+        <ul class="nav nav-tabs">
+          <ul class="nav nav-tabs" *ngIf="user==='client'">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/main/client">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/main/client/make-order">Make order</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/main/client/order-history">History order</a>
+            </li>
+          </ul>
+          <ul class="nav nav-tabs" *ngIf="user==='driver'">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/main/driver">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/main/driver/show-order">Show order</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/main/driver/driver-order-history">History order</a>
+            </li>
+          </ul>
+          <ul class="nav nav-tabs" *ngIf="user==='corporation'">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/main/corporation">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/main/corporation/drivers">Drivers List</a>
+            </li>
+
+          </ul>
+          <li class="nav-item ml-auto">
+            <div class="inset">
+              <img src="https://image.ibb.co/ffF3QS/23756321_2088088871205083_494723355_n.jpg" class="rounded-circle">
+
+            </div>
+          </li>
+          <li class="nav-item">
+          <span class="navbar-text">
         {{user}}
     </span>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="true">
-        </a>
-        <div *ngIf="user=='client'" class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" routerLink="#">CLIENT ACTION</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Logout</a>
-        </div>
-        <div *ngIf="user=='driver'" class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" routerLink="#">DRIVER ACTION</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Logout</a>
-        </div>
-        <div *ngIf="user=='corporation'" class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" routerLink="#">CORPORATION ACTION</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Logout</a>
-        </div>
-      </li>
-    </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-</nav>
+
+</div>
+
 

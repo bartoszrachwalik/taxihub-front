@@ -1,26 +1,14 @@
 image: node:6.10.3
 
 stages:
-
-  - ver
-
   - init
-
-  - tests
-
   - deploy
 
-
 init:
-
   stage: init
-
   script:
-
-
     - npm install
     - npm run build
-
 
 deploy_production:
 
