@@ -1,3 +1,10 @@
-<p>
-  show-order works!
-</p>
+<div class="row">
+  <div class="card card-nav-tabs">
+    <div class="card-header card-header-primary text-center">
+      <h4>Orders</h4>
+    </div>
+    <app-order-item class="list-group list-group-flush"
+                    *ngFor="let currentOrder of orders"
+                    [order]="currentOrder"></app-order-item>
+  </div>
+</div>
