@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Driver} from '../../../driver/driver.model';
+import {Driver} from '../../../model/driver.model';
 
 @Component({
   selector: 'app-drivers-list-item',

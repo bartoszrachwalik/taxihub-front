@@ -17,15 +17,16 @@ import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/
 import {LoginServiceService} from './services/login-service.service';
 import {OrderHistoryComponent} from './client/order-history/order-history.component';
 import { DriverOrderHistoryComponent } from './driver/driver-order-history/driver-order-history.component';
+import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   {
     path: 'main', component: MainComponent, children: [
-      {path: 'client', component: ClientComponent},
-      {path: 'driver', component: DriverComponent},
-      {path: 'corporation', component: CorporationComponent},
-    ]
+    {path: 'client', component: ClientComponent},
+    {path: 'driver', component: DriverComponent},
+    {path: 'corporation', component: CorporationComponent},
+  ]
   },
   {
     path: 'main/client', component: ClientComponent, children: [
@@ -65,7 +66,8 @@ const appRoutes: Routes = [
     MakeOrderComponent,
     DriversListItemComponent,
     OrderHistoryComponent,
-    DriverOrderHistoryComponent
+    DriverOrderHistoryComponent,
+    OrderItemComponent
   ],
   imports: [
     BrowserModule,
