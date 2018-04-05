@@ -9,7 +9,7 @@ import {Order} from '../../model/order.model';
 export class MakeOrderComponent implements OnInit {
   @ViewChild('startInput') startPlaceRef: ElementRef;
   @ViewChild('destinationInput') destinationRef: ElementRef;
-  @Output() orderCreated = new EventEmitter<Order>();
+  activeOrder: Order;
 
   constructor() {
   }
@@ -19,7 +19,6 @@ export class MakeOrderComponent implements OnInit {
 
   onOrderCreated(startInput: HTMLInputElement, destinationInput: HTMLInputElement) {
     const newOrder = new Order(1, 1, 'open', this.startPlaceRef.nativeElement.value, this.destinationRef.nativeElement.value);
-    this.orderCreated.emit(newOrder);
     return false;
   }
 

@@ -1,26 +1,4 @@
 <div class="client_page">
   <app-header></app-header>
   <router-outlet></router-outlet>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-5 container_client_page">
-        <div class="card card-signup">
-          <div class="card-header card-header-primary text-center">
-            <h4>Active Order</h4>
-          </div>
-          <div class="card-body">
-            <div class="list-group-item img-raised rounded">
-              <div>
-                <h4>{{activeOrder.startPlace}} {{activeOrder.destination}}</h4>
-                <p>{{activeOrder.status}}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-5">
-        <app-make-order (orderCreated)="onOrderCreated($event)"></app-make-order>
-      </div>
-    </div>
-  </div>
 </div>
