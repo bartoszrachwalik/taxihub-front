@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {LoginServiceService} from '../services/login-service.service';
 
 @Component({
   selector: 'app-login',
@@ -8,16 +9,34 @@ import {RouterLink} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() {
+  client = 'client';
+  driver = 'driver';
+  corporation = 'corporation';
+
+  constructor(private router: Router, private service: LoginServiceService) {
   }
 
   ngOnInit() {
   }
 
   onLogin(login: HTMLInputElement, password: HTMLInputElement) {
-    if (login.value === 'xxx' &&
-      password.value === 'xxx') {
-      console.log('online');
+    console.log(login.value);
+    if (login.value === this.client) {
+      this.service.setUser(login.value);
+      this.router.navigate(['/client']);
+      return false;
     }
+    if (login.value === this.driver) {
+      this.service.setUser(login.value);
+      this.router.navigate(['/driver']);
+      return false;
+    }
+    if (login.value === this.corporation) {
+      this.service.setUser(login.value);
+      this.router.navigate(['/corporation']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+    return false;
   }
 }

@@ -1,0 +1,45 @@
+.inset {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,0.6),
+    0 1px 1px rgba(0,0,0,0.1);
+  background-color: transparent !important;
+  z-index: 999;
+}
+
+.inset img {
+  border-radius: inherit;
+  width: inherit;
+  height: inherit;
+  display: block;
+  position: relative;
+  z-index: 998;
+}
+
+.navbar-text
+{
+  padding-left: 16px;
+  color: #c8cbcf;
+}
+
+.navbar
+{
+  background: linear-gradient(20deg, #828c9b, #34445b);
+}
+
+.navbar-brand
+{
+  margin-left: 45px;
+}
+
+#navbarDropdown{
+  margin-right: 25px;
+}
+
+#logo
+{
+  font-family: 'Lora', serif;
+  font-size: 36px;
+}

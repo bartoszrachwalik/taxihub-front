@@ -6,11 +6,8 @@ stages:
 
   - deploy
 
-
 init:
-
   stage: init
-
   script:
 
 
@@ -20,7 +17,6 @@ init:
   only:
 
     - master
-
 
 
 deploy_production:

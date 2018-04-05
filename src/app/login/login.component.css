@@ -1,0 +1,19 @@
+.container_login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login_page {
+  background: url(../../assets/img/bg2.jpg) no-repeat;
+  background-size: cover;
+}
+
+.login_input {
+  margin-left: 15px;
+}
+
+.card-header {
+  margin-bottom: 25px;
+}
