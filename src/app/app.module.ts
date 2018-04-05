@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
-import {MainComponent} from './main/main.component';
 import {LoginComponent} from './login/login.component';
 import {RouterModule, Routes} from '@angular/router';
 import {DriverComponent} from './driver/driver.component';
@@ -16,32 +15,33 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
 import {LoginServiceService} from './services/login-service.service';
 import {OrderHistoryComponent} from './client/order-history/order-history.component';
-import { DriverOrderHistoryComponent } from './driver/driver-order-history/driver-order-history.component';
+import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
 import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
+import {AuthGuard} from './auth-guard.service';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   {
-    path: 'main', component: MainComponent, children: [
-    {path: 'client', component: ClientComponent},
-    {path: 'driver', component: DriverComponent},
-    {path: 'corporation', component: CorporationComponent},
-  ]
+    path: '', canActivate: [AuthGuard], component: AppComponent, children: [
+      {path: 'client', component: ClientComponent},
+      {path: 'driver', component: DriverComponent},
+      {path: 'corporation', component: CorporationComponent},
+    ]
   },
   {
-    path: 'main/client', component: ClientComponent, children: [
+    path: 'client', component: ClientComponent, children: [
       {path: 'make-order', component: MakeOrderComponent},
       {path: 'order-history', component: OrderHistoryComponent}
     ]
   },
   {
-    path: 'main/driver', component: DriverComponent, children: [
+    path: 'driver', component: DriverComponent, children: [
       {path: 'show-order', component: ShowOrderComponent},
       {path: 'driver-order-history', component: DriverOrderHistoryComponent}
     ]
   },
   {
-    path: 'main/corporation', component: CorporationComponent, children: [
+    path: 'corporation', component: CorporationComponent, children: [
       {path: 'drivers', component: DriversComponent}
     ]
   },
@@ -54,7 +54,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainComponent,
     LoginComponent,
     DriverComponent,
     ClientComponent,
@@ -73,7 +72,7 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [LoginServiceService],
+  providers: [LoginServiceService, AuthGuard, LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
