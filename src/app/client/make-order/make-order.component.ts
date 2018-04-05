@@ -10,6 +10,7 @@ export class MakeOrderComponent implements OnInit {
   @ViewChild('startInput') startPlaceRef: ElementRef;
   @ViewChild('destinationInput') destinationRef: ElementRef;
   activeOrder: Order;
+  isOrderActive = false;
 
   constructor() {
   }
@@ -18,8 +19,14 @@ export class MakeOrderComponent implements OnInit {
   }
 
   onOrderCreated(startInput: HTMLInputElement, destinationInput: HTMLInputElement) {
-    this.activeOrder = new Order(1, 1, 'open', this.startPlaceRef.nativeElement.value, this.destinationRef.nativeElement.value);
+    if (!this.isOrderActive) {
+      this.isOrderActive = true;
+      this.activeOrder = new Order(1, 1, 'open', this.startPlaceRef.nativeElement.value, this.destinationRef.nativeElement.value);
+    }
     return false;
   }
 
+  onCancelOrder() {
+    this.isOrderActive = false;
+  }
 }
