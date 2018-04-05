@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Order} from '../../model/order.model';
 
 @Component({
@@ -18,7 +18,7 @@ export class MakeOrderComponent implements OnInit {
   }
 
   onOrderCreated(startInput: HTMLInputElement, destinationInput: HTMLInputElement) {
-    const newOrder = new Order(1, 1, 'open', this.startPlaceRef.nativeElement.value, this.destinationRef.nativeElement.value);
+    this.activeOrder = new Order(1, 1, 'open', this.startPlaceRef.nativeElement.value, this.destinationRef.nativeElement.value);
     return false;
   }
 
