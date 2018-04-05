@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Order} from '../model/order.model';
 
 @Component({
   selector: 'app-client',
@@ -6,11 +7,16 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
+  activeOrder: Order;
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  onOrderCreated(order: Order) {
+    this.activeOrder = order;
   }
 
 }

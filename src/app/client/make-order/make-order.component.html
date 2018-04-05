@@ -1,3 +1,34 @@
-<p>
-  make-order works!
-</p>
+<div class="container_make_order">
+  <div class="card card-signup">
+    <div class="card-header card-header-primary text-center">
+      <p>Create new order</p>
+    </div>
+    <div class="card-body">
+      <form (submit)="onOrderCreated(startInput,destinationInput)">
+        <div class="row">
+          <div class="col">
+            <label>Start Place</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Start Place"
+              #startInput>
+          </div>
+          <div class="col">
+            <label>Destination</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Destination"
+              #destinationInput>
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary">Create order
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
