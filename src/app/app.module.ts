@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import { Component, ElementRef, NgModule, NgZone, OnInit, ViewChild } from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -23,30 +23,32 @@ import {AuthGuardCorporation} from './auth-guard-corporation.service';
 import {AgmCoreModule} from '@agm/core';
 import {AgmDirectionModule} from 'agm-direction';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { ActiveOrderComponent } from './client/active-order/active-order.component';
+import {ActiveOrderComponent} from './client/active-order/active-order.component';
+import {NotificationService} from './services/notification.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToasterModule} from 'angular5-toaster/dist';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   {
     path: '', canActivate: [AuthGuardClient], component: AppComponent, children: [
-      {path: 'client', component: ClientComponent}
+      {path: 'client', component: ClientComponent},
     ]
   },
   {
     path: '', canActivate: [AuthGuardDriver], component: AppComponent, children: [
-      {path: 'driver', component: DriverComponent}
+      {path: 'driver', component: DriverComponent},
     ]
   },
   {
     path: '', canActivate: [AuthGuardCorporation], component: AppComponent, children: [
-      {path: 'corporation', component: CorporationComponent}
+      {path: 'corporation', component: CorporationComponent},
     ]
   },
   {
     path: 'client', component: ClientComponent, children: [
       {path: 'make-order', component: MakeOrderComponent},
-      {path: 'order-history', component: OrderHistoryComponent},
-      {path: 'active-order', component: ActiveOrderComponent}
+      {path: 'order-history', component: OrderHistoryComponent}
     ]
   },
   {
@@ -82,10 +84,13 @@ const appRoutes: Routes = [
     OrderHistoryComponent,
     DriverOrderHistoryComponent,
     OrderItemComponent,
-    ActiveOrderComponent
+    ActiveOrderComponent,
+
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    ToasterModule,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAUgiu4t-XEJPDsgrExygjaXC155TwjQaE',
@@ -93,9 +98,8 @@ const appRoutes: Routes = [
     }),
     AgmDirectionModule,
     FormsModule,
-    ReactiveFormsModule
-  ],
-  providers: [LoginServiceService, AuthGuardDriver, AuthGuardClient, AuthGuardCorporation],
+    ReactiveFormsModule],
+  providers: [LoginServiceService, AuthGuardDriver, AuthGuardClient, AuthGuardCorporation, NotificationService, LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
