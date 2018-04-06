@@ -1,56 +1,29 @@
-<div class="container_make_order">
-  <div class="row">
-    <div class="col-md-5">
-      <div class="card card-signup">
-        <div class="card-header card-header-primary text-center">
-          <p>Create new order</p>
-        </div>
-        <div class="card-body">
-          <form (submit)="onOrderCreated(startInput,destinationInput)">
-            <div class="row">
-              <div class="col">
-                <label>Start Place</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Start Place"
-                  #startInput>
-              </div>
-              <div class="col">
-                <label>Destination</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Destination"
-                  #destinationInput>
-              </div>
+ <div class="card card-signup">
+      <div class="card-header card-header-primary text-center">
+        <p>Create new order</p>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="row">
+            <div class="col">
+              <input class="form-control" placeholder="Start Place" #searchFrom>
             </div>
-            <button
-              type="submit"
-              class="btn btn-primary">Create order
-            </button>
-          </form>
+            <div class="col">
+              <input class="form-control" placeholder="Destination" #searchTo>
+            </div>
+          </div>
+        </form>
+        <div class="offset-8">
+        <button
+          button class="btn btn-primary" (click)="onOrderCreated(searchFrom,searchTo)">Create order
+        </button>
+        <button class="btn btn-primary" (click)="getDirection()">Search</button>
         </div>
+        <agm-map [latitude]="latitudeOrigin" [longitude]="longitudeOrigin" [scrollwheel]="true" [zoom]="zoom" >
+          <agm-marker [latitude]="latitudeOrigin" [longitude]="longitudeOrigin"></agm-marker>
+          <agm-marker [latitude]="latitudeDestination" [longitude]="longitudeDestination"></agm-marker>
+          <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
+        </agm-map>
       </div>
     </div>
-    <div class="col-md-5">
-      <div class="card card-signup">
-        <div class="card-header card-header-primary text-center">
-          <p>Active order</p>
-        </div>
-        <div class="card-body" *ngIf="isOrderActive">
-          <h4>From {{activeOrder.startPlace}} to {{activeOrder.destination}}</h4>
-          <p>{{activeOrder.status}}</p>
-          <button type="submit"
-                  class="btn btn-primary"
-                  (click)="onCancelOrder()">Cancel order
-          </button>
-        </div>
-        <div class="card-body" *ngIf="!isOrderActive">
-          <h4>No active order</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 

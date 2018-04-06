@@ -17,17 +17,31 @@ import {LoginServiceService} from './services/login-service.service';
 import {OrderHistoryComponent} from './client/order-history/order-history.component';
 import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
 import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
+import {AuthGuardClient} from './auth-guard-client.service';
+import {AuthGuardDriver} from './auth-guard-driver.service';
+import {AuthGuardCorporation} from './auth-guard-corporation.service';
+import {AgmCoreModule} from '@agm/core';
+import {AgmDirectionModule} from 'agm-direction';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ActiveOrderComponent} from './client/active-order/active-order.component';
 import {NotificationService} from './services/notification.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
-import {AuthGuard} from './auth-guard.service';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   {
-    path: '', canActivate: [AuthGuard], component: AppComponent, children: [
+    path: '', canActivate: [AuthGuardClient], component: AppComponent, children: [
       {path: 'client', component: ClientComponent},
+    ]
+  },
+  {
+    path: '', canActivate: [AuthGuardDriver], component: AppComponent, children: [
       {path: 'driver', component: DriverComponent},
+    ]
+  },
+  {
+    path: '', canActivate: [AuthGuardCorporation], component: AppComponent, children: [
       {path: 'corporation', component: CorporationComponent},
     ]
   },
@@ -69,15 +83,23 @@ const appRoutes: Routes = [
     DriversListItemComponent,
     OrderHistoryComponent,
     DriverOrderHistoryComponent,
-    OrderItemComponent
+    OrderItemComponent,
+    ActiveOrderComponent,
+
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    ToasterModule
-  ],
-  providers: [LoginServiceService, NotificationService, AuthGuard, LoginComponent],
+    ToasterModule,
+    RouterModule.forRoot(appRoutes),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAUgiu4t-XEJPDsgrExygjaXC155TwjQaE',
+      libraries: ['places']
+    }),
+    AgmDirectionModule,
+    FormsModule,
+    ReactiveFormsModule],
+  providers: [LoginServiceService, AuthGuardDriver, AuthGuardClient, AuthGuardCorporation, NotificationService, LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

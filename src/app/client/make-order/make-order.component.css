@@ -1,4 +1,13 @@
-.container_make_order {
-  margin: 70px auto 0;
+.angular-google-map-container {
+  height: 400px;
+  margin-bottom: 15px;
+}
 
+.panel-primary {
+  padding: 15px;
+}
+
+agm-map {
+  height: 400px;
+  width: 100%;
 }
