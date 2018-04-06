@@ -17,6 +17,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
 import {LoginServiceService} from './services/login-service.service';
 import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
+import {ToasterService} from "./popupservice/toaster-service.service";
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
 ];
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +71,7 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [LoginServiceService],
+  providers: [LoginServiceService, ToasterService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
