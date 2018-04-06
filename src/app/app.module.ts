@@ -17,6 +17,9 @@ import {LoginServiceService} from './services/login-service.service';
 import {OrderHistoryComponent} from './client/order-history/order-history.component';
 import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
 import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
+import {NotificationService} from './services/notification.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToasterModule} from 'angular5-toaster/dist';
 import {AuthGuard} from './auth-guard.service';
 
 const appRoutes: Routes = [
@@ -70,9 +73,11 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    ToasterModule
   ],
-  providers: [LoginServiceService, AuthGuard, LoginComponent],
+  providers: [LoginServiceService, NotificationService, AuthGuard, LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
