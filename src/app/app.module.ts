@@ -17,7 +17,10 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
 import {LoginServiceService} from './services/login-service.service';
 import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
-import {ToasterService} from "./popupservice/toaster-service.service";
+import {NotificationService} from './services/notification.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToasterModule} from 'angular5-toaster/dist';
+
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -69,9 +72,11 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    ToasterModule
   ],
-  providers: [LoginServiceService, ToasterService],
+  providers: [LoginServiceService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
