@@ -3,17 +3,18 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class LoginServiceService {
 
-  user: string;
-
   constructor() {
   }
 
   setUser(user: string) {
-    this.user = user;
+    localStorage.setItem('user', user);
   }
 
   getUser(): string {
-    return this.user;
+    return localStorage.getItem('user');
   }
 
+  logout() {
+    localStorage.removeItem('user');
+  }
 }

@@ -3,12 +3,10 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
-import {MainComponent} from './main/main.component';
 import {LoginComponent} from './login/login.component';
 import {RouterModule, Routes} from '@angular/router';
 import {DriverComponent} from './driver/driver.component';
 import {ClientComponent} from './client/client.component';
-import {OrderHistoryComponent} from './client/order-history/order-history.component';
 import {CorporationComponent} from './corporation/corporation.component';
 import {DriversComponent} from './corporation/drivers/drivers.component';
 import {ShowOrderComponent} from './driver/show-order/show-order.component';
@@ -16,51 +14,52 @@ import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
 import {LoginServiceService} from './services/login-service.service';
+import {OrderHistoryComponent} from './client/order-history/order-history.component';
+import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
 import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
 import {NotificationService} from './services/notification.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
-
+import {AuthGuard} from './auth-guard.service';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   {
-    path: 'main', component: MainComponent, children: [
-    {path: 'client', component: ClientComponent},
-    {path: 'driver', component: DriverComponent},
-    {path: 'corporation', component: CorporationComponent},
-  ]
+    path: '', canActivate: [AuthGuard], component: AppComponent, children: [
+      {path: 'client', component: ClientComponent},
+      {path: 'driver', component: DriverComponent},
+      {path: 'corporation', component: CorporationComponent},
+    ]
   },
   {
-    path: 'main/client', component: ClientComponent, children: [
-    {path: '#', component: PageNotFoundComponent}
-  ]
+    path: 'client', component: ClientComponent, children: [
+      {path: 'make-order', component: MakeOrderComponent},
+      {path: 'order-history', component: OrderHistoryComponent}
+    ]
   },
   {
-    path: 'main/driver', component: DriverComponent, children: [
-    {path: '#', component: PageNotFoundComponent}
-  ]
+    path: 'driver', component: DriverComponent, children: [
+      {path: 'show-order', component: ShowOrderComponent},
+      {path: 'driver-order-history', component: DriverOrderHistoryComponent}
+    ]
   },
   {
-    path: 'main/corporation', component: CorporationComponent, children: [
-    {path: '#', component: PageNotFoundComponent}
-  ]
+    path: 'corporation', component: CorporationComponent, children: [
+      {path: 'drivers', component: DriversComponent}
+    ]
   },
   {path: 'login', component: LoginComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainComponent,
     LoginComponent,
     DriverComponent,
     ClientComponent,
-    OrderHistoryComponent,
     CorporationComponent,
     DriversComponent,
     ShowOrderComponent,
@@ -68,6 +67,8 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     MakeOrderComponent,
     DriversListItemComponent,
+    OrderHistoryComponent,
+    DriverOrderHistoryComponent,
     OrderItemComponent
   ],
   imports: [
@@ -76,7 +77,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     ToasterModule
   ],
-  providers: [LoginServiceService, NotificationService],
+  providers: [LoginServiceService, NotificationService, AuthGuard, LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

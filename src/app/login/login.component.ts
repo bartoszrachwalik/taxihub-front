@@ -23,19 +23,20 @@ export class LoginComponent implements OnInit {
     console.log(login.value);
     if (login.value === this.client) {
       this.service.setUser(login.value);
-      this.router.navigate(['/main/client']);
-      return;
+      this.router.navigate(['/client']);
+      return false;
     }
     if (login.value === this.driver) {
       this.service.setUser(login.value);
-      this.router.navigate(['/main/driver']);
-      return;
+      this.router.navigate(['/driver']);
+      return false;
     }
     if (login.value === this.corporation) {
       this.service.setUser(login.value);
-      this.router.navigate(['/main/corporation']);
+      this.router.navigate(['/corporation']);
     } else {
       this.router.navigate(['/login']);
     }
+    return false;
   }
 }
