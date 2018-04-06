@@ -1,4 +1,5 @@
 import {Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
+import {Order} from '../../model/order.model';
 import {} from 'googlemaps';
 import {MapsAPILoader} from '@agm/core';
 
@@ -8,6 +9,10 @@ import {MapsAPILoader} from '@agm/core';
   styleUrls: ['./make-order.component.css']
 })
 export class MakeOrderComponent implements OnInit {
+  @ViewChild('searchFrom') startPlaceRef: ElementRef;
+  @ViewChild('searchTo') destinationRef: ElementRef;
+  activeOrder: Order;
+  isOrderActive = false;
 
   public latitudeOrigin: number;
   public longitudeOrigin: number;
@@ -15,10 +20,6 @@ export class MakeOrderComponent implements OnInit {
   public longitudeDestination: number;
   public zoom = 12;
 
-  @ViewChild('searchFrom')
-  public searchFrom: ElementRef;
-  @ViewChild('searchTo')
-  public searchTo: ElementRef;
 
   autocompleteFrom;
   autocompleteTo;
@@ -29,16 +30,18 @@ export class MakeOrderComponent implements OnInit {
 
   ngOnInit() {
     this.mapsAPILoader.load().then(() => {
-      this.autocompleteFrom = new google.maps.places.Autocomplete(this.searchFrom.nativeElement, {
+      this.autocompleteFrom = new google.maps.places.Autocomplete(this.startPlaceRef.nativeElement, {
         types: ['address']
       });
     });
     this.mapsAPILoader.load().then(() => {
-      this.autocompleteTo = new google.maps.places.Autocomplete(this.searchTo.nativeElement, {
+      this.autocompleteTo = new google.maps.places.Autocomplete(this.destinationRef.nativeElement, {
         types: ['address']
       });
     });
   }
+
+
 
   getDirection() {
     const origin = MakeOrderComponent.toCoordinates(this.autocompleteFrom);
@@ -49,5 +52,12 @@ export class MakeOrderComponent implements OnInit {
   private static toCoordinates(autocomplete) {
     const loc = autocomplete.getPlace().geometry.location;
     return {lat: loc.lat(), lng: loc.lng()};
+  }
+  onOrderCreated(startInput: HTMLInputElement, destinationInput: HTMLInputElement) {
+    if (!this.isOrderActive) {
+      this.isOrderActive = true;
+      this.activeOrder = new Order(1, 1, 'open', this.startPlaceRef.nativeElement.value, this.destinationRef.nativeElement.value);
+    }
+    return false;
   }
 }

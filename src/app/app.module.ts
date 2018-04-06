@@ -23,6 +23,7 @@ import {AuthGuardCorporation} from './auth-guard-corporation.service';
 import {AgmCoreModule} from '@agm/core';
 import {AgmDirectionModule} from 'agm-direction';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ActiveOrderComponent } from './client/active-order/active-order.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
   {
     path: 'client', component: ClientComponent, children: [
       {path: 'make-order', component: MakeOrderComponent},
-      {path: 'order-history', component: OrderHistoryComponent}
+      {path: 'order-history', component: OrderHistoryComponent},
+      {path: 'active-order', component: ActiveOrderComponent}
     ]
   },
   {
@@ -79,7 +81,8 @@ const appRoutes: Routes = [
     DriversListItemComponent,
     OrderHistoryComponent,
     DriverOrderHistoryComponent,
-    OrderItemComponent
+    OrderItemComponent,
+    ActiveOrderComponent
   ],
   imports: [
     BrowserModule,
