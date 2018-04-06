@@ -1,3 +1,16 @@
-<p>
-  make-order works!
-</p>
+<div class="container">
+  <div class="form-group">
+    <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
+           type="text" class="form-control" #searchFrom>
+  </div>
+  <div class="form-group">
+    <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+           class="form-control" #searchTo>
+  </div>
+  <button class="btn btn-primary btn-round" (click)="getDirection()">Search</button>
+  <agm-map [latitude]="latitudeOrigin" [longitude]="longitudeOrigin" [scrollwheel]="true" [zoom]="zoom">
+    <agm-marker [latitude]="latitudeOrigin" [longitude]="longitudeOrigin"></agm-marker>
+    <agm-marker [latitude]="latitudeDestination" [longitude]="longitudeDestination"></agm-marker>
+    <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
+  </agm-map>
+</div>
