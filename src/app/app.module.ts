@@ -1,5 +1,4 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -15,8 +14,10 @@ import {ShowOrderComponent} from './driver/show-order/show-order.component';
 import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
-import {RegistrationComponent} from './registration/registration.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RegistrationClientComponent} from './registration-client/registration-client.component';
+import {RegistrationCompanyComponent} from './registration-company/registration-company.component';
+import {NgModule} from "@angular/core";
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     ]
   },
   {path: 'login', component: LoginComponent},
-  {path: 'registration', component: RegistrationComponent},
+  {path: 'registration/client', component: RegistrationClientComponent},
+  {path: 'registration/company', component: RegistrationCompanyComponent},
   {path: '**', component: PageNotFoundComponent}
 
 ];
@@ -50,7 +52,8 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     MakeOrderComponent,
     DriversListItemComponent,
-    RegistrationComponent
+    RegistrationClientComponent,
+    RegistrationCompanyComponent
   ],
   imports: [
     BrowserModule,

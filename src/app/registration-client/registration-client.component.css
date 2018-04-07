@@ -17,3 +17,11 @@
 .card-header {
   margin-bottom: 25px;
 }
+.help-block {
+  padding-left: 23px;
+  color: red;
+}
+
+.no-margin-b{
+  margin-bottom: 0;
+}
