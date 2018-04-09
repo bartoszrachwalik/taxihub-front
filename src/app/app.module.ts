@@ -16,9 +16,9 @@ import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/
 import {LoginService} from './login/login.service';
 import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
 import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
-import {AuthGuardClient} from './auth-guard-client.service';
-import {AuthGuardDriver} from './auth-guard-driver.service';
-import {AuthGuardCorporation} from './auth-guard-corporation.service';
+import {AuthGuardClient} from './auth/auth-guard-client.service';
+import {AuthGuardDriver} from './auth/auth-guard-driver.service';
+import {AuthGuardCorporation} from './auth/auth-guard-corporation.service';
 import {AgmCoreModule} from '@agm/core';
 import {AgmDirectionModule} from 'agm-direction';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
