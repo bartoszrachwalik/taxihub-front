@@ -1,12 +1,12 @@
 <div class="card card-nav-tabs card-plain">
   <div class="card-header card-header-primary">
-    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
     <div class="nav-tabs-navigation">
       <div class="nav-tabs-wrapper">
         <ul class="nav nav-tabs">
           <ul class="nav nav-tabs" *ngIf="user==='client'">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/client">Home</a>
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                 routerLink="/client">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" routerLink="/client/make-order">Make order</a>
@@ -15,33 +15,37 @@
               <a class="nav-link" routerLinkActive="active" routerLink="/client/active-order">Active order</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" routerLink="/client/order-history">History order</a>
+              <a class="nav-link" routerLinkActive="active" routerLink="/client/client-order-history">Orders History</a>
             </li>
           </ul>
           <ul class="nav nav-tabs" *ngIf="user==='driver'">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/driver">Home</a>
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                 routerLink="/driver">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" routerLink="/driver/show-order">Show order</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" routerLink="/driver/driver-order-history">History order</a>
+              <a class="nav-link" routerLinkActive="active" routerLink="/driver/driver-order-history">Orders History</a>
             </li>
           </ul>
           <ul class="nav nav-tabs" *ngIf="user==='corporation'">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/corporation">Home</a>
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                 routerLink="/corporation">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" routerLink="/corporation/drivers">Drivers List</a>
             </li>
-
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/corporation/corporation-order-history">Orders
+                History</a>
+            </li>
           </ul>
           <li class="nav-item ml-auto">
             <div class="inset">
               <img src="https://image.ibb.co/ffF3QS/23756321_2088088871205083_494723355_n.jpg" class="rounded-circle">
-
             </div>
           </li>
           <li class="nav-item">
@@ -56,7 +60,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 

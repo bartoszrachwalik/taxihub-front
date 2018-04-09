@@ -14,7 +14,7 @@ import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
 import {LoginServiceService} from './services/login-service.service';
-import {OrderHistoryComponent} from './client/order-history/order-history.component';
+import {ClientOrderHistoryComponent} from './client/client-order-history/client-order-history.component';
 import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
 import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
 import {AuthGuardClient} from './auth-guard-client.service';
@@ -27,40 +27,44 @@ import {ActiveOrderComponent} from './client/active-order/active-order.component
 import {NotificationService} from './services/notification.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
+import {CorporationOrderHistoryComponent} from './corporation/corporation-order-history/corporation-order-history.component';
+import {ClientOrderHistoryComponent} from './client/client-order-history/client-order-history.component';
+import {OrderHistoryService} from './services/order-history.service';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   {
     path: '', canActivate: [AuthGuardClient], component: AppComponent, children: [
-      {path: 'client', component: ClientComponent},
-    ]
+    {path: 'client', component: ClientComponent},
+  ]
   },
   {
     path: '', canActivate: [AuthGuardDriver], component: AppComponent, children: [
-      {path: 'driver', component: DriverComponent},
-    ]
+    {path: 'driver', component: DriverComponent},
+  ]
   },
   {
     path: '', canActivate: [AuthGuardCorporation], component: AppComponent, children: [
-      {path: 'corporation', component: CorporationComponent},
-    ]
+    {path: 'corporation', component: CorporationComponent},
+  ]
   },
   {
     path: 'client', component: ClientComponent, children: [
-      {path: 'make-order', component: MakeOrderComponent},
-      {path: 'order-history', component: OrderHistoryComponent}
-    ]
+    {path: 'make-order', component: MakeOrderComponent},
+    {path: 'order-history', component: ClientOrderHistoryComponent}
+  ]
   },
   {
     path: 'driver', component: DriverComponent, children: [
-      {path: 'show-order', component: ShowOrderComponent},
-      {path: 'driver-order-history', component: DriverOrderHistoryComponent}
-    ]
+    {path: 'show-order', component: ShowOrderComponent},
+    {path: 'driver-order-history', component: DriverOrderHistoryComponent}
+  ]
   },
   {
     path: 'corporation', component: CorporationComponent, children: [
-      {path: 'drivers', component: DriversComponent}
-    ]
+    {path: 'drivers', component: DriversComponent},
+    {path: 'corporation-order-history', component: CorporationOrderHistoryComponent}
+  ]
   },
   {path: 'login', component: LoginComponent},
   {path: '**', component: PageNotFoundComponent}
@@ -81,10 +85,11 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     MakeOrderComponent,
     DriversListItemComponent,
-    OrderHistoryComponent,
     DriverOrderHistoryComponent,
     OrderItemComponent,
     ActiveOrderComponent,
+    CorporationOrderHistoryComponent,
+    ClientOrderHistoryComponent,
 
   ],
   imports: [
@@ -99,7 +104,15 @@ const appRoutes: Routes = [
     AgmDirectionModule,
     FormsModule,
     ReactiveFormsModule],
-  providers: [LoginServiceService, AuthGuardDriver, AuthGuardClient, AuthGuardCorporation, NotificationService, LoginComponent],
+  providers: [
+    LoginServiceService,
+    AuthGuardDriver,
+    AuthGuardClient,
+    AuthGuardCorporation,
+    NotificationService,
+    LoginComponent,
+    OrderHistoryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
