@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Order} from '../../model/order.model';
 
 @Component({
   selector: 'app-show-order',
@@ -6,6 +7,11 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./show-order.component.css']
 })
 export class ShowOrderComponent implements OnInit {
+  orders: Order[] = [
+    new Order(1, 1, 1, 1, 1),
+    new Order(1, 1, 1, 1, 1),
+    new Order(1, 1, 1, 1, 1),
+  ];
 
   constructor() {
   }

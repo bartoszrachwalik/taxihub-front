@@ -2,24 +2,21 @@ image: node:6.10.3
 
 stages:
 
-  - ver
-
   - init
-
-  - tests
 
   - deploy
 
-
 init:
-
   stage: init
-
   script:
 
 
-    - npm install
-    - npm run build
+    - 'npm install'
+    - 'npm run build'
+    
+  only:
+
+    - master
 
 
 deploy_production:
@@ -28,13 +25,12 @@ deploy_production:
 
   script:
 
-    - git remote add heroku https://heroku:$HEROKU_API_KEYS@git.heroku.com/taxihub-frontend.git
+    - 'git remote add heroku https://heroku:$HEROKU_API_KEYS@git.heroku.com/taxihub-frontend.git'
 
-    - git push heroku master
+    - 'git push heroku master'
 
     - echo "Deployed to production server"
 
-  environment:
 
 
   only:
