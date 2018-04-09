@@ -1,8 +1,8 @@
-import {Order} from '../model/order.model';
+import {Order} from '../shared/order.model';
 import {EventEmitter, Injectable} from '@angular/core';
 
 @Injectable()
-export class OrderHistoryService {
+export class OrderService {
   historyChanged = new EventEmitter<Order[]>();
   orderHistory: Order[] = [];
 

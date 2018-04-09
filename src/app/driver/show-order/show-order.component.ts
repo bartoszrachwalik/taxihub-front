@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Order} from '../../model/order.model';
+import {Order} from '../../shared/order.model';
 
 @Component({
   selector: 'app-show-order',

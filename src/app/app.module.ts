@@ -13,7 +13,7 @@ import {ShowOrderComponent} from './driver/show-order/show-order.component';
 import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
-import {LoginServiceService} from './services/login-service.service';
+import {LoginService} from './services/login.service';
 import {ClientOrderHistoryComponent} from './client/client-order-history/client-order-history.component';
 import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
 import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
@@ -29,7 +29,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
 import {CorporationOrderHistoryComponent} from './corporation/corporation-order-history/corporation-order-history.component';
 import {ClientOrderHistoryComponent} from './client/client-order-history/client-order-history.component';
-import {OrderHistoryService} from './services/order-history.service';
+import {OrderService} from './services/order.service';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -105,13 +105,13 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule],
   providers: [
-    LoginServiceService,
+    LoginService,
     AuthGuardDriver,
     AuthGuardClient,
     AuthGuardCorporation,
     NotificationService,
     LoginComponent,
-    OrderHistoryService
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

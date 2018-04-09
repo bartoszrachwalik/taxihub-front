@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Order} from '../../model/order.model';
-import {OrderHistoryService} from '../../services/order-history.service';
+import {Order} from '../../shared/order.model';
+import {OrderService} from '../../services/order.service';
 
 @Component({
   selector: 'app-driver-order-history',
@@ -11,12 +11,12 @@ export class DriverOrderHistoryComponent implements OnInit {
 
   driverOrderHistory: Order[];
 
-  constructor(private orderHistoryService: OrderHistoryService) {
+  constructor(private orderService: OrderService) {
   }
 
   ngOnInit() {
-    this.driverOrderHistory = this.orderHistoryService.findAll();
-    this.orderHistoryService.historyChanged.subscribe(
+    this.driverOrderHistory = this.orderService.findAll();
+    this.orderService.historyChanged.subscribe(
       (orders: Order[]) => {
         this.driverOrderHistory = orders;
       }

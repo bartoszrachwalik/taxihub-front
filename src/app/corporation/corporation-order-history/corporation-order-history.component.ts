@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Order} from '../../model/order.model';
-import {OrderHistoryService} from '../../services/order-history.service';
+import {Order} from '../../shared/order.model';
+import {OrderService} from '../../services/order.service';
 
 @Component({
   selector: 'app-corporation-order-history',
@@ -11,12 +11,12 @@ export class CorporationOrderHistoryComponent implements OnInit {
 
   corporationOrderHistory: Order[];
 
-  constructor(private orderHistoryService: OrderHistoryService) {
+  constructor(private orderService: OrderService) {
   }
 
   ngOnInit() {
-    this.corporationOrderHistory = this.orderHistoryService.findAll();
-    this.orderHistoryService.historyChanged.subscribe(
+    this.corporationOrderHistory = this.orderService.findAll();
+    this.orderService.historyChanged.subscribe(
       (orders: Order[]) => {
         this.corporationOrderHistory = orders;
       }
