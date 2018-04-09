@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Driver} from '../../shared/driver.model';
-import {Car} from '../../shared/car.model';
+import {Driver} from '../../driver/driver.model';
+import {Car} from '../../car/car.model';
 
 @Component({
   selector: 'app-drivers',

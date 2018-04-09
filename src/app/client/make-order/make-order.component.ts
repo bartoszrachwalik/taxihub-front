@@ -1,9 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Order} from '../../shared/order.model';
+import {Order} from '../../order/order.model';
 import {} from 'googlemaps';
 import {MapsAPILoader} from '@agm/core';
-import {OrderService} from '../../services/order.service';
-import {NotificationService} from '../../services/notification.service';
+import {OrderService} from '../../order/order.service';
+import {NotificationService} from '../../notification/notification.service';
 
 @Component({
   selector: 'app-make-order',

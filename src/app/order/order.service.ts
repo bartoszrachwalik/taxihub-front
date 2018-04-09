@@ -1,4 +1,4 @@
-import {Order} from '../shared/order.model';
+import {Order} from '../order/order.model';
 import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 

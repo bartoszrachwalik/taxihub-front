@@ -13,7 +13,7 @@ import {ShowOrderComponent} from './driver/show-order/show-order.component';
 import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
-import {LoginService} from './services/login.service';
+import {LoginService} from './login/login.service';
 import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
 import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
 import {AuthGuardClient} from './auth-guard-client.service';
@@ -23,13 +23,14 @@ import {AgmCoreModule} from '@agm/core';
 import {AgmDirectionModule} from 'agm-direction';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ActiveOrderComponent} from './client/active-order/active-order.component';
-import {NotificationService} from './services/notification.service';
+import {NotificationService} from './notification/notification.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
 import {CorporationOrderHistoryComponent} from './corporation/corporation-order-history/corporation-order-history.component';
 import {ClientOrderHistoryComponent} from './client/client-order-history/client-order-history.component';
-import {OrderService} from './services/order.service';
+import {OrderService} from './order/order.service';
 import {HttpClientModule} from '@angular/common/http';
+import {OrderHistoryItemComponent} from './client/client-order-history/order-history-item/order-history-item.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -91,6 +92,7 @@ const appRoutes: Routes = [
     ActiveOrderComponent,
     CorporationOrderHistoryComponent,
     ClientOrderHistoryComponent,
+    OrderHistoryItemComponent
 
   ],
   imports: [

@@ -1,4 +1,4 @@
-import {Car} from './car.model';
+import {Car} from '../car/car.model';
 
 export class Driver {
 
