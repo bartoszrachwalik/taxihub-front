@@ -1,4 +1,4 @@
-import {Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Order} from '../../shared/order.model';
 import {} from 'googlemaps';
 import {MapsAPILoader} from '@agm/core';
@@ -22,7 +22,6 @@ export class MakeOrderComponent implements OnInit {
   public longitudeDestination: number;
   public zoom = 12;
 
-
   autocompleteFrom;
   autocompleteTo;
   dir;
@@ -43,7 +42,6 @@ export class MakeOrderComponent implements OnInit {
     });
   }
 
-
   getDirection() {
     const origin = MakeOrderComponent.toCoordinates(this.autocompleteFrom);
     const destination = MakeOrderComponent.toCoordinates(this.autocompleteTo);
@@ -58,9 +56,10 @@ export class MakeOrderComponent implements OnInit {
   onOrderCreated() {
     if (!this.isOrderActive) {
       this.isOrderActive = true;
+      // todo how to input correct clientID
       this.activeOrder = new Order(1, this.latitudeOrigin, this.longitudeOrigin, this.latitudeDestination, this.longitudeDestination);
       this.orderService.makeOrder(this.activeOrder);
-      this.notification.success('Add order');
+      this.notification.success('Order added successfully!');
     }
     return false;
   }
