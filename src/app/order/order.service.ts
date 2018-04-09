@@ -20,6 +20,6 @@ export class OrderService {
   }
 
   makeOrder(order: Order) {
-    return this.http.post('http://localhost:8080/orders', order);
+    return this.http.post('https://taxihub-backend.herokuapp.com/orders', order);
   }
 }
