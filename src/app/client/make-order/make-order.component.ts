@@ -2,7 +2,7 @@ import {Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
 import {Order} from '../../shared/order.model';
 import {} from 'googlemaps';
 import {MapsAPILoader} from '@agm/core';
-import {OrderService} from './order.service';
+import {OrderService} from '../../services/order.service';
 import {NotificationService} from '../../services/notification.service';
 
 @Component({

@@ -51,7 +51,7 @@ const appRoutes: Routes = [
   {
     path: 'client', component: ClientComponent, children: [
     {path: 'make-order', component: MakeOrderComponent},
-    {path: 'client-order-history', component: ClientOrderHistoryComponent}
+    {path: 'client-order-history', component: ClientOrderHistoryComponent},
     {path: 'active-order', component: ActiveOrderComponent}
   ]
   },
