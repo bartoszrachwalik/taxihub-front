@@ -2,6 +2,8 @@ import {Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
 import {Order} from '../../shared/order.model';
 import {} from 'googlemaps';
 import {MapsAPILoader} from '@agm/core';
+import {OrderService} from './order.service';
+import {NotificationService} from '../../services/notification.service';
 
 @Component({
   selector: 'app-make-order',
@@ -25,7 +27,7 @@ export class MakeOrderComponent implements OnInit {
   autocompleteTo;
   dir;
 
-  constructor(private mapsAPILoader: MapsAPILoader) {
+  constructor(private mapsAPILoader: MapsAPILoader, private orderService: OrderService, private notification: NotificationService) {
   }
 
   ngOnInit() {
@@ -42,7 +44,6 @@ export class MakeOrderComponent implements OnInit {
   }
 
 
-
   getDirection() {
     const origin = MakeOrderComponent.toCoordinates(this.autocompleteFrom);
     const destination = MakeOrderComponent.toCoordinates(this.autocompleteTo);
@@ -53,10 +54,13 @@ export class MakeOrderComponent implements OnInit {
     const loc = autocomplete.getPlace().geometry.location;
     return {lat: loc.lat(), lng: loc.lng()};
   }
-  onOrderCreated(startInput: HTMLInputElement, destinationInput: HTMLInputElement) {
+
+  onOrderCreated() {
     if (!this.isOrderActive) {
       this.isOrderActive = true;
-      this.activeOrder = new Order(1, 1, 'open', this.startPlaceRef.nativeElement.value, this.destinationRef.nativeElement.value);
+      this.activeOrder = new Order(1, this.latitudeOrigin, this.longitudeOrigin, this.latitudeDestination, this.longitudeDestination);
+      this.orderService.makeOrder(this.activeOrder);
+      this.notification.success('Add order');
     }
     return false;
   }

@@ -1,29 +1,26 @@
- <div class="card card-signup">
-      <div class="card-header card-header-primary text-center">
-        <p>Create new order</p>
-      </div>
-      <div class="card-body">
-        <form>
-          <div class="row">
-            <div class="col">
-              <input class="form-control" placeholder="Start Place" #searchFrom>
-            </div>
-            <div class="col">
-              <input class="form-control" placeholder="Destination" #searchTo>
-            </div>
-          </div>
-        </form>
-        <div class="offset-8">
-        <button
-          button class="btn btn-primary" (click)="onOrderCreated(searchFrom,searchTo)">Create order
-        </button>
-        <button class="btn btn-primary" (click)="getDirection()">Search</button>
+<div class="card card-signup">
+  <div class="card-header card-header-primary text-center">
+    <p>Create new order</p>
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="row">
+        <div class="col">
+          <input class="form-control" placeholder="Start Place" #searchFrom>
         </div>
-        <agm-map [latitude]="latitudeOrigin" [longitude]="longitudeOrigin" [scrollwheel]="true" [zoom]="zoom" >
-          <agm-marker [latitude]="latitudeOrigin" [longitude]="longitudeOrigin"></agm-marker>
-          <agm-marker [latitude]="latitudeDestination" [longitude]="longitudeDestination"></agm-marker>
-          <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
-        </agm-map>
+        <div class="col">
+          <input class="form-control" placeholder="Destination" #searchTo>
+        </div>
       </div>
+    </form>
+    <div class="offset-8">
+      <button class="btn btn-primary" (click)="getDirection()">Search</button>
+      <button class="btn btn-primary" (click)="onOrderCreated()">Create order</button>
     </div>
-
+    <agm-map [latitude]="latitudeOrigin" [longitude]="longitudeOrigin" [scrollwheel]="true" [zoom]="zoom" >
+      <agm-marker [latitude]="latitudeOrigin" [longitude]="longitudeOrigin"></agm-marker>
+      <agm-marker [latitude]="latitudeDestination" [longitude]="longitudeDestination"></agm-marker>
+      <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
+    </agm-map>
+  </div>
+</div>

@@ -1,18 +1,21 @@
 export class Order {
   public id: number;
   public driverId: number;
-  public client_id: number;
-  public status: string;
-  public startPlace: string;
-  public destination: string;
-  public startTime: string;
+  public clientId: number;
+  public fromLatitude: number;
+  public fromLongitude: number;
+  public toLatitude: number;
+  public toLongitude: number;
+  public createTime: string;
+  public takenTime: string;
   public endTime: string;
+  public status: string;
 
-  constructor(id: number, client_id: number, status: string, startPlace: string, destination: string) {
-    this.id = id;
-    this.client_id = client_id;
-    this.status = status;
-    this.startPlace = startPlace;
-    this.destination = destination;
+  constructor(clientId: number, fromLatitude: number, fromLongitude: number, toLatitude: number, toLongitude: number) {
+    this.clientId = clientId;
+    this.fromLatitude = fromLatitude;
+    this.fromLongitude = fromLongitude;
+    this.toLatitude = toLatitude;
+    this.toLongitude = toLongitude;
   }
 }

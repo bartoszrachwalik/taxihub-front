@@ -14,7 +14,6 @@ import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
 import {LoginService} from './services/login.service';
-import {ClientOrderHistoryComponent} from './client/client-order-history/client-order-history.component';
 import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
 import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
 import {AuthGuardClient} from './auth-guard-client.service';
@@ -30,6 +29,7 @@ import {ToasterModule} from 'angular5-toaster/dist';
 import {CorporationOrderHistoryComponent} from './corporation/corporation-order-history/corporation-order-history.component';
 import {ClientOrderHistoryComponent} from './client/client-order-history/client-order-history.component';
 import {OrderService} from './services/order.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -51,7 +51,8 @@ const appRoutes: Routes = [
   {
     path: 'client', component: ClientComponent, children: [
     {path: 'make-order', component: MakeOrderComponent},
-    {path: 'order-history', component: ClientOrderHistoryComponent}
+    {path: 'client-order-history', component: ClientOrderHistoryComponent}
+    {path: 'active-order', component: ActiveOrderComponent}
   ]
   },
   {
@@ -94,6 +95,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     ToasterModule,
     RouterModule.forRoot(appRoutes),
