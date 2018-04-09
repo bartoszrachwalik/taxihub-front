@@ -30,6 +30,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
 import {HttpClientModule} from '@angular/common/http';
 import {OrderService} from './client/make-order/order.service';
+import { ConfirmComponent } from './confirm/confirm.component';
+import {DriverService} from './driver/driver.service';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -67,8 +69,7 @@ const appRoutes: Routes = [
     ]
   },
   {path: 'login', component: LoginComponent},
-  {path: 'registration/client', component: RegistrationClientComponent},
-  {path: 'registration/company', component: RegistrationCompanyComponent},
+  {path: 'confirm/driver/:token', component: ConfirmComponent},
   {path: '**', component: PageNotFoundComponent}
 
 ];
@@ -92,6 +93,7 @@ const appRoutes: Routes = [
     DriverOrderHistoryComponent,
     OrderItemComponent,
     ActiveOrderComponent,
+    ConfirmComponent,
 
     DriversListItemComponent,
     RegistrationClientComponent,
@@ -110,8 +112,15 @@ const appRoutes: Routes = [
     AgmDirectionModule,
     FormsModule,
     ReactiveFormsModule],
-  providers: [LoginServiceService, AuthGuardDriver, AuthGuardClient, AuthGuardCorporation,
-    NotificationService, LoginComponent, OrderService],
+  providers: [
+    LoginServiceService,
+    AuthGuardDriver,
+    AuthGuardClient,
+    AuthGuardCorporation,
+    NotificationService,
+    LoginComponent,
+    DriverService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
