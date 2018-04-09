@@ -27,6 +27,8 @@ import {ActiveOrderComponent} from './client/active-order/active-order.component
 import {NotificationService} from './services/notification.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
+import {HttpClientModule} from '@angular/common/http';
+import {OrderService} from './client/make-order/order.service';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
   {
     path: 'client', component: ClientComponent, children: [
       {path: 'make-order', component: MakeOrderComponent},
-      {path: 'order-history', component: OrderHistoryComponent}
+      {path: 'order-history', component: OrderHistoryComponent},
+      {path: 'active-order', component: ActiveOrderComponent}
     ]
   },
   {
@@ -89,6 +92,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     ToasterModule,
     RouterModule.forRoot(appRoutes),
@@ -99,7 +103,8 @@ const appRoutes: Routes = [
     AgmDirectionModule,
     FormsModule,
     ReactiveFormsModule],
-  providers: [LoginServiceService, AuthGuardDriver, AuthGuardClient, AuthGuardCorporation, NotificationService, LoginComponent],
+  providers: [LoginServiceService, AuthGuardDriver, AuthGuardClient, AuthGuardCorporation,
+    NotificationService, LoginComponent, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
