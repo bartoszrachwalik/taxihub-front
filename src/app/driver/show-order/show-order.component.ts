@@ -8,9 +8,9 @@ import {Order} from '../../model/order.model';
 })
 export class ShowOrderComponent implements OnInit {
   orders: Order[] = [
-    new Order(1, 1, 'open', 'Start place 1', 'Destination 1'),
-    new Order(2, 2, 'open', 'Start place 2', 'Destination 2'),
-    new Order(3, 3, 'open', 'Start place 3', 'Destination 3'),
+    new Order(1, 1, 1, 1, 1),
+    new Order(1, 1, 1, 1, 1),
+    new Order(1, 1, 1, 1, 1),
   ];
 
   constructor() {
