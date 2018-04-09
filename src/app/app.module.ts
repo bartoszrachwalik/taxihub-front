@@ -1,6 +1,4 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {LoginComponent} from './login/login.component';
@@ -13,6 +11,9 @@ import {ShowOrderComponent} from './driver/show-order/show-order.component';
 import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
+import {RegistrationClientComponent} from './registration-client/registration-client.component';
+import {RegistrationCompanyComponent} from './registration-company/registration-company.component';
+import {NgModule} from "@angular/core";
 import {LoginServiceService} from './services/login-service.service';
 import {OrderHistoryComponent} from './client/order-history/order-history.component';
 import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
@@ -70,6 +71,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'confirm/driver/:token', component: ConfirmComponent},
   {path: '**', component: PageNotFoundComponent}
+
 ];
 
 
@@ -93,6 +95,9 @@ const appRoutes: Routes = [
     ActiveOrderComponent,
     ConfirmComponent,
 
+    DriversListItemComponent,
+    RegistrationClientComponent,
+    RegistrationCompanyComponent
   ],
   imports: [
     BrowserModule,
