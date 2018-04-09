@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Order} from '../../model/order.model';
+import {OrderHistoryService} from '../../services/order-history.service';
 
 @Component({
   selector: 'app-driver-order-history',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DriverOrderHistoryComponent implements OnInit {
 
-  constructor() { }
+  driverOrderHistory: Order[];
+
+  constructor(private orderHistoryService: OrderHistoryService) {
+  }
 
   ngOnInit() {
+    this.driverOrderHistory = this.orderHistoryService.findAll();
+    this.orderHistoryService.historyChanged.subscribe(
+      (orders: Order[]) => {
+        this.driverOrderHistory = orders;
+      }
+    );
   }
 
 }
