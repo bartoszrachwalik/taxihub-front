@@ -1,0 +1,98 @@
+<div class="registration_page">
+  <div class="container">
+    <div class="row container_registration">
+      <div class="col-xs-12 ">
+        <div class="card card-signup">
+          <form class="form"
+                method="post"
+                [formGroup]="registrationCompanyForm"
+                novalidate
+                (ngSubmit)="onSubmit()">
+
+            <div class="card-header card-header-primary text-center">
+              <h4>Registration</h4>
+            </div>
+
+            <div class="card-body">
+
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(companyName)}">
+                <span class="input-group-addon"><i class="material-icons">face</i></span>
+                <label for="companyName"></label>
+                <input
+                  type="text"
+                  class="form-control login_input"
+                  placeholder="Enter company's name"
+                  name="companyName"
+                  required
+                  formControlName="companyName"
+                  id="companyName">
+
+              </div>
+              <span class="help-block" *ngIf="isValid(companyName)">Please enter your first name!</span>
+
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(companyEmail)}">
+                <span class="input-group-addon"><i class="material-icons">email</i></span>
+                <label for="companyEmail"></label>
+                <input
+                  type="email"
+                  class="form-control login_input"
+                  placeholder="Enter company's email address"
+                  name="companyEmail"
+                  formControlName="companyEmail"
+                  email
+                  required
+                  id="companyEmail">
+
+              </div>
+              <span class="help-block" *ngIf="isValid(companyEmail)">Please enter a valid email!</span>
+
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(companyPassword)}">
+
+                <span class="input-group-addon"><i class="material-icons">lock_outline</i></span>
+                <label for="companyPassword"></label>
+                <input
+                  type="password"
+                  class="form-control login_input"
+                  placeholder="Create your password"
+                  required
+                  name="companyPassword"
+                  formControlName="companyPassword"
+                  id="companyPassword">
+
+              </div>
+              <div class="help-block" *ngIf="isValid(companyPassword)">Please enter password!</div>
+              <div class="help-block" *ngIf="isValid(companyPassword)">At least 5 characters long!</div>
+
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(companyPasswordConfirmation)}">
+                <span class="input-group-addon"><i class="material-icons">lock_outline</i></span>
+                <label for="companyPasswordConfirmation"></label>
+                <input
+                  type="password"
+                  class="form-control login_input"
+                  placeholder="Confirm your password"
+                  formControlName="companyPasswordConfirmation"
+                  required
+                  id="companyPasswordConfirmation">
+
+              </div>
+              <span class="help-block" *ngIf="(registrationCompanyForm.hasError('mismatch'))">Password mismatch!</span>
+
+
+              <div class="card-footer justify-content-center">
+                <button
+                  type="submit"
+                  class="btn btn-link btn-primary btn-lg"
+                  [disabled]="!registrationCompanyForm.valid">Register
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="registration_page">
+  <div class="container">
+    <div class="row container_registration">
+      <div class="col-xs-12 ">
+        <div class="card card-signup">
+          <form class="form"
+                method="post"
+                [formGroup]="registrationClientForm"
+                novalidate
+                (ngSubmit)="onSubmit()">
+
+            <div class="card-header card-header-primary text-center">
+              <h4>Registration</h4>
+            </div>
+
+            <div class="card-body">
+
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(clientFirstName)}">
+                <span class="input-group-addon"><i class="material-icons">face</i></span>
+                <label for="clientFirstName"></label>
+                <input
+                  type="text"
+                  class="form-control login_input"
+                  placeholder="Enter your first name"
+                  name="clientFirstName"
+                  required
+                  formControlName="clientFirstName"
+                  id="clientFirstName">
+
+              </div>
+              <span class="help-block" *ngIf="isValid(clientFirstName)">Please enter your first name!</span>
+
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(clientLastName)}">
+                <span class="input-group-addon"><i class="material-icons">face</i></span>
+                <label for="clientLastName"></label>
+                <input
+                  type="text"
+                  class="form-control login_input"
+                  placeholder="Enter your last name"
+                  required
+                  name="clientLastName"
+                  formControlName="clientLastName"
+                  id="clientLastName">
+
+              </div>
+              <span class="help-block" *ngIf="isValid(clientLastName)">Please enter your last name!</span>
+
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(clientEmailAddress)}">
+                <span class="input-group-addon"><i class="material-icons">email</i></span>
+                <label for="clientEmail"></label>
+                <input
+                  type="email"
+                  class="form-control login_input"
+                  placeholder="Enter your email address"
+                  name="clientEmail"
+                  formControlName="clientEmail"
+                  email
+                  required
+                  id="clientEmail">
+
+              </div>
+              <span class="help-block" *ngIf="isValid(clientEmailAddress)">Please enter a valid email!</span>
+
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(clientPassword)}">
+
+                <span class="input-group-addon"><i class="material-icons">lock_outline</i></span>
+                <label for="clientPassword"></label>
+                <input
+                  type="password"
+                  class="form-control login_input"
+                  placeholder="Create your password"
+                  required
+                  name="clientPassword"
+                  formControlName="clientPassword"
+                  id="clientPassword">
+
+              </div>
+              <div class="help-block" *ngIf="isValid(clientPassword)">Please enter password!</div>
+              <div class="help-block" *ngIf="isValid(clientPassword)">At least 5 characters long!</div>
+
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(clientPasswordConfirmation)}">
+                <span class="input-group-addon"><i class="material-icons">lock_outline</i></span>
+                <label for="clientPasswordConfirmation"></label>
+                <input
+                  type="password"
+                  class="form-control login_input"
+                  placeholder="Confirm your password"
+                  formControlName="clientPasswordConfirmation"
+                  required
+                  id="clientPasswordConfirmation">
+
+              </div>
+              <span class="help-block" *ngIf="(registrationClientForm.hasError('mismatch'))">Password mismatch!</span>
+
+
+              <div class="card-footer justify-content-center">
+                <button
+                  type="submit"
+                  class="btn btn-link btn-primary btn-lg"
+                  [disabled]="!registrationClientForm.valid">Register
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
