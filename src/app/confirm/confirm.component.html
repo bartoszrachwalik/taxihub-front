@@ -1,0 +1,30 @@
+<div class="login_page">
+  <div class="container">
+    <div class="row container_login">
+      <div class="col-xs-12">
+        <div class="card card-signup">
+          <form class="form" (submit)="sendPassword(password.value)">
+            <div class="card-header card-header-primary text-center">
+              <h4>Type new password</h4>
+            </div>
+            <div class="card-body">
+              <div class="input-group">
+
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">lock_outline</i>
+                                        </span>
+                <label for="password"></label>
+                <input #password type="password" class="form-control login_input" placeholder="Password..."
+                       id="password">
+
+              </div>
+            <div class="card-footer justify-content-center">
+              <button type="submit" class="btn btn-link btn-primary btn-lg">Save</button>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
