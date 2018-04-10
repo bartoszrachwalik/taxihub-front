@@ -13,7 +13,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
 import {RegistrationClientComponent} from './registration-client/registration-client.component';
 import {RegistrationCompanyComponent} from './registration-company/registration-company.component';
-import {NgModule} from '@angular/core';
+import {NgModule} from "@angular/core";
 import {LoginServiceService} from './services/login-service.service';
 import {OrderHistoryComponent} from './client/order-history/order-history.component';
 import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
@@ -32,6 +32,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {OrderService} from './client/make-order/order.service';
 import { ConfirmComponent } from './confirm/confirm.component';
 import {DriverService} from './driver/driver.service';
+import { RegistrationComponent } from './registration/registration.component';
 import { ProfilComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
@@ -70,6 +71,12 @@ const appRoutes: Routes = [
     path: 'corporation', component: CorporationComponent, children: [
       {path: 'drivers', component: DriversComponent},
       {path: 'profile', component: ProfilComponent}
+    ]
+  },
+  {
+    path: 'registration', component: RegistrationComponent, children: [
+      {path: 'client', component: RegistrationClientComponent},
+      {path: 'corporation', component: RegistrationCompanyComponent}
     ]
   },
   {path: 'login', component: LoginComponent},
