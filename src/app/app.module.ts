@@ -13,7 +13,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
 import {RegistrationClientComponent} from './registration-client/registration-client.component';
 import {RegistrationCompanyComponent} from './registration-company/registration-company.component';
-import {NgModule} from "@angular/core";
+import {NgModule} from '@angular/core';
 import {LoginServiceService} from './services/login-service.service';
 import {OrderHistoryComponent} from './client/order-history/order-history.component';
 import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
@@ -32,6 +32,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {OrderService} from './client/make-order/order.service';
 import { ConfirmComponent } from './confirm/confirm.component';
 import {DriverService} from './driver/driver.service';
+import { ProfilComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -54,18 +55,21 @@ const appRoutes: Routes = [
     path: 'client', component: ClientComponent, children: [
       {path: 'make-order', component: MakeOrderComponent},
       {path: 'order-history', component: OrderHistoryComponent},
-      {path: 'active-order', component: ActiveOrderComponent}
+      {path: 'active-order', component: ActiveOrderComponent},
+      {path: 'profile', component: ProfilComponent}
     ]
   },
   {
     path: 'driver', component: DriverComponent, children: [
       {path: 'show-order', component: ShowOrderComponent},
-      {path: 'driver-order-history', component: DriverOrderHistoryComponent}
+      {path: 'driver-order-history', component: DriverOrderHistoryComponent},
+      {path: 'profile', component: ProfilComponent}
     ]
   },
   {
     path: 'corporation', component: CorporationComponent, children: [
-      {path: 'drivers', component: DriversComponent}
+      {path: 'drivers', component: DriversComponent},
+      {path: 'profile', component: ProfilComponent}
     ]
   },
   {path: 'login', component: LoginComponent},
@@ -97,7 +101,8 @@ const appRoutes: Routes = [
 
     DriversListItemComponent,
     RegistrationClientComponent,
-    RegistrationCompanyComponent
+    RegistrationCompanyComponent,
+    ProfilComponent,
   ],
   imports: [
     BrowserModule,
