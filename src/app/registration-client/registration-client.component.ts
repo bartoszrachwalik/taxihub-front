@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ClientService} from "../client/client.service";
 
 
 @Component({
@@ -15,18 +16,36 @@ export class RegistrationClientComponent implements OnInit {
   clientPassword: FormControl;
   clientPasswordConfirmation: FormControl;
 
-  constructor() {
+  constructor(private clientService: ClientService) {
 
   }
-
   ngOnInit() {
     this.createFormControls();
     this.createForm();
   }
 
+  private onSaveData() {
+   console.log(this.clientFirstName.value)
+    this.clientService.register( {
+      name: this.clientFirstName.value,
+      lastName: this.clientLastName.value,
+      email: this.clientEmailAddress.value,
+      password: this.clientPassword.value
+    }).subscribe(
+      (val) => {
+        console.log("POST call successful value returned in body",
+          val);
+      },
+      response => {
+        console.log("POST call in error", response);
+      },
+      () => {
+        console.log("The POST observable is now completed.");
+      });
+  }
   onSubmit(){
     if(this.registrationClientForm.valid){
-      console.log(this.registrationClientForm.value)
+      this.onSaveData();
       this.registrationClientForm.reset();
     }
   }
