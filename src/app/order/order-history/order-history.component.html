@@ -6,7 +6,7 @@
           <h4>Orders</h4>
         </div>
         <app-order-item class="list-group list-group-flush"
-                        *ngFor="let currentOrder of clientOrderHistory"
+                        *ngFor="let currentOrder of orderHistory"
                         [order]="currentOrder"></app-order-item>
       </div>
     </div>

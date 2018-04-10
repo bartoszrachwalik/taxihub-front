@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 @Injectable()
 export class OrderService {
   historyChanged = new EventEmitter<Order[]>();
-  orderHistory: Order[] = [];
+  orderHistory: Order[];
 
   constructor(private http: HttpClient) {
   }
@@ -14,6 +14,11 @@ export class OrderService {
     this.orderHistory.push(order);
     this.historyChanged.emit(this.orderHistory.slice());
   }
+
+  // todo
+  // getHistory(id: number, role: string) {
+  //   this.http.get('https://taxihub-backend.herokuapp.com/orders/open');
+  // }
 
   findAll() {
     return this.orderHistory.slice();

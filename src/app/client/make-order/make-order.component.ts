@@ -26,7 +26,7 @@ export class MakeOrderComponent implements OnInit {
   autocompleteTo;
   dir;
 
-  constructor(private mapsAPILoader: MapsAPILoader, private orderService: OrderService, private notification: NotificationService) {
+  constructor(private mapsAPILoader: MapsAPILoader, private orderService: OrderService, private notificationService: NotificationService) {
   }
 
   ngOnInit() {
@@ -58,7 +58,7 @@ export class MakeOrderComponent implements OnInit {
       this.isOrderActive = true;
       // todo how to input correct clientID
       this.activeOrder = new Order(1, this.latitudeOrigin, this.longitudeOrigin, this.latitudeDestination, this.longitudeDestination);
-      this.orderService.makeOrder(this.activeOrder).subscribe(res => this.notification.success('Order added successfully!'));
+      this.orderService.makeOrder(this.activeOrder).subscribe(res => this.notificationService.success('Order added successfully!'));
     }
     return false;
   }

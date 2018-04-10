@@ -10,7 +10,7 @@ export class ShowOrderComponent implements OnInit {
   orders: Order[] = [
     new Order(1, 1, 1, 1, 1),
     new Order(1, 1, 1, 1, 1),
-    new Order(1, 1, 1, 1, 1),
+    new Order(1, 1, 1, 1, 1)
   ];
 
   constructor() {
