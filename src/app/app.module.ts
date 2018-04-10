@@ -11,8 +11,8 @@ import {ShowOrderComponent} from './driver/show-order/show-order.component';
 import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
-import {RegistrationClientComponent} from './registration/registration-client/registration-client.component';
-import {RegistrationCompanyComponent} from './registration/registration-company/registration-company.component';
+import {RegistrationClientComponent} from './registration-client/registration-client.component';
+import {RegistrationCompanyComponent} from './registration-company/registration-company.component';
 import {NgModule} from "@angular/core";
 import {LoginServiceService} from './services/login-service.service';
 import {OrderHistoryComponent} from './client/order-history/order-history.component';
@@ -30,6 +30,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
 import {HttpClientModule} from '@angular/common/http';
 import {OrderService} from './client/make-order/order.service';
+import { ConfirmComponent } from './confirm/confirm.component';
+import {DriverService} from './driver/driver.service';
 import { RegistrationComponent } from './registration/registration.component';
 
 const appRoutes: Routes = [
@@ -74,6 +76,7 @@ const appRoutes: Routes = [
     ]
   },
   {path: 'login', component: LoginComponent},
+  {path: 'confirm/driver/:token', component: ConfirmComponent},
   {path: '**', component: PageNotFoundComponent}
 
 ];
@@ -97,11 +100,11 @@ const appRoutes: Routes = [
     DriverOrderHistoryComponent,
     OrderItemComponent,
     ActiveOrderComponent,
+    ConfirmComponent,
 
     DriversListItemComponent,
     RegistrationClientComponent,
-    RegistrationCompanyComponent,
-    RegistrationComponent
+    RegistrationCompanyComponent
   ],
   imports: [
     BrowserModule,
@@ -116,8 +119,15 @@ const appRoutes: Routes = [
     AgmDirectionModule,
     FormsModule,
     ReactiveFormsModule],
-  providers: [LoginServiceService, AuthGuardDriver, AuthGuardClient, AuthGuardCorporation,
-    NotificationService, LoginComponent, OrderService],
+  providers: [
+    LoginServiceService,
+    AuthGuardDriver,
+    AuthGuardClient,
+    AuthGuardCorporation,
+    NotificationService,
+    LoginComponent,
+    DriverService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
