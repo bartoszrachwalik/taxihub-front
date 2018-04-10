@@ -14,7 +14,7 @@ export class MakeOrderComponent implements OnInit {
   @ViewChild('searchFrom') startPlaceRef: ElementRef;
   @ViewChild('searchTo') destinationRef: ElementRef;
   activeOrder: Order;
-  isOrderActive = false;
+  hasActiveOrder = false;
 
   public latitudeOrigin: number;
   public longitudeOrigin: number;
@@ -54,8 +54,8 @@ export class MakeOrderComponent implements OnInit {
   }
 
   onOrderCreated() {
-    if (!this.isOrderActive) {
-      this.isOrderActive = true;
+    if (!this.hasActiveOrder) {
+      this.hasActiveOrder = true;
       // todo how to input correct clientID
       this.activeOrder = new Order(1, this.latitudeOrigin, this.longitudeOrigin, this.latitudeDestination, this.longitudeDestination);
       this.orderService.makeOrder(this.activeOrder).subscribe(res => this.notificationService.success('Order added successfully!'));
