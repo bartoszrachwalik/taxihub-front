@@ -17,6 +17,5 @@ export class Order {
     this.fromLongitude = fromLongitude;
     this.toLatitude = toLatitude;
     this.toLongitude = toLongitude;
-    this.status = 'open';
   }
 }
