@@ -11,8 +11,8 @@ import {ShowOrderComponent} from './driver/show-order/show-order.component';
 import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
-import {RegistrationClientComponent} from './registration-client/registration-client.component';
-import {RegistrationCompanyComponent} from './registration-company/registration-company.component';
+import {RegistrationClientComponent} from './registration/registration-client/registration-client.component';
+import {RegistrationCompanyComponent} from './registration/registration-company/registration-company.component';
 import {NgModule} from "@angular/core";
 import {LoginServiceService} from './services/login-service.service';
 import {OrderHistoryComponent} from './client/order-history/order-history.component';
@@ -30,6 +30,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
 import {HttpClientModule} from '@angular/common/http';
 import {OrderService} from './client/make-order/order.service';
+import { RegistrationComponent } from './registration/registration.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -66,9 +67,13 @@ const appRoutes: Routes = [
       {path: 'drivers', component: DriversComponent}
     ]
   },
+  {
+    path: 'registration', component: RegistrationComponent, children: [
+      {path: 'client', component: RegistrationClientComponent},
+      {path: 'corporation', component: RegistrationCompanyComponent}
+    ]
+  },
   {path: 'login', component: LoginComponent},
-  {path: 'registration/client', component: RegistrationClientComponent},
-  {path: 'registration/company', component: RegistrationCompanyComponent},
   {path: '**', component: PageNotFoundComponent}
 
 ];
@@ -95,7 +100,8 @@ const appRoutes: Routes = [
 
     DriversListItemComponent,
     RegistrationClientComponent,
-    RegistrationCompanyComponent
+    RegistrationCompanyComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
