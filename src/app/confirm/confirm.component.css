@@ -1,11 +1,11 @@
-.container_registration {
+.container_login{
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
 }
 
-.registration_page {
+.login_page {
   background: url(../../assets/img/bg2.jpg) no-repeat;
   background-size: cover;
 }
@@ -16,12 +16,4 @@
 
 .card-header {
   margin-bottom: 25px;
-}
-.help-block {
-  padding-left: 23px;
-  color: red;
-}
-
-.no-margin-b{
-  margin-bottom: 0;
 }
