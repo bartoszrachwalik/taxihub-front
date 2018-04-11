@@ -39,7 +39,7 @@ import {RegistrationClientComponent} from './registration/registration-client/re
 import {RegistrationCompanyComponent} from './registration/registration-company/registration-company.component';
 import {CorporationService} from './corporation/corporation.service';
 import {ClientService} from './client/client.service';
-import {OrderHistoryItemComponent} from "./order/order-history/order-history-item/order-history-item.component";
+import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -61,7 +61,7 @@ const appRoutes: Routes = [
   {
     path: 'client', component: ClientComponent, children: [
     {path: 'make-order', component: MakeOrderComponent},
-    {path: 'client-order-history', component: OrderHistoryComponent},
+    {path: 'client-order-history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}},
     {path: 'active-order', component: ActiveOrderComponent},
     {path: 'profile', component: ProfilComponent}
   ]
@@ -77,9 +77,7 @@ const appRoutes: Routes = [
     path: 'corporation', component: CorporationComponent, children: [
     {path: 'drivers', component: DriversComponent},
     {
-      path: 'corporation-order-history',
-      component: OrderHistoryComponent,
-      resolve: {history: CorporationHistoryResolver}
+      path: 'corporation-order-history', component: OrderHistoryComponent, resolve: {history: CorporationHistoryResolver}
     },
     {path: 'profile', component: ProfilComponent}
   ]
