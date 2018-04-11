@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {LoginServiceService} from '../services/login-service.service';
+import {LoginService} from '../login/login.service';
 import {AuthService} from './auth.service';
-import {TokenInterceptor} from './token.interceptor';
-import {NotificationService} from '../services/notification.service';
+import {NotificationService} from '.././notification/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +11,11 @@ import {NotificationService} from '../services/notification.service';
 })
 export class LoginComponent implements OnInit {
 
-  error = false;
 
   constructor(
     private router: Router,
     private service: AuthService,
-    private loginService: LoginServiceService,
+    private loginService: LoginService,
     private notification: NotificationService) {
   }
 

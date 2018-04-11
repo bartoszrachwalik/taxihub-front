@@ -6,8 +6,8 @@ export class Order {
   public fromLongitude: number;
   public toLatitude: number;
   public toLongitude: number;
-  public createTime: string;
-  public takenTime: string;
+  public openTime: string;
+  public startTime: string;
   public endTime: string;
   public status: string;
 
@@ -18,4 +18,5 @@ export class Order {
     this.toLatitude = toLatitude;
     this.toLongitude = toLongitude;
   }
+
 }

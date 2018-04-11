@@ -1,9 +1,9 @@
-import {Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
-import {Order} from '../../model/order.model';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Order} from '../../order/order.model';
 import {} from 'googlemaps';
 import {MapsAPILoader} from '@agm/core';
-import {OrderService} from './order.service';
-import {NotificationService} from '../../services/notification.service';
+import {OrderService} from '../../order/order.service';
+import {NotificationService} from '../../notification/notification.service';
 
 @Component({
   selector: 'app-make-order',
@@ -14,14 +14,13 @@ export class MakeOrderComponent implements OnInit {
   @ViewChild('searchFrom') startPlaceRef: ElementRef;
   @ViewChild('searchTo') destinationRef: ElementRef;
   activeOrder: Order;
-  isOrderActive = false;
+  hasActiveOrder = false;
 
   public latitudeOrigin: number;
   public longitudeOrigin: number;
   public latitudeDestination: number;
   public longitudeDestination: number;
   public zoom = 12;
-
 
   autocompleteFrom;
   autocompleteTo;
@@ -45,7 +44,6 @@ export class MakeOrderComponent implements OnInit {
     });
   }
 
-
   getDirection() {
     const origin = MakeOrderComponent.toCoordinates(this.autocompleteFrom);
     const destination = MakeOrderComponent.toCoordinates(this.autocompleteTo);
@@ -58,11 +56,11 @@ export class MakeOrderComponent implements OnInit {
   }
 
   onOrderCreated() {
-    if (!this.isOrderActive) {
-      this.isOrderActive = true;
+    if (!this.hasActiveOrder) {
+      this.hasActiveOrder = true;
+      // todo how to input correct clientID
       this.activeOrder = new Order(1, this.latitudeOrigin, this.longitudeOrigin, this.latitudeDestination, this.longitudeDestination);
-      this.orderService.makeOrder(this.activeOrder);
-      this.notification.success('Add order');
+      this.orderService.makeOrder(this.activeOrder).subscribe(res => this.notificationService.success('Order added successfully!'));
     }
     return false;
   }

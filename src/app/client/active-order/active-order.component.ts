@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Order} from '../../model/order.model';
+import {Order} from '../../order/order.model';
 
 @Component({
   selector: 'app-active-order',

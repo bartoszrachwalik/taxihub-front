@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-nav-tabs">
+        <div class="card-header card-header-primary text-center">
+          <h4>Orders History</h4>
+        </div>
+        <app-order-history-item class="list-group list-group-flush"
+                                *ngFor="let currentOrder of orderHistory"
+                                [order]="currentOrder"></app-order-history-item>
+      </div>
+    </div>
+  </div>
+</div>

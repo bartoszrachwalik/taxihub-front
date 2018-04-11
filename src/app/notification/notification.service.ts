@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ToasterService} from 'angular5-toaster/dist';
 
 @Injectable()
