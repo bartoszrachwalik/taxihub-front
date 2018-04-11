@@ -28,7 +28,7 @@ export class MakeOrderComponent implements OnInit {
 
   constructor(private mapsAPILoader: MapsAPILoader,
               private orderService: OrderService,
-              private notification: NotificationService) {
+              private notificationService: NotificationService) {
   }
 
   ngOnInit() {
