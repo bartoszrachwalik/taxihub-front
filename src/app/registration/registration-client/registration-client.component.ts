@@ -28,7 +28,7 @@ export class RegistrationClientComponent implements OnInit {
    console.log(this.clientFirstName.value)
     this.clientService.register( {
       name: this.clientFirstName.value,
-      lastName: this.clientLastName.value,
+      surname: this.clientLastName.value,
       email: this.clientEmailAddress.value,
       password: this.clientPassword.value
     }).subscribe(
@@ -45,6 +45,7 @@ export class RegistrationClientComponent implements OnInit {
   }
   onSubmit(){
     if(this.registrationClientForm.valid){
+      this.registrationClientForm.value;
       this.onSaveData();
       this.registrationClientForm.reset();
     }

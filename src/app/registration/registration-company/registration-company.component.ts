@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CorporationService} from "../../corporation/corporation.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -15,7 +16,7 @@ export class RegistrationCompanyComponent implements OnInit {
   companyPassword: FormControl;
   companyPasswordConfirmation: FormControl;
 
-  constructor(private corporationService: CorporationService) {
+  constructor(private corporationService: CorporationService, private router: Router) {
 
   }
 
@@ -35,8 +36,8 @@ export class RegistrationCompanyComponent implements OnInit {
         console.log("POST call successful value returned in body",
           val);
       },
-      response => {
-        console.log("POST call in error", response);
+      error => {
+        console.log("POST call in error", error);
       },
       () => {
         console.log("The POST observable is now completed.");
