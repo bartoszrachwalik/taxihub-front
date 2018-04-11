@@ -1,6 +1,9 @@
 <div class="list-group-item img-raised rounded">
   <div>
-    <h4>From {{order.fromLatitude}},{{order.fromLongitude}}, to {{order.toLatitude}},{{order.toLongitude}},</h4>
+    <h4>From {{order.fromLatitude}},{{order.fromLongitude}} to {{order.toLatitude}}, {{order.toLongitude}}</h4>
+    <p>Order created at: {{order.openTime}}</p>
+    <p>Order taken at: {{order.startTime}}</p>
+    <p>Order finished at: {{order.endTime}}</p>
     <p>Status {{order.status}}</p>
   </div>
 </div>
