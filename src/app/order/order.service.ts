@@ -5,9 +5,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 @Injectable()
 export class OrderService {
   makeOrderUrl = 'https://taxihub-backend.herokuapp.com/orders';
-  getClientOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/client';
-  getCorporationOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/corporation';
-  getDriverOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/driver';
+  getClientOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/client/4';
+  getCorporationOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/corporation/';
+  getDriverOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/driver/1';
   headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
 
   constructor(private http: HttpClient) {
