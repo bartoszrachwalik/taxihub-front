@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CorporationService} from "../corporation/corporation.service";
+import {CorporationService} from "../../corporation/corporation.service";
+
 
 @Component({
   selector: 'app-registration-company',

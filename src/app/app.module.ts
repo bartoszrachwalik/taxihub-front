@@ -27,11 +27,14 @@ import {NotificationService} from './services/notification.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
 import {HttpClientModule} from '@angular/common/http';
-
-import { ConfirmComponent } from './confirm/confirm.component';
+import {ConfirmComponent} from './confirm/confirm.component';
 import {DriverService} from './driver/driver.service';
-import { RegistrationComponent } from './registration/registration.component';
-import { ProfilComponent } from './profile/profile.component';
+import {ProfilComponent} from './profile/profile.component';
+import {RegistrationComponent} from "./registration/registration.component";
+import {RegistrationClientComponent} from "./registration/registration-client/registration-client.component";
+import {RegistrationCompanyComponent} from "./registration/registration-company/registration-company.component";
+import {CorporationService} from "./corporation/corporation.service";
+import {ClientService} from "./client/client.service";
 
 
 const appRoutes: Routes = [
@@ -72,12 +75,10 @@ const appRoutes: Routes = [
       {path: 'profile', component: ProfilComponent}
     ]
   },
-  {
-    path: 'registration', component: RegistrationComponent, children: [
-      {path: 'client', component: RegistrationClientComponent},
-      {path: 'corporation', component: RegistrationCompanyComponent}
-    ]
-  },
+
+  {path: 'registration', component: RegistrationComponent},
+  {path: 'registration/client', component: RegistrationClientComponent},
+  {path: 'registration/corporation', component: RegistrationCompanyComponent},
   {path: 'login', component: LoginComponent},
   {path: 'confirm/driver/:token', component: ConfirmComponent},
   {path: '**', component: PageNotFoundComponent}
@@ -104,11 +105,11 @@ const appRoutes: Routes = [
     OrderItemComponent,
     ActiveOrderComponent,
     ConfirmComponent,
-
     DriversListItemComponent,
     RegistrationClientComponent,
     RegistrationCompanyComponent,
     ProfilComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -130,7 +131,9 @@ const appRoutes: Routes = [
     AuthGuardCorporation,
     NotificationService,
     LoginComponent,
-    DriverService
+    DriverService,
+    CorporationService,
+    ClientService
   ],
   bootstrap: [AppComponent]
 })
