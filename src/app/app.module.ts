@@ -26,13 +26,19 @@ import {NotificationService} from './notification/notification.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
 import {OrderService} from './order/order.service';
-import {HttpClientModule} from '@angular/common/http';
 import {OrderHistoryComponent} from './order/order-history/order-history.component';
 import {DriverHistoryResolver} from './driver/driver.history.resolver';
 import {ClientHistoryResolver} from './client/client.history.resolver';
 import {CorporationHistoryResolver} from './corporation/corporation.history.resolver';
-import {ConfirmComponent} from './confirm/confirm.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { ConfirmComponent } from './confirm/confirm.component';
 import {DriverService} from './driver/driver.service';
+import {environment} from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import {AuthService} from './login/auth.service';
+import {TokenInterceptor} from './login/token.interceptor';
 import {ProfilComponent} from './profile/profile.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {RegistrationClientComponent} from './registration/registration-client/registration-client.component';
@@ -76,9 +82,7 @@ const appRoutes: Routes = [
   {
     path: 'corporation', component: CorporationComponent, children: [
     {path: 'drivers', component: DriversComponent},
-    {
-      path: 'corporation-order-history', component: OrderHistoryComponent, resolve: {history: CorporationHistoryResolver}
-    },
+    {path: 'corporation-order-history', component: OrderHistoryComponent, resolve: {history: CorporationHistoryResolver}},
     {path: 'profile', component: ProfilComponent}
   ]
   },
@@ -120,6 +124,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     ToasterModule,
+    AngularFireModule.initializeApp(environment.firebase, 'TaxiHub'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAUgiu4t-XEJPDsgrExygjaXC155TwjQaE',
@@ -135,13 +142,20 @@ const appRoutes: Routes = [
     AuthGuardCorporation,
     NotificationService,
     LoginComponent,
+    DriverService,
+    AuthService,
     OrderService,
     DriverHistoryResolver,
     ClientHistoryResolver,
     CorporationHistoryResolver,
     DriverService,
     CorporationService,
-    ClientService
+    ClientService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
