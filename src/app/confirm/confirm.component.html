@@ -3,21 +3,11 @@
     <div class="row container_login">
       <div class="col-xs-12">
         <div class="card card-signup">
-          <form class="form" (submit)="onLogin(login,password)">
+          <form class="form" (submit)="sendPassword(password.value)">
             <div class="card-header card-header-primary text-center">
-              <h4>Login</h4>
+              <h4>Type new password</h4>
             </div>
             <div class="card-body">
-              <div class="input-group">
-                                       <span class="input-group-addon">
-                                            <i class="material-icons">face</i>
-                                        </span>
-
-                <label for="login"></label>
-                <input #login type="text" class="form-control login_input" placeholder="Login..." id="login">
-
-
-              </div>
               <div class="input-group">
 
                                         <span class="input-group-addon">
@@ -28,10 +18,9 @@
                        id="password">
 
               </div>
+            <div class="card-footer justify-content-center">
+              <button type="submit" class="btn btn-link btn-primary btn-lg">Save</button>
             </div>
-            <div class="card-footer justify-content-left">
-              <button type="submit" class="btn btn-link btn-primary btn-lg">Log in</button>
-              <a routerLink="/registration" class="btn btn-link btn-primary btn-lg">Register</a>
             </div>
           </form>
         </div>
@@ -39,4 +28,3 @@
     </div>
   </div>
 </div>
-

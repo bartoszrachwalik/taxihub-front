@@ -5,3 +5,7 @@
 .input-group {
   margin-bottom: 20px;
 }
+body {
+  background: url(assets/img/bg2.jpg) no-repeat;
+  background-size: cover;
+}

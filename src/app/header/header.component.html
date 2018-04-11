@@ -17,6 +17,9 @@
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" routerLink="/client/client-order-history">Orders History</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/client/profile">Profile</a>
+            </li>
           </ul>
           <ul class="nav nav-tabs" *ngIf="user==='driver'">
             <li class="nav-item">
@@ -28,6 +31,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" routerLink="/driver/driver-order-history">Orders History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/driver/profile">Profile</a>
             </li>
           </ul>
           <ul class="nav nav-tabs" *ngIf="user==='corporation'">
@@ -41,6 +47,9 @@
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" routerLink="/corporation/corporation-order-history">Orders
                 History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/corporation/profile">Profile</a>
             </li>
           </ul>
           <li class="nav-item ml-auto">

@@ -28,10 +28,18 @@ import {ToasterModule} from 'angular5-toaster/dist';
 import {OrderService} from './order/order.service';
 import {HttpClientModule} from '@angular/common/http';
 import {OrderHistoryComponent} from './order/order-history/order-history.component';
-import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
 import {DriverHistoryResolver} from './driver/driver.history.resolver';
 import {ClientHistoryResolver} from './client/client.history.resolver';
 import {CorporationHistoryResolver} from './corporation/corporation.history.resolver';
+import {ConfirmComponent} from './confirm/confirm.component';
+import {DriverService} from './driver/driver.service';
+import {ProfilComponent} from './profile/profile.component';
+import {RegistrationComponent} from './registration/registration.component';
+import {RegistrationClientComponent} from './registration/registration-client/registration-client.component';
+import {RegistrationCompanyComponent} from './registration/registration-company/registration-company.component';
+import {CorporationService} from './corporation/corporation.service';
+import {ClientService} from './client/client.service';
+import {OrderHistoryItemComponent} from "./order/order-history/order-history-item/order-history-item.component";
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -53,14 +61,16 @@ const appRoutes: Routes = [
   {
     path: 'client', component: ClientComponent, children: [
     {path: 'make-order', component: MakeOrderComponent},
-    {path: 'client-order-history', component: OrderHistoryComponent, resolve: {history: ClientHistoryResolver}},
-    {path: 'active-order', component: ActiveOrderComponent}
+    {path: 'client-order-history', component: OrderHistoryComponent},
+    {path: 'active-order', component: ActiveOrderComponent},
+    {path: 'profile', component: ProfilComponent}
   ]
   },
   {
     path: 'driver', component: DriverComponent, children: [
     {path: 'show-order', component: ShowOrderComponent},
-    {path: 'driver-order-history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}}
+    {path: 'driver-order-history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}},
+    {path: 'profile', component: ProfilComponent}
   ]
   },
   {
@@ -70,10 +80,15 @@ const appRoutes: Routes = [
       path: 'corporation-order-history',
       component: OrderHistoryComponent,
       resolve: {history: CorporationHistoryResolver}
-    }
+    },
+    {path: 'profile', component: ProfilComponent}
   ]
   },
+  {path: 'registration', component: RegistrationComponent},
+  {path: 'registration/client', component: RegistrationClientComponent},
+  {path: 'registration/corporation', component: RegistrationCompanyComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'confirm/driver/:token', component: ConfirmComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -92,11 +107,15 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     MakeOrderComponent,
     DriversListItemComponent,
-    OrderItemComponent,
-    ActiveOrderComponent,
     OrderHistoryComponent,
     OrderHistoryItemComponent,
-
+    OrderItemComponent,
+    ActiveOrderComponent,
+    ConfirmComponent,
+    RegistrationClientComponent,
+    RegistrationCompanyComponent,
+    ProfilComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -121,7 +140,10 @@ const appRoutes: Routes = [
     OrderService,
     DriverHistoryResolver,
     ClientHistoryResolver,
-    CorporationHistoryResolver
+    CorporationHistoryResolver,
+    DriverService,
+    CorporationService,
+    ClientService
   ],
   bootstrap: [AppComponent]
 })
