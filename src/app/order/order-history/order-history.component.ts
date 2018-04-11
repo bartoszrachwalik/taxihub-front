@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Order} from '../order.model';
 import {OrderService} from '../order.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-order-history',
@@ -9,20 +10,12 @@ import {OrderService} from '../order.service';
 })
 export class OrderHistoryComponent implements OnInit {
   orderHistory: Order[];
-  clientId: number;
-  corporationId: number;
-  driverId: number;
 
-  constructor(private orderService: OrderService) {
+  constructor(private orderService: OrderService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.orderHistory = this.orderService.findAll();
-    this.orderService.historyChanged.subscribe(
-      (orders: Order[]) => {
-        this.orderHistory = orders;
-      }
-    );
+    this.orderHistory = this.route.snapshot.data.history;
   }
 
 }

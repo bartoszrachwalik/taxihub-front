@@ -1,30 +1,29 @@
 import {Order} from '../order/order.model';
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class OrderService {
   makeOrderUrl = 'https://taxihub-backend.herokuapp.com/orders';
-  getOrderHistoryUrl = '';
-  historyChanged = new EventEmitter<Order[]>();
-  orderHistory: Order[];
+  getClientOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/client';
+  getCorporationOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/corporation';
+  getDriverOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/driver';
   headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
 
   constructor(private http: HttpClient) {
   }
 
-  addToOrderHistory(order: Order) {
-    this.orderHistory.push(order);
-    this.historyChanged.emit(this.orderHistory.slice());
-  }
-
   // todo with params ({id: number, role: string})
-  getOrdersHistory() {
-    return this.http.get<Order[]>(this.getOrderHistoryUrl);
+  getClientsOrdersHistory() {
+    return this.http.get<Order[]>(this.getClientOrderHistoryUrl);
   }
 
-  findAll() {
-    return this.orderHistory.slice();
+  getCorporationOrdersHistory() {
+    return this.http.get<Order[]>(this.getCorporationOrderHistoryUrl);
+  }
+
+  getDriverOrdersHistory() {
+    return this.http.get<Order[]>(this.getDriverOrderHistoryUrl);
   }
 
   makeOrder(order: Order) {

@@ -29,6 +29,9 @@ import {OrderService} from './order/order.service';
 import {HttpClientModule} from '@angular/common/http';
 import {OrderHistoryComponent} from './order/order-history/order-history.component';
 import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
+import {DriverHistoryResolver} from './driver/driver.history.resolver';
+import {ClientHistoryResolver} from './client/client.history.resolver';
+import {CorporationHistoryResolver} from './corporation/corporation.history.resolver';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -50,20 +53,24 @@ const appRoutes: Routes = [
   {
     path: 'client', component: ClientComponent, children: [
     {path: 'make-order', component: MakeOrderComponent},
-    {path: 'client-order-history', component: OrderHistoryComponent},
+    {path: 'client-order-history', component: OrderHistoryComponent, resolve: {history: ClientHistoryResolver}},
     {path: 'active-order', component: ActiveOrderComponent}
   ]
   },
   {
     path: 'driver', component: DriverComponent, children: [
     {path: 'show-order', component: ShowOrderComponent},
-    {path: 'driver-order-history', component: OrderHistoryComponent}
+    {path: 'driver-order-history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}}
   ]
   },
   {
     path: 'corporation', component: CorporationComponent, children: [
     {path: 'drivers', component: DriversComponent},
-    {path: 'corporation-order-history', component: OrderHistoryComponent}
+    {
+      path: 'corporation-order-history',
+      component: OrderHistoryComponent,
+      resolve: {history: CorporationHistoryResolver}
+    }
   ]
   },
   {path: 'login', component: LoginComponent},
@@ -111,7 +118,10 @@ const appRoutes: Routes = [
     AuthGuardCorporation,
     NotificationService,
     LoginComponent,
-    OrderService
+    OrderService,
+    DriverHistoryResolver,
+    ClientHistoryResolver,
+    CorporationHistoryResolver
   ],
   bootstrap: [AppComponent]
 })
