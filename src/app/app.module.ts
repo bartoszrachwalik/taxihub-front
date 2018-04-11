@@ -13,7 +13,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
 import {RegistrationClientComponent} from './registration-client/registration-client.component';
 import {RegistrationCompanyComponent} from './registration-company/registration-company.component';
-import {NgModule} from "@angular/core";
+import {NgModule} from '@angular/core';
 import {LoginServiceService} from './services/login-service.service';
 import {OrderHistoryComponent} from './client/order-history/order-history.component';
 import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
@@ -28,10 +28,15 @@ import {ActiveOrderComponent} from './client/active-order/active-order.component
 import {NotificationService} from './services/notification.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
-import {HttpClientModule} from '@angular/common/http';
-import {OrderService} from './client/make-order/order.service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ConfirmComponent } from './confirm/confirm.component';
 import {DriverService} from './driver/driver.service';
+import {environment} from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import {AuthService} from './login/auth.service';
+import {TokenInterceptor} from './login/token.interceptor';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -104,6 +109,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     ToasterModule,
+    AngularFireModule.initializeApp(environment.firebase, 'TaxiHub'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAUgiu4t-XEJPDsgrExygjaXC155TwjQaE',
@@ -119,7 +127,13 @@ const appRoutes: Routes = [
     AuthGuardCorporation,
     NotificationService,
     LoginComponent,
-    DriverService
+    DriverService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

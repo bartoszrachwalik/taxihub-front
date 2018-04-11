@@ -27,7 +27,9 @@ export class MakeOrderComponent implements OnInit {
   autocompleteTo;
   dir;
 
-  constructor(private mapsAPILoader: MapsAPILoader, private orderService: OrderService, private notification: NotificationService) {
+  constructor(private mapsAPILoader: MapsAPILoader,
+              private orderService: OrderService,
+              private notification: NotificationService) {
   }
 
   ngOnInit() {

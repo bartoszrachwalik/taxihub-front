@@ -4,7 +4,7 @@
     <div class="nav-tabs-navigation">
       <div class="nav-tabs-wrapper">
         <ul class="nav nav-tabs">
-          <ul class="nav nav-tabs" *ngIf="user==='client'">
+          <ul class="nav nav-tabs" *ngIf="user==='client@client.com'">
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/client">Home</a>
             </li>
@@ -18,7 +18,7 @@
               <a class="nav-link" routerLinkActive="active" routerLink="/client/order-history">History order</a>
             </li>
           </ul>
-          <ul class="nav nav-tabs" *ngIf="user==='driver'">
+          <ul class="nav nav-tabs" *ngIf="user==='driver@driver.com'">
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/driver">Home</a>
             </li>
@@ -29,7 +29,7 @@
               <a class="nav-link" routerLinkActive="active" routerLink="/driver/driver-order-history">History order</a>
             </li>
           </ul>
-          <ul class="nav nav-tabs" *ngIf="user==='corporation'">
+          <ul class="nav nav-tabs" *ngIf="user==='corporation@corporation.com'">
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/corporation">Home</a>
             </li>

@@ -10,7 +10,7 @@ export class AuthGuardDriver implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authService.getUser() === 'driver') {
+    if (this.authService.getUser() === 'driver@driver.com') {
       return true;
     } else {
       this.router.navigate(['/login']);
