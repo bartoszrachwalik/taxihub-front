@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {LoginServiceService} from '../services/login-service.service';
+import {LoginService} from '../login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   driver = 'driver';
   corporation = 'corporation';
 
-  constructor(private router: Router, private service: LoginServiceService) {
+  constructor(private router: Router, private service: LoginService) {
   }
 
   ngOnInit() {

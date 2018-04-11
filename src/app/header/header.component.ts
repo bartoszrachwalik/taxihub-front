@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginServiceService} from '../services/login-service.service';
+import {LoginService} from '../login/login.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   public user: string;
 
-  constructor(private service: LoginServiceService, private router:Router) {
+  constructor(private service: LoginService, private router: Router) {
     this.user = service.getUser();
   }
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Order} from '../../model/order.model';
+import {Order} from '../../order/order.model';
 
 @Component({
   selector: 'app-show-order',
@@ -10,7 +10,7 @@ export class ShowOrderComponent implements OnInit {
   orders: Order[] = [
     new Order(1, 1, 1, 1, 1),
     new Order(1, 1, 1, 1, 1),
-    new Order(1, 1, 1, 1, 1),
+    new Order(1, 1, 1, 1, 1)
   ];
 
   constructor() {
