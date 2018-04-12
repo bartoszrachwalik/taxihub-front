@@ -5,7 +5,6 @@ import {Router} from "@angular/router";
 import {NotificationService} from "../../notification/notification.service";
 
 
-
 @Component({
   selector: 'app-registration-company',
   templateUrl: './registration-company.component.html',
@@ -38,9 +37,8 @@ export class RegistrationCompanyComponent implements OnInit {
           this.router.navigate(['']);
           this.notify.success('Corporation registered');
         },
-        (error) => {
-          console.log(this.notify.error('Could not register, try again!'),
-            console.log(error))});
+        () =>
+          this.notify.error('Could not register, try again!'));
     }
   }
 
@@ -59,11 +57,11 @@ export class RegistrationCompanyComponent implements OnInit {
       ]);
     this.companyPassword = new FormControl('', [
       Validators.required,
-      Validators.minLength(5)
+      Validators.minLength(6)
     ]);
     this.companyPasswordConfirmation = new FormControl('', [
       Validators.required,
-      Validators.minLength(5)
+      Validators.minLength(6)
     ]);
   }
 
