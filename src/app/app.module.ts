@@ -46,6 +46,7 @@ import {RegistrationCompanyComponent} from './registration/registration-company/
 import {CorporationService} from './corporation/corporation.service';
 import {ClientService} from './client/client.service';
 import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
+import {Observable} from 'rxjs/Observable';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
