@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Order} from '../../order/order.model';
 
 @Component({
@@ -7,16 +7,15 @@ import {Order} from '../../order/order.model';
   styleUrls: ['./active-order.component.css']
 })
 export class ActiveOrderComponent implements OnInit {
-  @ViewChild('searchFrom') startPlaceRef: ElementRef;
-  @ViewChild('searchTo') destinationRef: ElementRef;
-  activeOrder: Order;
-  isOrderActive = false;
-  constructor() { }
+  activeOrder: Order[];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
   onCancelOrder() {
-    this.isOrderActive = false;
+
   }
 }

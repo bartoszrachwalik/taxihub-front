@@ -1,18 +1,13 @@
-<div class="col-md-5">
 <div class="card card-signup">
-<div class="card-header card-header-primary text-center">
-<p>Active order</p>
-</div>
-<div class="card-body" *ngIf="isOrderActive">
-<h4>From {{activeOrder.startPlace}} to {{activeOrder.destination}}</h4>
-<p>{{activeOrder.status}}</p>
-<button type="submit"
-class="btn btn-primary"
-(click)="onCancelOrder()">Cancel order
-</button>
-</div>
-<div class="card-body" *ngIf="!isOrderActive">
-<h4>No active order</h4>
-</div>
-</div>
+  <div class="card-header card-header-primary text-center">
+    <p>Active order</p>
+  </div>
+  <div class="card-body">
+    <!--<h4>From {{activeOrder.startPlace}} to {{activeOrder.destination}}</h4>-->
+    <!--<p>{{activeOrder.status}}</p>-->
+    <button type="submit"
+            class="btn btn-primary"
+    (click)="onCancelOrder()">Cancel order
+    </button>
+  </div>
 </div>
