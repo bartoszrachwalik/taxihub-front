@@ -20,6 +20,7 @@
       "prefix": "app",
       "styles": [
         "../src/assets/material-kit.css",
+        "../src/assets/toaster.css",
         "styles.css"
       ],
       "scripts": [],

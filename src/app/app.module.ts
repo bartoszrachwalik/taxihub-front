@@ -1,10 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
+import {appRoutes} from './route';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {LoginComponent} from './login/login.component';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {DriverComponent} from './driver/driver.component';
 import {ClientComponent} from './client/client.component';
 import {CorporationComponent} from './corporation/corporation.component';
@@ -13,42 +14,41 @@ import {ShowOrderComponent} from './driver/show-order/show-order.component';
 import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {DriversListItemComponent} from './corporation/drivers/drivers-list-item/drivers-list-item.component';
-import {LoginServiceService} from './services/login-service.service';
-import {OrderHistoryComponent} from './client/order-history/order-history.component';
-import {DriverOrderHistoryComponent} from './driver/driver-order-history/driver-order-history.component';
+import {LoginService} from './login/login.service';
 import {OrderItemComponent} from './driver/show-order/order-item/order-item.component';
-import {AuthGuard} from './auth-guard.service';
-
-const appRoutes: Routes = [
-  {path: '', component: LoginComponent},
-  {
-    path: '', canActivate: [AuthGuard], component: AppComponent, children: [
-      {path: 'client', component: ClientComponent},
-      {path: 'driver', component: DriverComponent},
-      {path: 'corporation', component: CorporationComponent},
-    ]
-  },
-  {
-    path: 'client', component: ClientComponent, children: [
-      {path: 'make-order', component: MakeOrderComponent},
-      {path: 'order-history', component: OrderHistoryComponent}
-    ]
-  },
-  {
-    path: 'driver', component: DriverComponent, children: [
-      {path: 'show-order', component: ShowOrderComponent},
-      {path: 'driver-order-history', component: DriverOrderHistoryComponent}
-    ]
-  },
-  {
-    path: 'corporation', component: CorporationComponent, children: [
-      {path: 'drivers', component: DriversComponent}
-    ]
-  },
-  {path: 'login', component: LoginComponent},
-  {path: '**', component: PageNotFoundComponent}
-];
-
+import {AuthGuardClient} from './auth/auth-guard-client.service';
+import {AuthGuardDriver} from './auth/auth-guard-driver.service';
+import {AuthGuardCorporation} from './auth/auth-guard-corporation.service';
+import {AgmCoreModule} from '@agm/core';
+import {AgmDirectionModule} from 'agm-direction';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ActiveOrderComponent} from './client/active-order/active-order.component';
+import {NotificationService} from './notification/notification.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToasterModule} from 'angular5-toaster/dist';
+import {OrderService} from './order/order.service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {OrderHistoryComponent} from './order/order-history/order-history.component';
+import {DriverHistoryResolver} from './driver/driver.history.resolver';
+import {ClientHistoryResolver} from './client/client.history.resolver';
+import {CorporationHistoryResolver} from './corporation/corporation.history.resolver';
+import {ConfirmComponent} from './confirm/confirm.component';
+import {DriverService} from './driver/driver.service';
+import {environment} from '../environments/environment';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {AuthService} from './login/auth.service';
+import {TokenInterceptor} from './login/token.interceptor';
+import {ProfilComponent} from './profile/profile.component';
+import {RegistrationComponent} from './registration/registration.component';
+import {RegistrationClientComponent} from './registration/registration-client/registration-client.component';
+import {RegistrationCompanyComponent} from './registration/registration-company/registration-company.component';
+import {CorporationService} from './corporation/corporation.service';
+import {ClientService} from './client/client.service';
+import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {DriversService} from "./corporation/drivers/drivers.service";
 
 @NgModule({
   declarations: [
@@ -65,14 +65,55 @@ const appRoutes: Routes = [
     MakeOrderComponent,
     DriversListItemComponent,
     OrderHistoryComponent,
-    DriverOrderHistoryComponent,
-    OrderItemComponent
+    OrderHistoryItemComponent,
+    OrderItemComponent,
+    ActiveOrderComponent,
+    ConfirmComponent,
+    RegistrationClientComponent,
+    RegistrationCompanyComponent,
+    ProfilComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToasterModule,
+    AngularFireModule.initializeApp(environment.firebase, 'TaxiHub'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    RouterModule.forRoot(appRoutes),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAUgiu4t-XEJPDsgrExygjaXC155TwjQaE',
+      libraries: ['places']
+    }),
+    AgmDirectionModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPaginationModule],
+  providers: [
+    LoginService,
+    AuthGuardDriver,
+    AuthGuardClient,
+    AuthGuardCorporation,
+    NotificationService,
+    LoginComponent,
+    AuthService,
+    OrderService,
+    DriverHistoryResolver,
+    ClientHistoryResolver,
+    CorporationHistoryResolver,
+    DriverService,
+    CorporationService,
+    ClientService,
+    DriversService
+    ClientService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
-  providers: [LoginServiceService, AuthGuard, LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

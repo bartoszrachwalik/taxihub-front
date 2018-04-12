@@ -1,0 +1,27 @@
+.login_input {
+  margin-left: 15px;
+}
+
+.card-header {
+  margin-bottom: 25px;
+}
+.help-block {
+  padding-left: 23px;
+  color: red;
+}
+.container_registration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.registration_link {
+  width: 100%;
+}
+.card-header  {
+  margin-bottom: 0;
+}
+.card-footer {
+  padding-left: 0;
+  padding-right: 0;
+}

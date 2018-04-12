@@ -1,0 +1,10 @@
+.client_page {
+  background: url(../../assets/img/bg2.jpg) no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.container_client_page {
+  margin: 70px auto 0;
+
+}

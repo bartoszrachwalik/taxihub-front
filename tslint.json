@@ -10,7 +10,6 @@
       true,
       "check-space"
     ],
-    "curly": true,
     "deprecation": {
       "severity": "warn"
     },
@@ -39,7 +38,6 @@
         "order": [
           "static-field",
           "instance-field",
-          "static-method",
           "instance-method"
         ]
       }
