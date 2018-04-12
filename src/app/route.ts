@@ -59,7 +59,7 @@ export const appRoutes: Routes = [
     {path: 'drivers', component: DriversComponent},
     {path: 'corporation-order-history', component: OrderHistoryComponent, resolve: {history: CorporationHistoryResolver}},
     {path: 'profile', component: ProfilComponent}
-    ]
+  ]
   },
   {path: 'registration', component: RegistrationComponent},
   {path: 'registration/client', component: RegistrationClientComponent},
