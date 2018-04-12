@@ -11,6 +11,6 @@ export class ClientHistoryResolver implements Resolve<Observable<Order[]>> {
   }
 
   resolve() {
-    return this.orderService.getClientsOrdersHistory();
+    return this.orderService.getClientsHistory();
   }
 }
