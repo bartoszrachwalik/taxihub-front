@@ -29,12 +29,13 @@ export class LoginComponent implements OnInit {
   onLogin(login: string, password: string) {
     Rx.Observable.fromPromise(this.service.checkAuth(login, password))
       .flatMap(() => this.getUserInfo())
-      .subscribe(() => this.loginService.checkRole(login));
+      .subscribe((user) => this.loginService.checkRole(user));
 
     return false;
   }
 
   getUserInfo(): Observable<any> {
-    return this.http.get('https://jsonplaceholder.typicode.com/users/1');
+    console.log(this.http.get('https://taxihub-backend.herokuapp.com/me').subscribe(console.log));
+   return this.http.get('https://taxihub-backend.herokuapp.com/me');
   }
 }
