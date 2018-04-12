@@ -1,10 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
+import {appRoutes} from './route';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {LoginComponent} from './login/login.component';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {DriverComponent} from './driver/driver.component';
 import {ClientComponent} from './client/client.component';
 import {CorporationComponent} from './corporation/corporation.component';
@@ -26,13 +27,19 @@ import {NotificationService} from './notification/notification.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
 import {OrderService} from './order/order.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {OrderHistoryComponent} from './order/order-history/order-history.component';
 import {DriverHistoryResolver} from './driver/driver.history.resolver';
 import {ClientHistoryResolver} from './client/client.history.resolver';
 import {CorporationHistoryResolver} from './corporation/corporation.history.resolver';
 import {ConfirmComponent} from './confirm/confirm.component';
 import {DriverService} from './driver/driver.service';
+import {environment} from '../environments/environment';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {AuthService} from './login/auth.service';
+import {TokenInterceptor} from './login/token.interceptor';
 import {ProfilComponent} from './profile/profile.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {RegistrationClientComponent} from './registration/registration-client/registration-client.component';
@@ -42,56 +49,6 @@ import {ClientService} from './client/client.service';
 import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {DriversService} from "./corporation/drivers/drivers.service";
-
-const appRoutes: Routes = [
-  {path: '', component: LoginComponent},
-  {
-    path: '', canActivate: [AuthGuardClient], component: AppComponent, children: [
-    {path: 'client', component: ClientComponent},
-  ]
-  },
-  {
-    path: '', canActivate: [AuthGuardDriver], component: AppComponent, children: [
-    {path: 'driver', component: DriverComponent},
-  ]
-  },
-  {
-    path: '', canActivate: [AuthGuardCorporation], component: AppComponent, children: [
-    {path: 'corporation', component: CorporationComponent},
-  ]
-  },
-  {
-    path: 'client', component: ClientComponent, children: [
-    {path: 'make-order', component: MakeOrderComponent},
-    {path: 'client-order-history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}},
-    {path: 'active-order', component: ActiveOrderComponent},
-    {path: 'profile', component: ProfilComponent}
-  ]
-  },
-  {
-    path: 'driver', component: DriverComponent, children: [
-    {path: 'show-order', component: ShowOrderComponent},
-    {path: 'driver-order-history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}},
-    {path: 'profile', component: ProfilComponent}
-  ]
-  },
-  {
-    path: 'corporation', component: CorporationComponent, children: [
-    {path: 'drivers', component: DriversComponent},
-    {
-      path: 'corporation-order-history', component: OrderHistoryComponent, resolve: {history: CorporationHistoryResolver}
-    },
-    {path: 'profile', component: ProfilComponent}
-  ]
-  },
-  {path: 'registration', component: RegistrationComponent},
-  {path: 'registration/client', component: RegistrationClientComponent},
-  {path: 'registration/corporation', component: RegistrationCompanyComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'confirm/driver/:token', component: ConfirmComponent},
-  {path: '**', component: PageNotFoundComponent}
-];
-
 
 @NgModule({
   declarations: [
@@ -122,6 +79,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     ToasterModule,
+    AngularFireModule.initializeApp(environment.firebase, 'TaxiHub'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAUgiu4t-XEJPDsgrExygjaXC155TwjQaE',
@@ -138,6 +98,7 @@ const appRoutes: Routes = [
     AuthGuardCorporation,
     NotificationService,
     LoginComponent,
+    AuthService,
     OrderService,
     DriverHistoryResolver,
     ClientHistoryResolver,
@@ -146,6 +107,12 @@ const appRoutes: Routes = [
     CorporationService,
     ClientService,
     DriversService
+    ClientService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

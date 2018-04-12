@@ -13,8 +13,8 @@ import {NotificationService} from '../../notification/notification.service';
 export class MakeOrderComponent implements OnInit {
   @ViewChild('searchFrom') startPlaceRef: ElementRef;
   @ViewChild('searchTo') destinationRef: ElementRef;
-  activeOrder: Order;
-  hasActiveOrder = false;
+  clientId = 1;
+  order: Order;
 
   public latitudeOrigin: number;
   public longitudeOrigin: number;
@@ -26,7 +26,14 @@ export class MakeOrderComponent implements OnInit {
   autocompleteTo;
   dir;
 
-  constructor(private mapsAPILoader: MapsAPILoader, private orderService: OrderService, private notificationService: NotificationService) {
+  constructor(private mapsAPILoader: MapsAPILoader,
+              private orderService: OrderService,
+              private notificationService: NotificationService) {
+  }
+
+  private static toCoordinates(autocomplete) {
+    const loc = autocomplete.getPlace().geometry.location;
+    return {lat: loc.lat(), lng: loc.lng()};
   }
 
   ngOnInit() {
@@ -48,18 +55,10 @@ export class MakeOrderComponent implements OnInit {
     this.dir = {origin, destination};
   }
 
-  private static toCoordinates(autocomplete) {
-    const loc = autocomplete.getPlace().geometry.location;
-    return {lat: loc.lat(), lng: loc.lng()};
-  }
-
   onOrderCreated() {
-    if (!this.hasActiveOrder) {
-      this.hasActiveOrder = true;
-      // todo how to input correct clientID
-      this.activeOrder = new Order(1, this.latitudeOrigin, this.longitudeOrigin, this.latitudeDestination, this.longitudeDestination);
-      this.orderService.makeOrder(this.activeOrder).subscribe(res => this.notificationService.success('Order added successfully!'));
-    }
+    // todo how to input correct clientID
+    this.order = new Order(this.clientId, this.latitudeOrigin, this.longitudeOrigin, this.latitudeDestination, this.longitudeDestination);
+    this.orderService.makeOrder(this.order).subscribe(res => this.notificationService.success('Order added successfully!'));
     return false;
   }
 }

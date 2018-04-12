@@ -1,9 +1,9 @@
-<div class="card card-nav-tabs card-plain">
+<div class="card card-plain">
   <div class="card-header card-header-primary">
     <div class="nav-tabs-navigation">
       <div class="nav-tabs-wrapper">
         <ul class="nav nav-tabs">
-          <ul class="nav nav-tabs" *ngIf="user==='client'">
+          <ul class="nav nav-tabs" *ngIf="user==='client@client.com'">
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                  routerLink="/client">Home</a>
@@ -21,7 +21,7 @@
               <a class="nav-link" routerLinkActive="active" routerLink="/client/profile">Profile</a>
             </li>
           </ul>
-          <ul class="nav nav-tabs" *ngIf="user==='driver'">
+          <ul class="nav nav-tabs" *ngIf="user==='driver@driver.com'">
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                  routerLink="/driver">Home</a>
@@ -36,7 +36,7 @@
               <a class="nav-link" routerLinkActive="active" routerLink="/driver/profile">Profile</a>
             </li>
           </ul>
-          <ul class="nav nav-tabs" *ngIf="user==='corporation'">
+          <ul class="nav nav-tabs" *ngIf="user==='corporation@corporation.com'">
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                  routerLink="/corporation">Home</a>
@@ -70,5 +70,6 @@
     </div>
   </div>
 </div>
+
 
 
