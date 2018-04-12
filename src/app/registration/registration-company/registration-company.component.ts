@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CorporationService} from "../../corporation/corporation.service";
 import {Router} from "@angular/router";
-import {NotificationService} from "../../services/notification.service";
+import {NotificationService} from "../../notification/notification.service";
+
 
 
 @Component({
@@ -37,7 +38,9 @@ export class RegistrationCompanyComponent implements OnInit {
           this.router.navigate(['']);
           this.notify.success('Corporation registered');
         },
-        () => this.notify.error('Could not register, try again!'));
+        (error) => {
+          console.log(this.notify.error('Could not register, try again!'),
+            console.log(error))});
     }
   }
 
