@@ -20,6 +20,7 @@ import {RegistrationClientComponent} from './registration/registration-client/re
 import {RegistrationCompanyComponent} from './registration/registration-company/registration-company.component';
 import {ConfirmComponent} from './confirm/confirm.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {ClientHistoryResolver} from './client/client.history.resolver';
 
 export const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -41,7 +42,7 @@ export const appRoutes: Routes = [
   {
     path: 'client', component: ClientComponent, children: [
     {path: 'make-order', component: MakeOrderComponent},
-    {path: 'client-order-history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}},
+    {path: 'client-order-history', component: OrderHistoryComponent, resolve: {history: ClientHistoryResolver}},
     {path: 'active-order', component: ActiveOrderComponent},
     {path: 'profile', component: ProfilComponent}
   ]
@@ -56,13 +57,9 @@ export const appRoutes: Routes = [
   {
     path: 'corporation', component: CorporationComponent, children: [
     {path: 'drivers', component: DriversComponent},
-    {
-      path: 'corporation-order-history',
-      component: OrderHistoryComponent,
-      resolve: {history: CorporationHistoryResolver}
-    },
+    {path: 'corporation-order-history', component: OrderHistoryComponent, resolve: {history: CorporationHistoryResolver}},
     {path: 'profile', component: ProfilComponent}
-  ]
+    ]
   },
   {path: 'registration', component: RegistrationComponent},
   {path: 'registration/client', component: RegistrationClientComponent},
