@@ -1,10 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
+import {appRoutes} from './route';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {LoginComponent} from './login/login.component';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {DriverComponent} from './driver/driver.component';
 import {ClientComponent} from './client/client.component';
 import {CorporationComponent} from './corporation/corporation.component';
@@ -40,56 +41,6 @@ import {RegistrationCompanyComponent} from './registration/registration-company/
 import {CorporationService} from './corporation/corporation.service';
 import {ClientService} from './client/client.service';
 import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
-
-const appRoutes: Routes = [
-  {path: '', component: LoginComponent},
-  {
-    path: '', canActivate: [AuthGuardClient], component: AppComponent, children: [
-    {path: 'client', component: ClientComponent},
-  ]
-  },
-  {
-    path: '', canActivate: [AuthGuardDriver], component: AppComponent, children: [
-    {path: 'driver', component: DriverComponent},
-  ]
-  },
-  {
-    path: '', canActivate: [AuthGuardCorporation], component: AppComponent, children: [
-    {path: 'corporation', component: CorporationComponent},
-  ]
-  },
-  {
-    path: 'client', component: ClientComponent, children: [
-    {path: 'make-order', component: MakeOrderComponent},
-    {path: 'client-order-history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}},
-    {path: 'active-order', component: ActiveOrderComponent},
-    {path: 'profile', component: ProfilComponent}
-  ]
-  },
-  {
-    path: 'driver', component: DriverComponent, children: [
-    {path: 'show-order', component: ShowOrderComponent},
-    {path: 'driver-order-history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}},
-    {path: 'profile', component: ProfilComponent}
-  ]
-  },
-  {
-    path: 'corporation', component: CorporationComponent, children: [
-    {path: 'drivers', component: DriversComponent},
-    {
-      path: 'corporation-order-history', component: OrderHistoryComponent, resolve: {history: CorporationHistoryResolver}
-    },
-    {path: 'profile', component: ProfilComponent}
-  ]
-  },
-  {path: 'registration', component: RegistrationComponent},
-  {path: 'registration/client', component: RegistrationClientComponent},
-  {path: 'registration/corporation', component: RegistrationCompanyComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'confirm/driver/:token', component: ConfirmComponent},
-  {path: '**', component: PageNotFoundComponent}
-];
-
 
 @NgModule({
   declarations: [
