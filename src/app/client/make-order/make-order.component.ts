@@ -1,9 +1,9 @@
-import {Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
-import {Order} from '../../model/order.model';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Order} from '../../order/order.model';
 import {} from 'googlemaps';
 import {MapsAPILoader} from '@agm/core';
-import {OrderService} from './order.service';
-import {NotificationService} from '../../services/notification.service';
+import {OrderService} from '../../order/order.service';
+import {NotificationService} from '../../notification/notification.service';
 
 @Component({
   selector: 'app-make-order',
@@ -13,8 +13,8 @@ import {NotificationService} from '../../services/notification.service';
 export class MakeOrderComponent implements OnInit {
   @ViewChild('searchFrom') startPlaceRef: ElementRef;
   @ViewChild('searchTo') destinationRef: ElementRef;
-  activeOrder: Order;
-  isOrderActive = false;
+  clientId = 1;
+  order: Order;
 
   public latitudeOrigin: number;
   public longitudeOrigin: number;
@@ -22,12 +22,18 @@ export class MakeOrderComponent implements OnInit {
   public longitudeDestination: number;
   public zoom = 12;
 
-
   autocompleteFrom;
   autocompleteTo;
   dir;
 
-  constructor(private mapsAPILoader: MapsAPILoader, private orderService: OrderService, private notification: NotificationService) {
+  constructor(private mapsAPILoader: MapsAPILoader,
+              private orderService: OrderService,
+              private notificationService: NotificationService) {
+  }
+
+  private static toCoordinates(autocomplete) {
+    const loc = autocomplete.getPlace().geometry.location;
+    return {lat: loc.lat(), lng: loc.lng()};
   }
 
   ngOnInit() {
@@ -43,25 +49,16 @@ export class MakeOrderComponent implements OnInit {
     });
   }
 
-
   getDirection() {
     const origin = MakeOrderComponent.toCoordinates(this.autocompleteFrom);
     const destination = MakeOrderComponent.toCoordinates(this.autocompleteTo);
     this.dir = {origin, destination};
   }
 
-  private static toCoordinates(autocomplete) {
-    const loc = autocomplete.getPlace().geometry.location;
-    return {lat: loc.lat(), lng: loc.lng()};
-  }
-
   onOrderCreated() {
-    if (!this.isOrderActive) {
-      this.isOrderActive = true;
-      this.activeOrder = new Order(1, this.latitudeOrigin, this.longitudeOrigin, this.latitudeDestination, this.longitudeDestination);
-      this.orderService.makeOrder(this.activeOrder);
-      this.notification.success('Add order');
-    }
+    // todo how to input correct clientID
+    this.order = new Order(this.clientId, this.latitudeOrigin, this.longitudeOrigin, this.latitudeDestination, this.longitudeDestination);
+    this.orderService.makeOrder(this.order).subscribe(res => this.notificationService.success('Order added successfully!'));
     return false;
   }
 }

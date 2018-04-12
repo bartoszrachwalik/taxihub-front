@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {LoginServiceService} from '../services/login-service.service';
+import {LoginService} from '../login/login.service';
+import {AuthService} from './auth.service';
+import {NotificationService} from '.././notification/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -9,34 +11,39 @@ import {LoginServiceService} from '../services/login-service.service';
 })
 export class LoginComponent implements OnInit {
 
-  client = 'client';
-  driver = 'driver';
-  corporation = 'corporation';
 
-  constructor(private router: Router, private service: LoginServiceService) {
+  constructor(private router: Router,
+              private service: AuthService,
+              private loginService: LoginService,
+              private notification: NotificationService) {
   }
 
   ngOnInit() {
   }
 
-  onLogin(login: HTMLInputElement, password: HTMLInputElement) {
-    console.log(login.value);
-    if (login.value === this.client) {
-      this.service.setUser(login.value);
-      this.router.navigate(['/client']);
-      return false;
-    }
-    if (login.value === this.driver) {
-      this.service.setUser(login.value);
-      this.router.navigate(['/driver']);
-      return false;
-    }
-    if (login.value === this.corporation) {
-      this.service.setUser(login.value);
-      this.router.navigate(['/corporation']);
-    } else {
-      this.router.navigate(['/login']);
-    }
+  onLogin(login: string, password: string) {
+    this.service.checkAuth(login, password)
+      .then(() => this.checkRole(login))
+      .catch(() => this.notification.error('Wrong login or password'));
     return false;
+  }
+
+  checkRole(login: string) {
+    {
+      if (login === 'client@client.com') {
+        this.loginService.setUser(login);
+        return this.router.navigate(['/client']);
+      }
+      if (login === 'driver@driver.com') {
+        this.loginService.setUser(login);
+        return this.router.navigate(['/driver']);
+      }
+      if (login === 'corporation@corporation.com') {
+        this.loginService.setUser(login);
+        return this.router.navigate(['/corporation']);
+      } else {
+        return this.router.navigate(['/login']);
+      }
+    }
   }
 }
