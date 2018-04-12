@@ -27,6 +27,7 @@
     "angular5-toaster": "^1.0.2",
     "core-js": "^2.4.1",
     "express": "^4.15.3",
+    "ngx-pagination": "^3.1.0",
     "npm": "^5.8.0",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"

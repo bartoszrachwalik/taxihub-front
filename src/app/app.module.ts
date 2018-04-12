@@ -40,6 +40,8 @@ import {RegistrationCompanyComponent} from './registration/registration-company/
 import {CorporationService} from './corporation/corporation.service';
 import {ClientService} from './client/client.service';
 import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {DriversService} from "./corporation/drivers/drivers.service";
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -127,7 +129,8 @@ const appRoutes: Routes = [
     }),
     AgmDirectionModule,
     FormsModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule,
+    NgxPaginationModule],
   providers: [
     LoginService,
     AuthGuardDriver,
@@ -141,7 +144,8 @@ const appRoutes: Routes = [
     CorporationHistoryResolver,
     DriverService,
     CorporationService,
-    ClientService
+    ClientService,
+    DriversService
   ],
   bootstrap: [AppComponent]
 })
