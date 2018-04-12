@@ -11,6 +11,6 @@ export class CorporationHistoryResolver implements Resolve<Observable<Order[]>> 
   }
 
   resolve() {
-    return this.orderService.getCorporationOrdersHistory();
+    return this.orderService.getCorporationHistory();
   }
 }
