@@ -5,28 +5,39 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 @Injectable()
 export class OrderService {
   makeOrderUrl = 'https://taxihub-backend.herokuapp.com/orders';
-  getClientOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/client/4';
-  getCorporationOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/corporation/';
-  getDriverOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/driver/1';
+  clientOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/client/4';
+  corporationOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/corporation/';
+  driverOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/driver/1';
+  activeOrderUrl = 'https://taxihub-backend.herokuapp.com/orders/open/client/1';
+  cancelUrl = 'https://taxihub-backend.herokuapp.com/orders/4/canceled';
   headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
 
   constructor(private http: HttpClient) {
   }
 
   // todo with params ({id: number, role: string})
-  getClientsOrdersHistory() {
-    return this.http.get<Order[]>(this.getClientOrderHistoryUrl);
+  getClientsHistory() {
+    return this.http.get<Order[]>(this.clientOrderHistoryUrl);
   }
 
-  getCorporationOrdersHistory() {
-    return this.http.get<Order[]>(this.getCorporationOrderHistoryUrl);
+  getCorporationHistory() {
+    return this.http.get<Order[]>(this.corporationOrderHistoryUrl);
   }
 
-  getDriverOrdersHistory() {
-    return this.http.get<Order[]>(this.getDriverOrderHistoryUrl);
+  getDriverHistory() {
+    return this.http.get<Order[]>(this.driverOrderHistoryUrl);
   }
 
   makeOrder(order: Order) {
     return this.http.post(this.makeOrderUrl, order, {headers: this.headers});
   }
+
+  getActiveOrder() {
+    return this.http.get<Order>(this.activeOrderUrl);
+  }
+
+  cancelOrder(id: number) {
+    return this.http.post(this.cancelUrl, id);
+  }
+
 }

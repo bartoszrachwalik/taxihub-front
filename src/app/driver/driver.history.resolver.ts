@@ -11,6 +11,6 @@ export class DriverHistoryResolver implements Resolve<Observable<Order[]>> {
   }
 
   resolve() {
-    return this.orderService.getDriverOrdersHistory();
+    return this.orderService.getDriverHistory();
   }
 }

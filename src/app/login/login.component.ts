@@ -12,11 +12,10 @@ import {NotificationService} from '.././notification/notification.service';
 export class LoginComponent implements OnInit {
 
 
-  constructor(
-    private router: Router,
-    private service: AuthService,
-    private loginService: LoginService,
-    private notification: NotificationService) {
+  constructor(private router: Router,
+              private service: AuthService,
+              private loginService: LoginService,
+              private notification: NotificationService) {
   }
 
   ngOnInit() {
@@ -32,17 +31,14 @@ export class LoginComponent implements OnInit {
   checkRole(login: string) {
     {
       if (login === 'client@client.com') {
-        console.log(login);
         this.loginService.setUser(login);
         return this.router.navigate(['/client']);
       }
       if (login === 'driver@driver.com') {
-        console.log(login);
         this.loginService.setUser(login);
         return this.router.navigate(['/driver']);
       }
       if (login === 'corporation@corporation.com') {
-        console.log(login);
         this.loginService.setUser(login);
         return this.router.navigate(['/corporation']);
       } else {
