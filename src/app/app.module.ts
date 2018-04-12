@@ -47,6 +47,7 @@ import {RegistrationCompanyComponent} from './registration/registration-company/
 import {CorporationService} from './corporation/corporation.service';
 import {ClientService} from './client/client.service';
 import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
+import { RegistrationDriverComponent } from './corporation/registration-driver/registration-driver.component';
 import {Observable} from 'rxjs/Observable';
 
 @NgModule({
@@ -71,7 +72,8 @@ import {Observable} from 'rxjs/Observable';
     RegistrationClientComponent,
     RegistrationCompanyComponent,
     ProfilComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    RegistrationDriverComponent
   ],
   imports: [
     BrowserModule,
