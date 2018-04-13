@@ -48,7 +48,9 @@ import {CorporationService} from './corporation/corporation.service';
 import {ClientService} from './client/client.service';
 import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {DriversService} from "./corporation/drivers/drivers.service";
+import {DriversService} from './corporation/drivers/drivers.service';
+import { RegistrationDriverComponent } from './corporation/registration-driver/registration-driver.component';
+import {Observable} from 'rxjs/Observable';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,8 @@ import {DriversService} from "./corporation/drivers/drivers.service";
     RegistrationClientComponent,
     RegistrationCompanyComponent,
     ProfilComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    RegistrationDriverComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +109,7 @@ import {DriversService} from "./corporation/drivers/drivers.service";
     DriverService,
     CorporationService,
     ClientService,
-    DriversService
+    DriversService,
     ClientService,
     {
       provide: HTTP_INTERCEPTORS,

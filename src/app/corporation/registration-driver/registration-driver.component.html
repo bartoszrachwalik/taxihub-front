@@ -1,0 +1,81 @@
+<app-header></app-header>
+<div class="registration_page">
+  <div class="container">
+    <div class="row container_registration">
+      <div class="col-xs-12 ">
+        <div class="card card-signup">
+          <form class="form"
+                method="post"
+                [formGroup]="registrationFormDriver"
+                novalidate
+                (ngSubmit)="onSubmit()">
+
+            <div class="card-header card-header-primary text-center">
+              <h4>Registration</h4>
+            </div>
+
+            <div class="card-body">
+
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(driverFirstName)}">
+                <span class="input-group-addon"><i class="material-icons">face</i></span>
+                <label for="driverFirstName"></label>
+                <input
+                  type="text"
+                  class="form-control login_input"
+                  placeholder="Enter driver's first name"
+                  name="driverFirstName"
+                  required
+                  formControlName="driverFirstName"
+                  id="driverFirstName">
+
+              </div>
+              <span class="help-block" *ngIf="isValid(driverFirstName)">Please enter driver's first name!</span>
+
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(driverLastName)}">
+                <span class="input-group-addon"><i class="material-icons">face</i></span>
+                <label for="driverLastName"></label>
+                <input
+                  type="text"
+                  class="form-control login_input"
+                  placeholder="Enter driver's last name"
+                  name="driverLastName"
+                  required
+                  formControlName="driverLastName"
+                  id="driverLastName">
+
+              </div>
+              <span class="help-block" *ngIf="isValid(driverLastName)">Please enter driver's last name!</span>
+
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(driverEmail)}">
+                <span class="input-group-addon"><i class="material-icons">email</i></span>
+                <label for="driverEmail"></label>
+                <input
+                  type="email"
+                  class="form-control login_input"
+                  placeholder="Enter driver's email address"
+                  name="driverEmail"
+                  formControlName="driverEmail"
+                  email
+                  required
+                  id="driverEmail">
+
+              </div>
+              <span class="help-block" *ngIf="isValid(driverEmail)">Please enter a valid email!</span>
+
+              <div class="card-footer justify-content-left">
+                <button
+                  type="submit"
+                  class="btn btn-link btn-primary btn-lg"
+                  [disabled]="!registrationFormDriver.valid">Register
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
