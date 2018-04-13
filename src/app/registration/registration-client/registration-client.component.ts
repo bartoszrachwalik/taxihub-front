@@ -57,11 +57,11 @@ export class RegistrationClientComponent implements OnInit {
     ]);
     this.clientPassword = new FormControl('', [
       Validators.required,
-      Validators.minLength(5)
+      Validators.minLength(6)
     ]);
     this.clientPasswordConfirmation = new FormControl('', [
       Validators.required,
-      Validators.minLength(5)
+      Validators.minLength(6)
     ]);
   }
 

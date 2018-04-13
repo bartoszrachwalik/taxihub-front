@@ -3,7 +3,7 @@
     <div class="nav-tabs-navigation">
       <div class="nav-tabs-wrapper">
         <ul class="nav nav-tabs">
-          <ul class="nav nav-tabs" *ngIf="user==='client@client.com'">
+          <ul class="nav nav-tabs" *ngIf="user==='client'">
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                  routerLink="/client">Home</a>
@@ -21,7 +21,7 @@
               <a class="nav-link" routerLinkActive="active" routerLink="/client/profile">Profile</a>
             </li>
           </ul>
-          <ul class="nav nav-tabs" *ngIf="user==='driver@driver.com'">
+          <ul class="nav nav-tabs" *ngIf="user==='driver'">
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                  routerLink="/driver">Home</a>
@@ -36,7 +36,7 @@
               <a class="nav-link" routerLinkActive="active" routerLink="/driver/profile">Profile</a>
             </li>
           </ul>
-          <ul class="nav nav-tabs" *ngIf="user==='corporation@corporation.com'">
+          <ul class="nav nav-tabs" *ngIf="user==='corporation'">
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                  routerLink="/corporation">Home</a>
@@ -51,6 +51,9 @@
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" routerLink="/corporation/profile">Profile</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/corporation/registration/driver">Register Driver</a>
+            </li>
           </ul>
           <li class="nav-item ml-auto">
             <div class="inset">
@@ -59,7 +62,7 @@
           </li>
           <li class="nav-item">
           <span class="navbar-text">
-        {{user}}
+        {{userEmail}}
     </span>
           </li>
           <li class="nav-item">
