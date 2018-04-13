@@ -15,21 +15,32 @@ export class LoginService {
     return localStorage.getItem('user');
   }
 
+  setUserEmail(userEmail: string) {
+    localStorage.setItem('userEmail', userEmail);
+  }
+  getUserEmail(): string {
+    return localStorage.getItem('userEmail');
+  }
+
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('userEmail');
   }
 
   checkRole(user) {
-    this.setUser(user.name);
-    console.log(user.authorities[0].authority);
-      if (user.authorities[0].authority === 'CLIENT') {
-
+      if (user.principal.clientId !== null) {
+        this.setUserEmail(user.name);
+        this.setUser('client');
         return this.router.navigate(['/client']);
       }
-      if (user.authorities[1].authority === 'DRIVER') {
+      if (user.principal.driverId !== null) {
+        this.setUserEmail(user.name);
+        this.setUser('driver');
         return this.router.navigate(['/driver']);
       }
-      if (user.authorities[2].authority === 'CORPORATION') {
+      if (user.principal.corporationId !== null) {
+        this.setUserEmail(user.name);
+        this.setUser('corporation');
         return this.router.navigate(['/corporation']);
       } else {
         return this.router.navigate(['/login']);
