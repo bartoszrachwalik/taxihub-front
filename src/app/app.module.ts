@@ -47,6 +47,8 @@ import {RegistrationCompanyComponent} from './registration/registration-company/
 import {CorporationService} from './corporation/corporation.service';
 import {ClientService} from './client/client.service';
 import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {DriversService} from './corporation/drivers/drivers.service';
 import { RegistrationDriverComponent } from './corporation/registration-driver/registration-driver.component';
 import {Observable} from 'rxjs/Observable';
 
@@ -90,7 +92,8 @@ import {Observable} from 'rxjs/Observable';
     }),
     AgmDirectionModule,
     FormsModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule,
+    NgxPaginationModule],
   providers: [
     LoginService,
     AuthGuardDriver,
@@ -105,6 +108,8 @@ import {Observable} from 'rxjs/Observable';
     CorporationHistoryResolver,
     DriverService,
     CorporationService,
+    ClientService,
+    DriversService,
     ClientService,
     {
       provide: HTTP_INTERCEPTORS,
