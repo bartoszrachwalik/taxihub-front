@@ -1,16 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Resolve} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
-import {OrderService} from '../order/order.service';
-import {Order} from '../order/order.model';
 
 @Injectable()
-export class ClientHistoryResolver implements Resolve<Observable<Order[]>> {
+export class ClientHistoryResolver implements Resolve<any> {
 
-  constructor(private orderService: OrderService) {
+  constructor() {
   }
 
   resolve() {
-    return this.orderService.getClientsHistory();
+    return 'client';
   }
 }

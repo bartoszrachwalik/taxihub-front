@@ -1,14 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-8">
-      <div class="card card-nav-tabs">
-        <div class="card-header card-header-primary text-center">
-          <h4>Orders</h4>
-        </div>
-        <app-order-item class="list-group list-group-flush"
-                        *ngFor="let currentOrder of orders"
-                        [order]="currentOrder"></app-order-item>
+    <div class="card card-nav-tabs">
+      <div class="card-header card-header-primary text-center">
+        <h4>Orders</h4>
       </div>
+      <app-order-item class="list-group list-group-flush"
+                      *ngFor="let currentOrder of orders"
+                      [order]="currentOrder"></app-order-item>
     </div>
   </div>
 </div>

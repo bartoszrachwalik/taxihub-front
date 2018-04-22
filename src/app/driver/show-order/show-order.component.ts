@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {OrderService} from '../../order/order.service';
 import {Order} from '../../order/order.model';
 
 @Component({
@@ -7,16 +8,13 @@ import {Order} from '../../order/order.model';
   styleUrls: ['./show-order.component.css']
 })
 export class ShowOrderComponent implements OnInit {
-  orders: Order[] = [
-    new Order(1, 1, 1, 1, 1),
-    new Order(1, 1, 1, 1, 1),
-    new Order(1, 1, 1, 1, 1)
-  ];
+  orders: Order[];
 
-  constructor() {
+  constructor(private orderService: OrderService) {
   }
 
   ngOnInit() {
+    this.orderService.getOpenOrderForDriver().subscribe(data => this.orders = data);
   }
 
 }
