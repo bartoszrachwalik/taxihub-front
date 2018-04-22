@@ -38,7 +38,7 @@ import {environment} from '../environments/environment';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-import {AuthService} from './login/auth.service';
+import {AuthService} from './auth/auth.service';
 import {TokenInterceptor} from './login/token.interceptor';
 import {ProfilComponent} from './profile/profile.component';
 import {RegistrationComponent} from './registration/registration.component';
