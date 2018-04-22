@@ -9,7 +9,7 @@ export class OrderService {
   corporationOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/corporation/1';
   driverOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/driver/1';
   activeOrderUrl = 'https://taxihub-backend.herokuapp.com/orders/open/client/1';
-  openDriverOrdersUrl = 'https://taxihub-backend.herokuapp.com/orders/open/driver/1';
+  openDriverOrdersUrl = 'https://taxihub-backend.herokuapp.com/orders/open';
   cancelUrl = 'https://taxihub-backend.herokuapp.com/orders/7/canceled';
 
   constructor(private http: HttpClient) {
