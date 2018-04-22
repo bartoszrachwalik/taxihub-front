@@ -39,6 +39,7 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AuthService} from './login/auth.service';
+import {TokenInterceptor} from './login/token.interceptor';
 import {ProfilComponent} from './profile/profile.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {RegistrationClientComponent} from './registration/registration-client/registration-client.component';
@@ -46,7 +47,9 @@ import {RegistrationCompanyComponent} from './registration/registration-company/
 import {CorporationService} from './corporation/corporation.service';
 import {ClientService} from './client/client.service';
 import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
-import {TokenInterceptor} from './login/token.interceptor';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {DriversService} from './corporation/drivers/drivers.service';
+import { RegistrationDriverComponent } from './corporation/registration-driver/registration-driver.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,8 @@ import {TokenInterceptor} from './login/token.interceptor';
     RegistrationClientComponent,
     RegistrationCompanyComponent,
     ProfilComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    RegistrationDriverComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +91,8 @@ import {TokenInterceptor} from './login/token.interceptor';
     }),
     AgmDirectionModule,
     FormsModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule,
+    NgxPaginationModule],
   providers: [
     LoginService,
     AuthGuardDriver,
@@ -103,6 +108,7 @@ import {TokenInterceptor} from './login/token.interceptor';
     DriverService,
     CorporationService,
     ClientService,
+    DriversService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

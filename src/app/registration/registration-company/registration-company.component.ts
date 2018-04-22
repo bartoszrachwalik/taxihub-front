@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CorporationService} from "../../corporation/corporation.service";
 import {Router} from "@angular/router";
+import {NotificationService} from "../../notification/notification.service";
 
 
 @Component({
@@ -16,7 +17,7 @@ export class RegistrationCompanyComponent implements OnInit {
   companyPassword: FormControl;
   companyPasswordConfirmation: FormControl;
 
-  constructor(private corporationService: CorporationService, private router: Router) {
+  constructor(private corporationService: CorporationService, private router: Router, private notify: NotificationService) {
 
   }
 
@@ -26,29 +27,18 @@ export class RegistrationCompanyComponent implements OnInit {
   }
 
 
-  private onSaveData() {
-    this.corporationService.register({
-      name: this.companyName.value,
-      email: this.companyEmail.value,
-      password: this.companyPassword.value
-    }).subscribe(
-      (val) => {
-        console.log("POST call successful value returned in body",
-          val);
-      },
-      error => {
-        console.log("POST call in error", error);
-      },
-      () => {
-        console.log("The POST observable is now completed.");
-      });
-  }
-
   onSubmit() {
     if (this.registrationCompanyForm.valid) {
-      console.log(this.registrationCompanyForm.value);
-      this.onSaveData();
-      this.registrationCompanyForm.reset();
+      this.corporationService.register({
+        name: this.companyName.value,
+        email: this.companyEmail.value,
+        password: this.companyPassword.value
+      }).subscribe(() => {
+          this.router.navigate(['']);
+          this.notify.success('Corporation registered');
+        },
+        () =>
+          this.notify.error('Could not register, try again!'));
     }
   }
 
@@ -67,11 +57,11 @@ export class RegistrationCompanyComponent implements OnInit {
       ]);
     this.companyPassword = new FormControl('', [
       Validators.required,
-      Validators.minLength(5)
+      Validators.minLength(6)
     ]);
     this.companyPasswordConfirmation = new FormControl('', [
       Validators.required,
-      Validators.minLength(5)
+      Validators.minLength(6)
     ]);
   }
 

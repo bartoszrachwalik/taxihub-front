@@ -21,6 +21,7 @@ import {RegistrationCompanyComponent} from './registration/registration-company/
 import {ConfirmComponent} from './confirm/confirm.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {ClientHistoryResolver} from './client/client.history.resolver';
+import {RegistrationDriverComponent} from "./corporation/registration-driver/registration-driver.component";
 
 export const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -57,6 +58,7 @@ export const appRoutes: Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'registration/client', component: RegistrationClientComponent},
   {path: 'registration/corporation', component: RegistrationCompanyComponent},
+  {path: 'corporation/registration/driver', component: RegistrationDriverComponent},
   {path: 'login', component: LoginComponent},
   {path: 'confirm/driver/:token', component: ConfirmComponent},
   {path: '**', component: PageNotFoundComponent}

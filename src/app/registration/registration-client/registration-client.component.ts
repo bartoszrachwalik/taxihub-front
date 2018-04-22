@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ClientService} from "../../client/client.service";
+import {Router} from "@angular/router";
+import {NotificationService} from "../../notification/notification.service";
+
 
 
 @Component({
@@ -16,40 +19,30 @@ export class RegistrationClientComponent implements OnInit {
   clientPassword: FormControl;
   clientPasswordConfirmation: FormControl;
 
-  constructor(private clientService: ClientService) {
+  constructor(private clientService: ClientService, private router: Router, private notify: NotificationService) {
 
   }
+
   ngOnInit() {
     this.createFormControls();
     this.createForm();
   }
 
-  private onSaveData() {
-   console.log(this.clientFirstName.value)
-    this.clientService.register( {
-      name: this.clientFirstName.value,
-      surname: this.clientLastName.value,
-      email: this.clientEmailAddress.value,
-      password: this.clientPassword.value
-    }).subscribe(
-      (val) => {
-        console.log("POST call successful value returned in body",
-          val);
-      },
-      response => {
-        console.log("POST call in error", response);
-      },
-      () => {
-        console.log("The POST observable is now completed.");
-      });
-  }
-  onSubmit(){
-    if(this.registrationClientForm.valid){
-      this.registrationClientForm.value;
-      this.onSaveData();
-      this.registrationClientForm.reset();
+  onSubmit() {
+    if (this.registrationClientForm.valid) {
+      this.clientService.register({
+        name: this.clientFirstName.value,
+        surname: this.clientLastName.value,
+        email: this.clientEmailAddress.value,
+        password: this.clientPassword.value
+      }).subscribe(() => {
+          this.router.navigate(['']);
+          this.notify.success('User registered');
+        },
+        () => this.notify.error('Could not register, try again!'));
     }
   }
+
   isValid(data: FormControl) {
     return (!data.valid && (data.dirty || data.touched));
 
@@ -64,11 +57,11 @@ export class RegistrationClientComponent implements OnInit {
     ]);
     this.clientPassword = new FormControl('', [
       Validators.required,
-      Validators.minLength(5)
+      Validators.minLength(6)
     ]);
     this.clientPasswordConfirmation = new FormControl('', [
       Validators.required,
-      Validators.minLength(5)
+      Validators.minLength(6)
     ]);
   }
 

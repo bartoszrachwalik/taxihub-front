@@ -10,4 +10,7 @@ export class CorporationService {
     return this.http.post('https://taxihub-backend.herokuapp.com/corporation', corporation);
 
   }
+  registerDriver(driver){
+    return this.http.post('https://taxihub-backend.herokuapp.com/driver', driver);
+  }
 }
