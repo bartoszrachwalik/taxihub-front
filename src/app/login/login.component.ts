@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import {LoginService} from '../login/login.service';
 import {AuthService} from './auth.service';
 import {NotificationService} from '.././notification/notification.service';
@@ -19,7 +18,6 @@ export class LoginComponent implements OnInit {
 
   constructor(private service: AuthService,
               private loginService: LoginService,
-              private notification: NotificationService,
               private http: HttpClient) {
   }
 
@@ -36,6 +34,6 @@ export class LoginComponent implements OnInit {
 
   getUserInfo(): Observable<any> {
     console.log(this.http.get('https://taxihub-backend.herokuapp.com/me').subscribe(console.log));
-   return this.http.get('https://taxihub-backend.herokuapp.com/me');
+    return this.http.get('https://taxihub-backend.herokuapp.com/me');
   }
 }

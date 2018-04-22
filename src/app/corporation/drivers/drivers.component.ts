@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Driver} from '../../driver/driver.model';
-import {DriversService} from './drivers.service';
-
+import {DriverService} from '../../driver/driver.service';
 
 @Component({
   selector: 'app-drivers',
@@ -12,12 +11,13 @@ export class DriversComponent implements OnInit {
   p: number = 1;
   drivers: Driver[];
 
-  constructor(private driversService: DriversService) {
+  constructor(private driverService: DriverService) {
   }
 
   ngOnInit() {
-    this.driversService.getDrivers().subscribe(data => this.drivers = data);
+    this.driverService.getDrivers().subscribe(data => this.drivers = data);
   }
+
   pageChanged(event) {
     this.p = event;
   }
