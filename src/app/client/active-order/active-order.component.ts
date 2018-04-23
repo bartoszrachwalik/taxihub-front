@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Order} from '../../order/order.model';
 import {OrderService} from '../../order/order.service';
 import {NotificationService} from '../../notification/notification.service';
+import {Order} from '../../order/order.model';
 
 @Component({
   selector: 'app-active-order',
@@ -15,12 +15,13 @@ export class ActiveOrderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orderService.getActiveOrder().subscribe(data => this.activeOrder = {...data});
+    this.orderService.getActiveOrder().subscribe(data => this.activeOrder = data);
   }
 
   onCancelOrder() {
     if (this.activeOrder !== null) {
-      this.orderService.cancelOrder(this.activeOrder.id).subscribe(res => this.notificationService.success('Order cancelled successfully!'));
+      this.orderService.cancelOrder(this.activeOrder.id).subscribe(
+        res => this.notificationService.success('Order cancelled successfully!'));
     } else {
       this.notificationService.error('There is no order to cancel!');
     }

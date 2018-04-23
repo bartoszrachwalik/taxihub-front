@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Order} from '../order.model';
 import {ActivatedRoute} from '@angular/router';
+import {OrderService} from '../order.service';
+import {Order} from '../order.model';
 
 @Component({
   selector: 'app-order-history',
@@ -9,12 +10,21 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class OrderHistoryComponent implements OnInit {
   orderHistory: Order[];
+  p = 1;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private orderService: OrderService) {
   }
 
   ngOnInit() {
-    this.orderHistory = this.route.snapshot.data.history;
+    if (this.route.snapshot.data.history === 'client')
+      this.orderService.getClientsHistory().subscribe(data => this.orderHistory = data);
+    if (this.route.snapshot.data.history === 'driver')
+      this.orderService.getDriverHistory().subscribe(data => this.orderHistory = data);
+    if (this.route.snapshot.data.history === 'corporation')
+      this.orderService.getCorporationHistory().subscribe(data => this.orderHistory = data);
   }
 
+  pageChanged(event) {
+    this.p = event;
+  }
 }

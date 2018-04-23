@@ -56,7 +56,6 @@ export class MakeOrderComponent implements OnInit {
   }
 
   onOrderCreated() {
-    // todo how to input correct clientID
     this.order = new Order(this.clientId, this.latitudeOrigin, this.longitudeOrigin, this.latitudeDestination, this.longitudeDestination);
     this.orderService.makeOrder(this.order).subscribe(res => this.notificationService.success('Order added successfully!'));
     return false;
