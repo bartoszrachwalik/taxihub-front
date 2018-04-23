@@ -8,7 +8,7 @@ import {DriverService} from '../../driver/driver.service';
   styleUrls: ['./drivers.component.css'],
 })
 export class DriversComponent implements OnInit {
-  p: number = 1;
+  p = 1;
   drivers: Driver[];
 
   constructor(private driverService: DriverService) {

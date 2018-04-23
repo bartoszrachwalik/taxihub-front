@@ -10,6 +10,7 @@ import {Order} from '../order.model';
 })
 export class OrderHistoryComponent implements OnInit {
   orderHistory: Order[];
+  p = 1;
 
   constructor(private route: ActivatedRoute, private orderService: OrderService) {
   }
@@ -21,5 +22,9 @@ export class OrderHistoryComponent implements OnInit {
       this.orderService.getDriverHistory().subscribe(data => this.orderHistory = data);
     if (this.route.snapshot.data.history === 'corporation')
       this.orderService.getCorporationHistory().subscribe(data => this.orderHistory = data);
+  }
+
+  pageChanged(event) {
+    this.p = event;
   }
 }
