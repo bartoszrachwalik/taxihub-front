@@ -1,14 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-8">
-      <div class="card card-nav-tabs">
-        <div class="card-header card-header-primary text-center">
-          <h4>Orders</h4>
-        </div>
-        <app-order-item class="list-group list-group-flush"
-                        *ngFor="let currentOrder of orders"
-                        [order]="currentOrder"></app-order-item>
+    <div class="card card-nav-tabs">
+      <div class="card-header card-header-primary text-center">
+        <h4>Orders</h4>
       </div>
+      <app-order-item class="list-group list-group-flush"
+                      *ngFor="let currentOrder of orders | paginate: { itemsPerPage: 4, currentPage: p }"
+                      [order]="currentOrder"></app-order-item>
+      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
   </div>
 </div>

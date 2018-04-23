@@ -26,40 +26,33 @@ import {RegistrationDriverComponent} from "./corporation/registration-driver/reg
 export const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   {
-    path: '', canActivate: [AuthGuardClient], component: AppComponent, children: [
-    {path: 'client', component: ClientComponent},
-  ]
-  },
-  {
-    path: '', canActivate: [AuthGuardDriver], component: AppComponent, children: [
-    {path: 'driver', component: DriverComponent},
-  ]
-  },
-  {
-    path: '', canActivate: [AuthGuardCorporation], component: AppComponent, children: [
-    {path: 'corporation', component: CorporationComponent},
-  ]
-  },
-  {
-    path: 'client', component: ClientComponent, children: [
-    {path: 'make-order', component: MakeOrderComponent},
-    {path: 'client-order-history', component: OrderHistoryComponent, resolve: {history: ClientHistoryResolver}},
-    {path: 'active-order', component: ActiveOrderComponent},
-    {path: 'profile', component: ProfilComponent}
-  ]
-  },
-  {
-    path: 'driver', component: DriverComponent, children: [
-    {path: 'show-order', component: ShowOrderComponent},
-    {path: 'driver-order-history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}},
-    {path: 'profile', component: ProfilComponent}
-  ]
-  },
-  {
-    path: 'corporation', component: CorporationComponent, children: [
-    {path: 'drivers', component: DriversComponent},
-    {path: 'corporation-order-history', component: OrderHistoryComponent, resolve: {history: CorporationHistoryResolver}},
-    {path: 'profile', component: ProfilComponent}
+    path: '', component: AppComponent, children: [
+    {
+      path: 'client', component: ClientComponent, canActivate: [AuthGuardClient], children: [
+      {path: 'make-order', component: MakeOrderComponent},
+      {path: 'history', component: OrderHistoryComponent, resolve: {history: ClientHistoryResolver}},
+      {path: 'active-order', component: ActiveOrderComponent},
+      {path: 'profile', component: ProfilComponent}
+    ]
+    },
+    {
+      path: 'driver', component: DriverComponent, canActivate: [AuthGuardDriver], children: [
+      {path: 'show-order', component: ShowOrderComponent},
+      {path: 'history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}},
+      {path: 'profile', component: ProfilComponent}
+    ]
+    },
+    {
+      path: 'corporation', canActivate: [AuthGuardCorporation], component: CorporationComponent, children: [
+      {path: 'drivers', component: DriversComponent},
+      {
+        path: 'history',
+        component: OrderHistoryComponent,
+        resolve: {history: CorporationHistoryResolver}
+      },
+      {path: 'profile', component: ProfilComponent}
+    ]
+    }
   ]
   },
   {path: 'registration', component: RegistrationComponent},
