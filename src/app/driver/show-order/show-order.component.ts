@@ -9,6 +9,7 @@ import {Order} from '../../order/order.model';
 })
 export class ShowOrderComponent implements OnInit {
   orders: Order[];
+  p = 1;
 
   constructor(private orderService: OrderService) {
   }
@@ -17,4 +18,7 @@ export class ShowOrderComponent implements OnInit {
     this.orderService.getOpenOrderForDriver().subscribe(data => this.orders = data);
   }
 
+  pageChanged(event) {
+    this.p = event;
+  }
 }
