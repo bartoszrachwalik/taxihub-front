@@ -16,12 +16,12 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.route.snapshot.data.history === 'client')
-      this.orderService.getClientsHistory().subscribe(data => this.orderHistory = data);
-    if (this.route.snapshot.data.history === 'driver')
-      this.orderService.getDriverHistory().subscribe(data => this.orderHistory = data);
-    if (this.route.snapshot.data.history === 'corporation')
-      this.orderService.getCorporationHistory().subscribe(data => this.orderHistory = data);
+    if (this.route.snapshot.data['history'] === 'client')
+      this.orderService.getClientsHistory().subscribe((data: Order[]) => this.orderHistory = data);
+    if (this.route.snapshot.data['history'] === 'driver')
+      this.orderService.getDriverHistory().subscribe((data: Order[]) => this.orderHistory = data);
+    if (this.route.snapshot.data['history'] === 'corporation')
+      this.orderService.getCorporationHistory().subscribe((data: Order[]) => this.orderHistory = data);
   }
 
   pageChanged(event) {
