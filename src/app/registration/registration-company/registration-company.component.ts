@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CorporationService} from "../../corporation/corporation.service";
-import {Router} from "@angular/router";
-import {NotificationService} from "../../notification/notification.service";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {CorporationService} from '../../corporation/corporation.service';
+import {Router} from '@angular/router';
+import {NotificationService} from '../../notification/notification.service';
 
 
 @Component({

@@ -15,7 +15,7 @@ export class ActiveOrderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orderService.getActiveOrder().subscribe(data => this.activeOrder = data);
+    this.orderService.getActiveOrder().subscribe((data: Order) => this.activeOrder = data);
   }
 
   onCancelOrder() {

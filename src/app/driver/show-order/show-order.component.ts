@@ -15,7 +15,7 @@ export class ShowOrderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orderService.getOpenOrderForDriver().subscribe(data => this.orders = data);
+    this.orderService.getOpenOrderForDriver().subscribe((data: Order[]) => this.orders = data);
   }
 
   pageChanged(event) {

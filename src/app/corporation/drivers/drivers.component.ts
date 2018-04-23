@@ -15,7 +15,7 @@ export class DriversComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.driverService.getDrivers().subscribe(data => this.drivers = data);
+    this.driverService.getDrivers().subscribe((data: Driver[]) => this.drivers = data);
   }
 
   pageChanged(event) {

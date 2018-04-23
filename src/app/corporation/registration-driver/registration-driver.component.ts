@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CorporationService} from "../corporation.service";
-import {NotificationService} from "../../notification/notification.service";
-import {Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {CorporationService} from '../corporation.service';
+import {NotificationService} from '../../notification/notification.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration-driver',
