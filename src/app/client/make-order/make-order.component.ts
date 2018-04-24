@@ -13,14 +13,10 @@ import {NotificationService} from '../../notification/notification.service';
 export class MakeOrderComponent implements OnInit {
   @ViewChild('searchFrom') startPlaceRef: ElementRef;
   @ViewChild('searchTo') destinationRef: ElementRef;
-  clientId = 1;
+  clientId = 20;
   order: Order;
 
-  public latitudeOrigin: number;
-  public longitudeOrigin: number;
-  public latitudeDestination: number;
-  public longitudeDestination: number;
-  public zoom = 12;
+  public zoom = 1;
 
   autocompleteFrom;
   autocompleteTo;
@@ -56,7 +52,7 @@ export class MakeOrderComponent implements OnInit {
   }
 
   onOrderCreated() {
-    this.order = new Order(this.clientId, this.latitudeOrigin, this.longitudeOrigin, this.latitudeDestination, this.longitudeDestination);
+    this.order = new Order(this.clientId, this.dir.origin.lat, this.dir.origin.lng, this.dir.destination.lat, this.dir.destination.lng);
     this.orderService.makeOrder(this.order).subscribe(res => this.notificationService.success('Order added successfully!'));
     return false;
   }

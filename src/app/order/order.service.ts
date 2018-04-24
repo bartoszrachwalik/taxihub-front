@@ -5,12 +5,12 @@ import {HttpClient} from '@angular/common/http';
 @Injectable()
 export class OrderService {
   makeOrderUrl = 'https://taxihub-backend.herokuapp.com/orders';
-  clientOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/client/1';
-  corporationOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/corporation/1';
+  clientOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/client/20';
+  corporationOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/corporation/17';
   driverOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/driver/1';
-  activeOrderUrl = 'https://taxihub-backend.herokuapp.com/orders/open/client/1';
+  activeOrderUrl = 'https://taxihub-backend.herokuapp.com/orders/open/client/20';
   openDriverOrdersUrl = 'https://taxihub-backend.herokuapp.com/orders/open';
-  cancelUrl = 'https://taxihub-backend.herokuapp.com/orders/7/canceled';
+  cancelUrl = 'https://taxihub-backend.herokuapp.com/orders/';
 
   constructor(private http: HttpClient) {
   }
@@ -36,7 +36,7 @@ export class OrderService {
   }
 
   cancelOrder(id: number) {
-    return this.http.post(this.cancelUrl, id);
+    return this.http.post(this.cancelUrl + id.toString() + '/canceled', id);
   }
 
   getOpenOrderForDriver() {

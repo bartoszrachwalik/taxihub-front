@@ -2,13 +2,20 @@
   <div class="card-header card-header-primary text-center">
     <p>Active order</p>
   </div>
-  <div class="card-body">
-    <h4>From {{activeOrder.fromLatitude}},{{activeOrder.fromLongitude}} to {{activeOrder.toLatitude}},
-      {{activeOrder.toLongitude}}</h4>
-    <p>{{activeOrder.status}}</p>
-    <button type="submit"
-            class="btn btn-primary"
-            (click)="onCancelOrder()">Cancel order
-    </button>
+  <div class="list-group-item img-raised rounded">
+    <div *ngIf="activeOrder!==undefined">
+      <h4>From {{activeOrder.fromLatitude}},{{activeOrder.fromLongitude}} to {{activeOrder.toLatitude}},
+        {{activeOrder.toLongitude}}</h4>
+      <p>{{activeOrder.status}}</p>
+      <button type="submit"
+              class="btn btn-primary"
+              (click)="onCancelOrder()">Cancel order
+      </button>
+    </div>
+  </div>
+  <div *ngIf="activeOrder===undefined" class="list-group-item img-raised rounded">
+    <div>
+      <h4>No active orders!</h4>
+    </div>
   </div>
 </div>
