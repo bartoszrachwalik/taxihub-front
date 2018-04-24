@@ -16,7 +16,7 @@ export class MakeOrderComponent implements OnInit {
   clientId = 20;
   order: Order;
 
-  public zoom = 12;
+  public zoom = 1;
 
   autocompleteFrom;
   autocompleteTo;

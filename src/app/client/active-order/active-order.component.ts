@@ -20,7 +20,7 @@ export class ActiveOrderComponent implements OnInit {
 
   onCancelOrder() {
     if (this.activeOrder !== null) {
-       this.orderService.cancelOrder(this.activeOrder.id).subscribe(
+      this.orderService.cancelOrder(this.activeOrder.id).subscribe(
         res => this.notificationService.success('Order cancelled successfully!'));
     } else {
       this.notificationService.error('There is no order to cancel!');
