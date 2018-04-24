@@ -5,7 +5,7 @@
         <h4>Orders</h4>
       </div>
       <app-order-item class="list-group list-group-flush"
-                      *ngFor="let currentOrder of orders | paginate: { itemsPerPage: 4, currentPage: p }"
+                      *ngFor="let currentOrder of orders | paginate: { itemsPerPage: 3, currentPage: p }"
                       [order]="currentOrder"></app-order-item>
       <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>

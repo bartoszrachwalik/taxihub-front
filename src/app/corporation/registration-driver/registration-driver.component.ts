@@ -23,7 +23,6 @@ export class RegistrationDriverComponent implements OnInit {
     this.createForm();
   }
 
-
   onSubmit() {
     if (this.registrationFormDriver.valid) {
       this.service.registerDriver({
@@ -61,7 +60,7 @@ export class RegistrationDriverComponent implements OnInit {
     this.registrationFormDriver = new FormGroup({
       driverFirstName: this.driverFirstName,
       driverLastName: this.driverLastName,
-      driverEmail: this.driverEmail});
+      driverEmail: this.driverEmail
+    });
   }
-
 }

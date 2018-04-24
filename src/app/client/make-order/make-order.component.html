@@ -17,9 +17,7 @@
       <button class="btn btn-primary" (click)="getDirection()">Search</button>
       <button class="btn btn-primary" (click)="onOrderCreated()">Create order</button>
     </div>
-    <agm-map [latitude]="latitudeOrigin" [longitude]="longitudeOrigin" [scrollwheel]="true" [zoom]="zoom" >
-      <agm-marker [latitude]="latitudeOrigin" [longitude]="longitudeOrigin"></agm-marker>
-      <agm-marker [latitude]="latitudeDestination" [longitude]="longitudeDestination"></agm-marker>
+    <agm-map [scrollwheel]="true" [zoom]="zoom">
       <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
     </agm-map>
   </div>
