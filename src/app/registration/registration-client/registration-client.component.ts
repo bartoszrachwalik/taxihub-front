@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ClientService} from "../../client/client.service";
-import {Router} from "@angular/router";
-import {NotificationService} from "../../notification/notification.service";
-
-
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ClientService} from '../../client/client.service';
+import {Router} from '@angular/router';
+import {NotificationService} from '../../notification/notification.service';
 
 @Component({
   selector: 'app-registration-client',
@@ -20,7 +18,6 @@ export class RegistrationClientComponent implements OnInit {
   clientPasswordConfirmation: FormControl;
 
   constructor(private clientService: ClientService, private router: Router, private notify: NotificationService) {
-
   }
 
   ngOnInit() {
@@ -48,6 +45,11 @@ export class RegistrationClientComponent implements OnInit {
 
   }
 
+  passwordMatchValidator(g: FormGroup) {
+    return g.get('clientPassword').value === g.get('clientPasswordConfirmation').value
+      ? null : {'mismatch': true};
+  }
+
   private createFormControls() {
     this.clientFirstName = new FormControl('', Validators.required);
     this.clientLastName = new FormControl('', Validators.required);
@@ -72,12 +74,6 @@ export class RegistrationClientComponent implements OnInit {
       clientEmail: this.clientEmailAddress,
       clientPassword: this.clientPassword,
       clientPasswordConfirmation: this.clientPasswordConfirmation,
-    }, this.passwordMatchValidator)
-
-  }
-
-  passwordMatchValidator(g: FormGroup) {
-    return g.get('clientPassword').value === g.get('clientPasswordConfirmation').value
-      ? null : {'mismatch': true};
+    }, this.passwordMatchValidator);
   }
 }

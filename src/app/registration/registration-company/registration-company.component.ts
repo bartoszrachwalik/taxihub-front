@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CorporationService} from "../../corporation/corporation.service";
-import {Router} from "@angular/router";
-import {NotificationService} from "../../notification/notification.service";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {CorporationService} from '../../corporation/corporation.service';
+import {Router} from '@angular/router';
+import {NotificationService} from '../../notification/notification.service';
 
 
 @Component({
@@ -26,7 +26,6 @@ export class RegistrationCompanyComponent implements OnInit {
     this.createForm();
   }
 
-
   onSubmit() {
     if (this.registrationCompanyForm.valid) {
       this.corporationService.register({
@@ -45,6 +44,11 @@ export class RegistrationCompanyComponent implements OnInit {
   isValid(data: FormControl) {
     return (!data.valid && (data.dirty || data.touched));
 
+  }
+
+  passwordMatchValidator(g: FormGroup) {
+    return g.get('companyPassword').value === g.get('companyPasswordConfirmation').value
+      ? null : {'mismatch': true};
   }
 
   private createFormControls() {
@@ -71,12 +75,6 @@ export class RegistrationCompanyComponent implements OnInit {
       companyEmail: this.companyEmail,
       companyPassword: this.companyPassword,
       companyPasswordConfirmation: this.companyPasswordConfirmation,
-    }, this.passwordMatchValidator)
-
-  }
-
-  passwordMatchValidator(g: FormGroup) {
-    return g.get('companyPassword').value === g.get('companyPasswordConfirmation').value
-      ? null : {'mismatch': true};
+    }, this.passwordMatchValidator);
   }
 }

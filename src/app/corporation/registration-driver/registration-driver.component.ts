@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CorporationService} from "../corporation.service";
-import {NotificationService} from "../../notification/notification.service";
-import {Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {CorporationService} from '../corporation.service';
+import {NotificationService} from '../../notification/notification.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration-driver',
@@ -22,7 +22,6 @@ export class RegistrationDriverComponent implements OnInit {
     this.createFormControls();
     this.createForm();
   }
-
 
   onSubmit() {
     if (this.registrationFormDriver.valid) {
@@ -61,7 +60,7 @@ export class RegistrationDriverComponent implements OnInit {
     this.registrationFormDriver = new FormGroup({
       driverFirstName: this.driverFirstName,
       driverLastName: this.driverLastName,
-      driverEmail: this.driverEmail});
+      driverEmail: this.driverEmail
+    });
   }
-
 }

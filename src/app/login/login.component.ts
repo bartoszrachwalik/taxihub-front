@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
   }
 
   getUserInfo(): Observable<any> {
-    console.log(this.http.get('https://taxihub-backend.herokuapp.com/me').subscribe(console.log));
     return this.http.get('https://taxihub-backend.herokuapp.com/me');
   }
 }
