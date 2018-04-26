@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <agm-map [scrollwheel]="true" [zoom]="zoom">
+    <agm-map [scrollwheel]="true" [zoom]=1>
       <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
     </agm-map>
   </div>

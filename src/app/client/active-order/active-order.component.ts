@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../../order/order.service';
 import {NotificationService} from '../../notification/notification.service';
 import {Order} from '../../order/order.model';
-import {} from 'googlemaps';
-import {MapsAPILoader} from '@agm/core';
+import {MapService} from '../../map/map.service';
 
 @Component({
   selector: 'app-active-order',
@@ -13,17 +12,16 @@ import {MapsAPILoader} from '@agm/core';
 export class ActiveOrderComponent implements OnInit {
   activeOrder: Order;
   dir;
-  public zoom = 1;
 
-  constructor(private mapsAPILoader: MapsAPILoader, private orderService: OrderService, private notificationService: NotificationService) {
+  constructor(private orderService: OrderService,
+              private notificationService: NotificationService,
+              private mapService: MapService) {
   }
 
   ngOnInit() {
     this.orderService.getActiveOrder().subscribe((data: Order) => {
         this.activeOrder = data;
-        const origin = {lat: this.activeOrder.fromLatitude, lng: this.activeOrder.fromLongitude};
-        const destination = {lat: this.activeOrder.toLatitude, lng: this.activeOrder.toLongitude};
-        this.dir = {origin, destination};
+        this.dir = this.mapService.getDirection(this.activeOrder);
       }
     );
   }
