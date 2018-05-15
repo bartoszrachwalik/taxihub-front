@@ -19,8 +19,8 @@ export class ActiveOrderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orderService.getActiveOrder().subscribe((data: Order) => {
-        this.activeOrder = data;
+    this.orderService.getActiveOrder().subscribe((order: Order) => {
+        this.activeOrder = order;
         this.dir = this.mapService.getDirection(this.activeOrder);
       }
     );
