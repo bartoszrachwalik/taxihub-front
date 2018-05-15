@@ -49,6 +49,7 @@ import {ClientService} from './client/client.service';
 import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {RegistrationDriverComponent} from './corporation/registration-driver/registration-driver.component';
+import {MapService} from './map/map.service';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import {RegistrationDriverComponent} from './corporation/registration-driver/reg
     DriverService,
     CorporationService,
     ClientService,
+    MapService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
