@@ -50,6 +50,9 @@ import {OrderHistoryItemComponent} from './order/order-history/order-history-ite
 import {NgxPaginationModule} from 'ngx-pagination';
 import {RegistrationDriverComponent} from './corporation/registration-driver/registration-driver.component';
 import {MapService} from './map/map.service';
+import {ClientProfileResolver} from './client/client.profile.resolver';
+import {DriverProfileResolver} from './driver/driver.profile.resolver';
+import {CorporationProfileResolver} from './corporation/corporation.profile.resolver';
 
 @NgModule({
   declarations: [
@@ -109,6 +112,9 @@ import {MapService} from './map/map.service';
     CorporationService,
     ClientService,
     MapService,
+    ClientProfileResolver,
+    DriverProfileResolver,
+    CorporationProfileResolver,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

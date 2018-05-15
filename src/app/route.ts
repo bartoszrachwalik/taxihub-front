@@ -22,6 +22,9 @@ import {ConfirmComponent} from './confirm/confirm.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {ClientHistoryResolver} from './client/client.history.resolver';
 import {RegistrationDriverComponent} from './corporation/registration-driver/registration-driver.component';
+import {ClientProfileResolver} from './client/client.profile.resolver';
+import {DriverProfileResolver} from './driver/driver.profile.resolver';
+import {CorporationProfileResolver} from './corporation/corporation.profile.resolver';
 
 export const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -32,14 +35,14 @@ export const appRoutes: Routes = [
       {path: 'make-order', component: MakeOrderComponent},
       {path: 'history', component: OrderHistoryComponent, resolve: {history: ClientHistoryResolver}},
       {path: 'active-order', component: ActiveOrderComponent},
-      {path: 'profile', component: ProfilComponent}
+      {path: 'profile', component: ProfilComponent, resolve: {profile: ClientProfileResolver}}
     ]
     },
     {
       path: 'driver', component: DriverComponent, canActivate: [AuthGuardDriver], children: [
       {path: 'show-order', component: ShowOrderComponent},
       {path: 'history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}},
-      {path: 'profile', component: ProfilComponent}
+      {path: 'profile', component: ProfilComponent, resolve: {profile: DriverProfileResolver}}
     ]
     },
     {
@@ -50,7 +53,7 @@ export const appRoutes: Routes = [
         component: OrderHistoryComponent,
         resolve: {history: CorporationHistoryResolver}
       },
-      {path: 'profile', component: ProfilComponent}
+      {path: 'profile', component: ProfilComponent, resolve: {profile: CorporationProfileResolver}}
     ]
     }
   ]
