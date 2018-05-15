@@ -1,24 +1,38 @@
 import {Component, OnInit} from '@angular/core';
+import {ProfileService} from './profile.service';
 import {ActivatedRoute} from '@angular/router';
+import {User} from '../login/user.model';
 
 @Component({
-  selector: 'app-profil',
+  selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfilComponent implements OnInit {
+export class ProfileComponent implements OnInit {
+  user: User;
 
-  user: { name: string, mail: string, password: string };
-
-  constructor(private route: ActivatedRoute) {
+  constructor(private profileService: ProfileService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.user = {
-      name: this.route.snapshot.params['name'],
-      mail: this.route.snapshot.params['mail'],
-      password: this.route.snapshot.params['password']
-    };
+    if (this.route.snapshot.data['profile'] === 'client')
+      this.profileService.getClientProfile().subscribe((data: User) => {
+          this.user = data;
+          this.user.role = this.route.snapshot.data['profile'];
+        }
+      );
+    if (this.route.snapshot.data['profile'] === 'driver')
+      this.profileService.getDriverProfile().subscribe((data: User) => {
+          this.user = data;
+          this.user.role = this.route.snapshot.data['profile'];
+        }
+      );
+    if (this.route.snapshot.data['profile'] === 'corporation')
+      this.profileService.getCorporationProfile().subscribe((data: User) => {
+          this.user = data;
+          this.user.role = this.route.snapshot.data['profile'];
+        }
+      );
   }
 
 }

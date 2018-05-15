@@ -11,7 +11,7 @@ import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {OrderHistoryComponent} from './order/order-history/order-history.component';
 import {DriverHistoryResolver} from './driver/driver.history.resolver';
 import {ActiveOrderComponent} from './client/active-order/active-order.component';
-import {ProfilComponent} from './profile/profile.component';
+import {ProfileComponent} from './profile/profile.component';
 import {ShowOrderComponent} from './driver/show-order/show-order.component';
 import {DriversComponent} from './corporation/drivers/drivers.component';
 import {CorporationHistoryResolver} from './corporation/corporation.history.resolver';
@@ -35,14 +35,14 @@ export const appRoutes: Routes = [
       {path: 'make-order', component: MakeOrderComponent},
       {path: 'history', component: OrderHistoryComponent, resolve: {history: ClientHistoryResolver}},
       {path: 'active-order', component: ActiveOrderComponent},
-      {path: 'profile', component: ProfilComponent, resolve: {profile: ClientProfileResolver}}
+      {path: 'profile', component: ProfileComponent, resolve: {profile: ClientProfileResolver}}
     ]
     },
     {
       path: 'driver', component: DriverComponent, canActivate: [AuthGuardDriver], children: [
       {path: 'show-order', component: ShowOrderComponent},
       {path: 'history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}},
-      {path: 'profile', component: ProfilComponent, resolve: {profile: DriverProfileResolver}}
+      {path: 'profile', component: ProfileComponent, resolve: {profile: DriverProfileResolver}}
     ]
     },
     {
@@ -53,7 +53,7 @@ export const appRoutes: Routes = [
         component: OrderHistoryComponent,
         resolve: {history: CorporationHistoryResolver}
       },
-      {path: 'profile', component: ProfilComponent, resolve: {profile: CorporationProfileResolver}}
+      {path: 'profile', component: ProfileComponent, resolve: {profile: CorporationProfileResolver}}
     ]
     }
   ]
