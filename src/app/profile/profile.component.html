@@ -2,12 +2,18 @@
   <div class="card-header card-header-primary text-center">
     <p>My profile</p>
   </div>
-  <div class="card-body">
-    <h4>Moj profil
-      <br>
-      Name {{user.name}}</h4>
-    <h5> Mail {{user.mail}}
-      <br>
-      Password {{user.password}}</h5>
+  <div class="card-body" *ngIf="user!==undefined">
+    <h4>Name:</h4>
+    <p>{{user.name}}</p>
+    <div *ngIf="user.role!=='corporation'">
+      <h4>Surname:</h4>
+      <p>{{user.surname}}</p>
+    </div>
+    <h4>Email:</h4>
+    <p>{{user.email}}</p>
+    <div *ngIf="user.role==='driver'">
+      <h4>Corporation:</h4>
+      <p>{{user.corpName}}</p>
+    </div>
   </div>
 </div>

@@ -40,7 +40,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AuthService} from './auth/auth.service';
 import {TokenInterceptor} from './login/token.interceptor';
-import {ProfilComponent} from './profile/profile.component';
+import {ProfileComponent} from './profile/profile.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {RegistrationClientComponent} from './registration/registration-client/registration-client.component';
 import {RegistrationCompanyComponent} from './registration/registration-company/registration-company.component';
@@ -49,6 +49,11 @@ import {ClientService} from './client/client.service';
 import {OrderHistoryItemComponent} from './order/order-history/order-history-item/order-history-item.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {RegistrationDriverComponent} from './corporation/registration-driver/registration-driver.component';
+import {MapService} from './map/map.service';
+import {ClientProfileResolver} from './client/client.profile.resolver';
+import {DriverProfileResolver} from './driver/driver.profile.resolver';
+import {CorporationProfileResolver} from './corporation/corporation.profile.resolver';
+import {ProfileService} from './profile/profile.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +76,7 @@ import {RegistrationDriverComponent} from './corporation/registration-driver/reg
     ConfirmComponent,
     RegistrationClientComponent,
     RegistrationCompanyComponent,
-    ProfilComponent,
+    ProfileComponent,
     RegistrationComponent,
     RegistrationDriverComponent
   ],
@@ -107,6 +112,11 @@ import {RegistrationDriverComponent} from './corporation/registration-driver/reg
     DriverService,
     CorporationService,
     ClientService,
+    MapService,
+    ClientProfileResolver,
+    DriverProfileResolver,
+    CorporationProfileResolver,
+    ProfileService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

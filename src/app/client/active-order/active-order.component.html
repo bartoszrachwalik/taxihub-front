@@ -2,20 +2,25 @@
   <div class="card-header card-header-primary text-center">
     <p>Active order</p>
   </div>
-  <div class="list-group-item img-raised rounded">
-    <div *ngIf="activeOrder!==undefined">
-      <h4>From {{activeOrder.fromLatitude}},{{activeOrder.fromLongitude}} to {{activeOrder.toLatitude}},
-        {{activeOrder.toLongitude}}</h4>
-      <p>{{activeOrder.status}}</p>
-      <button type="submit"
-              class="btn btn-primary"
-              (click)="onCancelOrder()">Cancel order
-      </button>
+  <div class="card-body">
+    <div class="list-group-item img-raised rounded">
+      <div *ngIf="activeOrder!==undefined">
+        <p>From {{activeOrder.fromLatitude}},{{activeOrder.fromLongitude}} to {{activeOrder.toLatitude}},
+          {{activeOrder.toLongitude}}</p>
+        <p>{{activeOrder.status}}</p>
+        <button type="submit"
+                class="btn btn-primary"
+                (click)="onCancelOrder()">Cancel order
+        </button>
+      </div>
+      <div *ngIf="activeOrder===undefined">
+        <div>
+          <h4>No active orders!</h4>
+        </div>
+      </div>
     </div>
-  </div>
-  <div *ngIf="activeOrder===undefined" class="list-group-item img-raised rounded">
-    <div>
-      <h4>No active orders!</h4>
-    </div>
+    <agm-map [scrollwheel]="true" [zoom]=1>
+      <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
+    </agm-map>
   </div>
 </div>
