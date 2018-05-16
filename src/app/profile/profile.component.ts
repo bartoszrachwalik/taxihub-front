@@ -25,6 +25,9 @@ export class ProfileComponent implements OnInit {
       this.profileService.getDriverProfile().subscribe((data: User) => {
           this.user = data;
           this.user.role = this.route.snapshot.data['profile'];
+          this.profileService.getCorpName(this.user.corporationId).subscribe((name: string) => {
+            this.user.corpName = name;
+          });
         }
       );
     if (this.route.snapshot.data['profile'] === 'corporation')
