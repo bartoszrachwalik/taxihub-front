@@ -15,5 +15,40 @@
       <h4>Corporation:</h4>
       <p>{{user.corpName}}</p>
     </div>
+    <button
+      class="btn btn-primary"
+      (click)="onEdit()">Edit Profile
+    </button>
+  </div>
+  <div class="card-body" *ngIf="editMode">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+      <div class="form-group">
+        <label for="name">New {{user.role}} name</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          ngModel
+          name="name"
+          required
+        >
+        <div *ngIf="user.role==='client' || user.role==='driver'">
+          <label for="surname">New {{user.role}} surname</label>
+          <input
+            type="text"
+            id="surname"
+            class="form-control"
+            ngModel
+            name="surname"
+            required
+          >
+        </div>
+      </div>
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!f.valid">Submit
+      </button>
+    </form>
   </div>
 </div>

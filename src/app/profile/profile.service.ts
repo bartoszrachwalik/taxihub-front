@@ -7,6 +7,7 @@ export class ProfileService {
   driverUrl = 'https://taxihub-backend.herokuapp.com/driver/profile/3';
   corporationUrl = 'https://taxihub-backend.herokuapp.com/corporation/profile/17';
   corporationNameUrl = 'https://taxihub-backend.herokuapp.com/corporation/getname/';
+  corporationUpdateUrl = 'https://taxihub-backend.herokuapp.com/corporation';
 
   constructor(private http: HttpClient) {
   }
@@ -23,7 +24,11 @@ export class ProfileService {
     return this.http.get(this.corporationUrl);
   }
 
-  getCorpName(id: string) {
+  getCorpName(id: number) {
     return this.http.get(this.corporationNameUrl + id);
+  }
+
+  updateCorpName(id: number, name: string) {
+    return this.http.put(this.corporationUpdateUrl, {id, name});
   }
 }
