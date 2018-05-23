@@ -47,9 +47,24 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    this.profileService.updateCorpName(this.user.id, this.form.value.name).subscribe(() => {
-      this.notificationService.success('profile updated successfully!');
-    });
+    if (this.user.role === 'corporation') {
+      this.profileService.updateCorpProfile(this.user.id, this.form.value.name).subscribe(res =>
+        this.notificationService.success('Profile updated successfully!')
+      );
+    }
+
+    if (this.user.role === 'client') {
+      this.profileService.updateClientProfile(this.user.id, this.form.value.name, this.form.value.surname).subscribe(res =>
+        this.notificationService.success('Profile updated successfully!')
+      );
+    }
+
+    if (this.user.role === 'driver') {
+      this.profileService.updateDriverProfile(this.user.id, this.form.value.name, this.form.value.surname).subscribe(res =>
+        this.notificationService.success('Profile updated successfully!')
+      );
+    }
+
     this.form.reset();
   }
 }

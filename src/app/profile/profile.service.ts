@@ -8,6 +8,8 @@ export class ProfileService {
   corporationUrl = 'https://taxihub-backend.herokuapp.com/corporation/profile/17';
   corporationNameUrl = 'https://taxihub-backend.herokuapp.com/corporation/getname/';
   corporationUpdateUrl = 'https://taxihub-backend.herokuapp.com/corporation';
+  clientUpdateUrl = 'https://taxihub-backend.herokuapp.com/client';
+  private driverUpdateUrl = 'https://taxihub-backend.herokuapp.com/driver';
 
   constructor(private http: HttpClient) {
   }
@@ -28,7 +30,15 @@ export class ProfileService {
     return this.http.get(this.corporationNameUrl + id);
   }
 
-  updateCorpName(id: number, name: string) {
+  updateCorpProfile(id: number, name: string) {
     return this.http.put(this.corporationUpdateUrl, {id, name});
+  }
+
+  updateClientProfile(id: number, name: string, surname: string) {
+    return this.http.put(this.clientUpdateUrl, {id, name, surname});
+  }
+
+  updateDriverProfile(id: number, name, surname: string | any) {
+    return this.http.put(this.driverUpdateUrl, {id, name, surname});
   }
 }
