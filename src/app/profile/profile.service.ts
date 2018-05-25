@@ -6,7 +6,7 @@ export class ProfileService {
   clientUrl = 'https://taxihub-backend.herokuapp.com/client/profile/20';
   driverUrl = 'https://taxihub-backend.herokuapp.com/driver/profile/3';
   corporationUrl = 'https://taxihub-backend.herokuapp.com/corporation/profile/17';
-  corporationNameUrl = 'https://taxihub-backend.herokuapp.com/corporation/getname/';
+  corporationNameUrl = 'https://taxihub-backend.herokuapp.com/corporation/name/';
   corporationUpdateUrl = 'https://taxihub-backend.herokuapp.com/corporation';
   clientUpdateUrl = 'https://taxihub-backend.herokuapp.com/client';
   private driverUpdateUrl = 'https://taxihub-backend.herokuapp.com/driver';
