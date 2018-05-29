@@ -11,3 +11,7 @@ agm-map {
   height: 400px;
   width: 100%;
 }
+
+.make-order-input {
+  margin-left: 15px;
+}

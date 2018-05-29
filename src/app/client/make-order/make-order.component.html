@@ -7,23 +7,29 @@
       <div class="row">
         <div class="col">
           <label>Start place:</label>
-          <input
-            name="start"
-            class="form-control"
-            placeholder="Enter location"
-            ngModel
-            required
-            #searchFrom>
+          <div class="input-group-text">
+            <i class="material-icons">location_city</i>
+            <input
+              name="start"
+              class="form-control make-order-input"
+              placeholder="Enter location"
+              ngModel
+              required
+              #searchFrom>
+          </div>
         </div>
         <div class="col">
           <label>Destination place:</label>
-          <input
-            name="destination"
-            class="form-control"
-            placeholder="Enter location"
-            ngModel
-            required
-            #searchTo>
+          <div class="input-group-text">
+            <i class="material-icons">location_city</i>
+            <input
+              name="destination"
+              class="form-control make-order-input"
+              placeholder="Enter location"
+              ngModel
+              required
+              #searchTo>
+          </div>
         </div>
       </div>
       <span class="help-block" *ngIf="!f.valid && f.touched">Both locations are required!</span>
