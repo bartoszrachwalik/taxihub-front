@@ -1,6 +1,6 @@
 <div class="card card-signup">
   <div class="card-header card-header-primary text-center">
-    <p>My profile</p>
+    <h4>My profile</h4>
   </div>
   <div class="card-body" *ngIf="user!==undefined">
     <h4>Name:</h4>
@@ -43,12 +43,22 @@
             required
           >
         </div>
+        <span *ngIf="!f.valid && f.touched">All fields are required!</span>
       </div>
-      <button
-        class="btn btn-primary"
-        type="submit"
-        [disabled]="!f.valid">Submit
-      </button>
+      <div class="row">
+        <div class="col-sm-12">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!f.valid">Submit
+          </button>
+          <button
+            type="button"
+            class="btn btn-default"
+            (click)="onCancel()">Cancel
+          </button>
+        </div>
+      </div>
     </form>
   </div>
 </div>

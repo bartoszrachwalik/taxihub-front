@@ -67,4 +67,8 @@ export class ProfileComponent implements OnInit {
 
     this.form.reset();
   }
+
+  onCancel() {
+    this.editMode = false;
+  }
 }

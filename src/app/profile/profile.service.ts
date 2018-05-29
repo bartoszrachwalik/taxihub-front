@@ -38,7 +38,7 @@ export class ProfileService {
     return this.http.put(this.clientUpdateUrl, {id, name, surname});
   }
 
-  updateDriverProfile(id: number, name, surname: string | any) {
+  updateDriverProfile(id: number, name: string, surname: string) {
     return this.http.put(this.driverUpdateUrl, {id, name, surname});
   }
 }
