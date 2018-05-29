@@ -1,22 +1,45 @@
 <div class="card card-signup">
   <div class="card-header card-header-primary text-center">
-    <p>Create new order</p>
+    <h4>Create new order</h4>
   </div>
   <div class="card-body">
-    <form>
+    <form #f="ngForm">
       <div class="row">
         <div class="col">
-          <input class="form-control" placeholder="Start Place" #searchFrom>
+          <label>Start place:</label>
+          <div class="input-group-text">
+            <i class="material-icons">location_city</i>
+            <input
+              name="start"
+              class="form-control make-order-input"
+              placeholder="Enter location"
+              ngModel
+              required
+              #searchFrom>
+          </div>
         </div>
         <div class="col">
-          <input class="form-control" placeholder="Destination" #searchTo>
+          <label>Destination place:</label>
+          <div class="input-group-text">
+            <i class="material-icons">location_city</i>
+            <input
+              name="destination"
+              class="form-control make-order-input"
+              placeholder="Enter location"
+              ngModel
+              required
+              #searchTo>
+          </div>
+        </div>
+      </div>
+      <span class="help-block" *ngIf="!f.valid && f.touched">Both locations are required!</span>
+      <div class="row">
+        <div class="col-sm-12">
+          <button class="btn btn-primary" (click)="getDirection()" [disabled]="!f.valid">Search</button>
+          <button class="btn btn-primary" (click)="onOrderCreated()" [disabled]="!f.valid">Create order</button>
         </div>
       </div>
     </form>
-    <div class="offset-8">
-      <button class="btn btn-primary" (click)="getDirection()">Search</button>
-      <button class="btn btn-primary" (click)="onOrderCreated()">Create order</button>
-    </div>
     <agm-map [scrollwheel]="true" [zoom]="zoom">
       <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
     </agm-map>
