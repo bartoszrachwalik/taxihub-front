@@ -26,7 +26,7 @@
             #searchTo>
         </div>
       </div>
-      <span *ngIf="!f.valid && f.touched">Both locations are required!</span>
+      <span class="help-block" *ngIf="!f.valid && f.touched">Both locations are required!</span>
     </form>
     <div class="row">
       <button class="btn btn-primary" (click)="getDirection()" [disabled]="!f.valid">Search</button>
