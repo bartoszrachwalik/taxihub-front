@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ProfileService} from './profile.service';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../login/user.model';
+import {NgForm} from '@angular/forms';
+import {NotificationService} from '../notification/notification.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,9 +11,11 @@ import {User} from '../login/user.model';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  @ViewChild('f') form: NgForm;
   user: User;
+  editMode = false;
 
-  constructor(private profileService: ProfileService, private route: ActivatedRoute) {
+  constructor(private profileService: ProfileService, private route: ActivatedRoute, private notificationService: NotificationService) {
   }
 
   ngOnInit() {
@@ -38,4 +42,33 @@ export class ProfileComponent implements OnInit {
       );
   }
 
+  onEdit() {
+    this.editMode = true;
+  }
+
+  onSubmit() {
+    if (this.user.role === 'corporation') {
+      this.profileService.updateCorpProfile(this.user.id, this.form.value.name).subscribe(res =>
+        this.notificationService.success('Profile updated successfully!')
+      );
+    }
+
+    if (this.user.role === 'client') {
+      this.profileService.updateClientProfile(this.user.id, this.form.value.name, this.form.value.surname).subscribe(res =>
+        this.notificationService.success('Profile updated successfully!')
+      );
+    }
+
+    if (this.user.role === 'driver') {
+      this.profileService.updateDriverProfile(this.user.id, this.form.value.name, this.form.value.surname).subscribe(res =>
+        this.notificationService.success('Profile updated successfully!')
+      );
+    }
+
+    this.form.reset();
+  }
+
+  onCancel() {
+    this.editMode = false;
+  }
 }

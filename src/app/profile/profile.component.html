@@ -1,6 +1,6 @@
 <div class="card card-signup">
   <div class="card-header card-header-primary text-center">
-    <p>My profile</p>
+    <h4>My profile</h4>
   </div>
   <div class="card-body" *ngIf="user!==undefined">
     <h4>Name:</h4>
@@ -15,5 +15,56 @@
       <h4>Corporation:</h4>
       <p>{{user.corpName}}</p>
     </div>
+    <button
+      class="btn btn-primary"
+      (click)="onEdit()">Edit Profile
+    </button>
+  </div>
+  <div class="card-body" *ngIf="editMode">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+      <div class="form-group">
+        <label for="name">New {{user.role}} name</label>
+        <div class="input-group-text">
+          <i class="material-icons">face</i>
+          <input
+            type="text"
+            id="name"
+            class="form-control profile-input"
+            ngModel
+            name="name"
+            required
+          >
+        </div>
+        <div *ngIf="user.role==='client' || user.role==='driver'">
+          <label for="surname">New {{user.role}} surname</label>
+          <div class="input-group-text">
+            <i class="material-icons">face</i>
+            <input
+              type="text"
+              id="surname"
+              class="form-control profile-input"
+              ngModel
+              name="surname"
+              required
+            >
+          </div>
+        </div>
+        <span class="help-block" *ngIf="!f.valid && f.touched">All fields are required!</span>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!f.valid">Submit
+          </button>
+          <button
+            type="button"
+            class="btn btn-default"
+            (click)="onCancel()">Cancel
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
