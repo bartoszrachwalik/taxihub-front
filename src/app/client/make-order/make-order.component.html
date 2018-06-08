@@ -3,7 +3,7 @@
     <h4>Create new order</h4>
   </div>
   <div class="card-body">
-    <form #f="ngForm">
+    <form #f="ngForm" *ngIf="hasActiveOrder!==true; else warning">
       <div class="row">
         <div class="col">
           <label>Start place:</label>
@@ -40,6 +40,10 @@
         </div>
       </div>
     </form>
+    <ng-template #warning>
+      <p>You already have an active order. Please cancel it if you want to make a new one!</p>
+      <button class="btn btn-link btn-primary btn-lg" (click)="goToActiveOrder()">Go to active order</button>
+    </ng-template>
     <agm-map [scrollwheel]="true" [zoom]="zoom">
       <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
     </agm-map>

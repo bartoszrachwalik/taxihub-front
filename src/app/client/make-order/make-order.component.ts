@@ -4,6 +4,7 @@ import {} from 'googlemaps';
 import {MapsAPILoader} from '@agm/core';
 import {OrderService} from '../../order/order.service';
 import {NotificationService} from '../../notification/notification.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-make-order',
@@ -14,6 +15,7 @@ export class MakeOrderComponent implements OnInit {
   @ViewChild('searchFrom') startPlaceRef: ElementRef;
   @ViewChild('searchTo') destinationRef: ElementRef;
   clientId = 20;
+  hasActiveOrder = false;
   order: Order;
 
   public zoom = 1;
@@ -24,7 +26,8 @@ export class MakeOrderComponent implements OnInit {
 
   constructor(private mapsAPILoader: MapsAPILoader,
               private orderService: OrderService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private router: Router) {
   }
 
   private static toCoordinates(autocomplete) {
@@ -33,6 +36,9 @@ export class MakeOrderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.orderService.checkActiveOrder().subscribe((hasActiveOrder: boolean) => {
+      this.hasActiveOrder = hasActiveOrder;
+    });
     this.mapsAPILoader.load().then(() => {
       this.autocompleteFrom = new google.maps.places.Autocomplete(this.startPlaceRef.nativeElement, {
         types: ['address']
@@ -55,5 +61,9 @@ export class MakeOrderComponent implements OnInit {
     this.order = new Order(this.clientId, this.dir.origin.lat, this.dir.origin.lng, this.dir.destination.lat, this.dir.destination.lng);
     this.orderService.makeOrder(this.order).subscribe(res => this.notificationService.success('Order added successfully!'));
     return false;
+  }
+
+  goToActiveOrder() {
+    this.router.navigate(['/client/active-order']);
   }
 }
