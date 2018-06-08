@@ -2,7 +2,7 @@
   <div class="card-header card-header-primary text-center">
     <h4>Create new order</h4>
   </div>
-  <div class="card-body">
+  <div class="card-body" *ngIf="hasActiveOrder!==true; else warning">
     <form #f="ngForm">
       <div class="row">
         <div class="col">
@@ -35,8 +35,16 @@
       <span class="help-block" *ngIf="!f.valid && f.touched">Both locations are required!</span>
       <div class="row">
         <div class="col-sm-12">
-          <button class="btn btn-primary" (click)="getDirection()" [disabled]="!f.valid">Search</button>
-          <button class="btn btn-primary" (click)="onOrderCreated()" [disabled]="!f.valid">Create order</button>
+          <button
+            class="btn btn-primary"
+            (click)="getDirection()"
+            [disabled]="!f.valid">Search
+          </button>
+          <button
+            class="btn btn-primary"
+            (click)="onOrderCreated()"
+            [disabled]="!f.valid || dir===undefined">Create order
+          </button>
         </div>
       </div>
     </form>
@@ -44,4 +52,17 @@
       <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
     </agm-map>
   </div>
+  <ng-template #warning>
+    <div class="info">
+      <div class="icon icon-primary">
+        <i class="material-icons">warning</i>
+      </div>
+      <h6>You're not allowed to make an order</h6>
+      <p>You already have an active order. Please cancel it if you want to make a new one!</p>
+      <button
+        class="btn btn-link btn-primary btn-lg"
+        (click)="goToActiveOrder()">Go to active order
+      </button>
+    </div>
+  </ng-template>
 </div>
