@@ -2,8 +2,8 @@
   <div class="card-header card-header-primary text-center">
     <h4>Create new order</h4>
   </div>
-  <div class="card-body">
-    <form #f="ngForm" *ngIf="hasActiveOrder!==true; else warning">
+  <div class="card-body" *ngIf="hasActiveOrder!==true; else warning">
+    <form #f="ngForm">
       <div class="row">
         <div class="col">
           <label>Start place:</label>
@@ -40,12 +40,21 @@
         </div>
       </div>
     </form>
-    <ng-template #warning>
-      <p>You already have an active order. Please cancel it if you want to make a new one!</p>
-      <button class="btn btn-link btn-primary btn-lg" (click)="goToActiveOrder()">Go to active order</button>
-    </ng-template>
     <agm-map [scrollwheel]="true" [zoom]="zoom">
       <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
     </agm-map>
   </div>
+  <ng-template #warning>
+    <div class="info">
+      <div class="icon icon-primary">
+        <i class="material-icons">warning</i>
+      </div>
+      <h6>You're not allowed to make an order</h6>
+      <p>You already have an active order. Please cancel it if you want to make a new one!</p>
+      <button
+        class="btn btn-link btn-primary btn-lg"
+        (click)="goToActiveOrder()">Go to active order
+      </button>
+    </div>
+  </ng-template>
 </div>
