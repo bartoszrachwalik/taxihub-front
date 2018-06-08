@@ -9,7 +9,8 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-make-order',
   templateUrl: './make-order.component.html',
-  styleUrls: ['./make-order.component.css']
+  styleUrls: ['./make-order.component.css'],
+  providers: [OrderService]
 })
 export class MakeOrderComponent implements OnInit {
   @ViewChild('searchFrom') startPlaceRef: ElementRef;

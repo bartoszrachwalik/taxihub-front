@@ -3,27 +3,32 @@ import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class ProfileService {
-  clientUrl = 'https://taxihub-backend.herokuapp.com/client/profile/20';
-  driverUrl = 'https://taxihub-backend.herokuapp.com/driver/profile/3';
-  corporationUrl = 'https://taxihub-backend.herokuapp.com/corporation/profile/17';
+  userId: string;
+
+  clientUrl = 'https://taxihub-backend.herokuapp.com/client/profile/';
+  driverUrl = 'https://taxihub-backend.herokuapp.com/driver/profile/';
+  corporationUrl = 'https://taxihub-backend.herokuapp.com/corporation/profile/';
+
   corporationNameUrl = 'https://taxihub-backend.herokuapp.com/corporation/name/';
+
   corporationUpdateUrl = 'https://taxihub-backend.herokuapp.com/corporation';
   clientUpdateUrl = 'https://taxihub-backend.herokuapp.com/client';
-  private driverUpdateUrl = 'https://taxihub-backend.herokuapp.com/driver';
+  driverUpdateUrl = 'https://taxihub-backend.herokuapp.com/driver';
 
   constructor(private http: HttpClient) {
+    this.userId = localStorage.getItem('id');
   }
 
   getClientProfile() {
-    return this.http.get(this.clientUrl);
+    return this.http.get(this.clientUrl + this.userId);
   }
 
   getDriverProfile() {
-    return this.http.get(this.driverUrl);
+    return this.http.get(this.driverUrl + this.userId);
   }
 
   getCorporationProfile() {
-    return this.http.get(this.corporationUrl);
+    return this.http.get(this.corporationUrl + this.userId);
   }
 
   getCorpName(id: number) {

@@ -26,12 +26,8 @@ import {ActiveOrderComponent} from './client/active-order/active-order.component
 import {NotificationService} from './notification/notification.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule} from 'angular5-toaster/dist';
-import {OrderService} from './order/order.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {OrderHistoryComponent} from './order/order-history/order-history.component';
-import {DriverHistoryResolver} from './driver/driver.history.resolver';
-import {ClientHistoryResolver} from './client/client.history.resolver';
-import {CorporationHistoryResolver} from './corporation/corporation.history.resolver';
 import {ConfirmComponent} from './confirm/confirm.component';
 import {DriverService} from './driver/driver.service';
 import {environment} from '../environments/environment';
@@ -50,10 +46,6 @@ import {OrderHistoryItemComponent} from './order/order-history/order-history-ite
 import {NgxPaginationModule} from 'ngx-pagination';
 import {RegistrationDriverComponent} from './corporation/registration-driver/registration-driver.component';
 import {MapService} from './map/map.service';
-import {ClientProfileResolver} from './client/client.profile.resolver';
-import {DriverProfileResolver} from './driver/driver.profile.resolver';
-import {CorporationProfileResolver} from './corporation/corporation.profile.resolver';
-import {ProfileService} from './profile/profile.service';
 
 @NgModule({
   declarations: [
@@ -105,18 +97,10 @@ import {ProfileService} from './profile/profile.service';
     NotificationService,
     LoginComponent,
     AuthService,
-    OrderService,
-    DriverHistoryResolver,
-    ClientHistoryResolver,
-    CorporationHistoryResolver,
     DriverService,
     CorporationService,
     ClientService,
     MapService,
-    ClientProfileResolver,
-    DriverProfileResolver,
-    CorporationProfileResolver,
-    ProfileService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

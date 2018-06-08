@@ -4,30 +4,33 @@ import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class OrderService {
-  clientOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/client/20';
-  corporationOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/corporation/17';
-  driverOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/driver/3';
+  userId: string;
+
+  clientOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/client/';
+  corporationOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/corporation/';
+  driverOrderHistoryUrl = 'https://taxihub-backend.herokuapp.com/orders/history/driver/';
 
   makeOrderUrl = 'https://taxihub-backend.herokuapp.com/orders';
-  activeOrderUrl = 'https://taxihub-backend.herokuapp.com/orders/open/client/20';
-  checkActiveOrderUrl = 'https://taxihub-backend.herokuapp.com/orders/hasopen/client/20';
+  activeOrderUrl = 'https://taxihub-backend.herokuapp.com/orders/open/client/';
+  checkActiveOrderUrl = 'https://taxihub-backend.herokuapp.com/orders/hasopen/client/';
 
   cancelUrl = 'https://taxihub-backend.herokuapp.com/orders/';
   openDriverOrdersUrl = 'https://taxihub-backend.herokuapp.com/orders/open';
 
   constructor(private http: HttpClient) {
+    this.userId = localStorage.getItem('id');
   }
 
   getClientsHistory() {
-    return this.http.get<Order[]>(this.clientOrderHistoryUrl);
+    return this.http.get<Order[]>(this.clientOrderHistoryUrl + this.userId);
   }
 
   getCorporationHistory() {
-    return this.http.get<Order[]>(this.corporationOrderHistoryUrl);
+    return this.http.get<Order[]>(this.corporationOrderHistoryUrl + this.userId);
   }
 
   getDriverHistory() {
-    return this.http.get<Order[]>(this.driverOrderHistoryUrl);
+    return this.http.get<Order[]>(this.driverOrderHistoryUrl + this.userId);
   }
 
   makeOrder(order: Order) {
@@ -35,11 +38,11 @@ export class OrderService {
   }
 
   getActiveOrder() {
-    return this.http.get<Order>(this.activeOrderUrl);
+    return this.http.get<Order>(this.activeOrderUrl + this.userId);
   }
 
   checkActiveOrder() {
-    return this.http.get<boolean>(this.checkActiveOrderUrl);
+    return this.http.get<boolean>(this.checkActiveOrderUrl + this.userId);
   }
 
   cancelOrder(id: number) {
