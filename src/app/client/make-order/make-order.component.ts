@@ -15,7 +15,7 @@ import {Router} from '@angular/router';
 export class MakeOrderComponent implements OnInit {
   @ViewChild('searchFrom') startPlaceRef: ElementRef;
   @ViewChild('searchTo') destinationRef: ElementRef;
-  clientId = 20;
+  clientId = +localStorage.getItem('id');
   hasActiveOrder = false;
   order: Order;
 
