@@ -9,22 +9,16 @@ import {AuthGuardCorporation} from './auth/auth-guard-corporation.service';
 import {CorporationComponent} from './corporation/corporation.component';
 import {MakeOrderComponent} from './client/make-order/make-order.component';
 import {OrderHistoryComponent} from './order/order-history/order-history.component';
-import {DriverHistoryResolver} from './driver/driver.history.resolver';
 import {ActiveOrderComponent} from './client/active-order/active-order.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ShowOrderComponent} from './driver/show-order/show-order.component';
 import {DriversComponent} from './corporation/drivers/drivers.component';
-import {CorporationHistoryResolver} from './corporation/corporation.history.resolver';
 import {RegistrationComponent} from './registration/registration.component';
 import {RegistrationClientComponent} from './registration/registration-client/registration-client.component';
 import {RegistrationCompanyComponent} from './registration/registration-company/registration-company.component';
 import {ConfirmComponent} from './confirm/confirm.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {ClientHistoryResolver} from './client/client.history.resolver';
 import {RegistrationDriverComponent} from './corporation/registration-driver/registration-driver.component';
-import {ClientProfileResolver} from './client/client.profile.resolver';
-import {DriverProfileResolver} from './driver/driver.profile.resolver';
-import {CorporationProfileResolver} from './corporation/corporation.profile.resolver';
 
 export const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -33,27 +27,23 @@ export const appRoutes: Routes = [
     {
       path: 'client', component: ClientComponent, canActivate: [AuthGuardClient], children: [
       {path: 'make-order', component: MakeOrderComponent},
-      {path: 'history', component: OrderHistoryComponent, resolve: {history: ClientHistoryResolver}},
+      {path: 'history', component: OrderHistoryComponent},
       {path: 'active-order', component: ActiveOrderComponent},
-      {path: 'profile', component: ProfileComponent, resolve: {profile: ClientProfileResolver}}
+      {path: 'profile', component: ProfileComponent}
     ]
     },
     {
       path: 'driver', component: DriverComponent, canActivate: [AuthGuardDriver], children: [
       {path: 'show-order', component: ShowOrderComponent},
-      {path: 'history', component: OrderHistoryComponent, resolve: {history: DriverHistoryResolver}},
-      {path: 'profile', component: ProfileComponent, resolve: {profile: DriverProfileResolver}}
+      {path: 'history', component: OrderHistoryComponent},
+      {path: 'profile', component: ProfileComponent}
     ]
     },
     {
       path: 'corporation', canActivate: [AuthGuardCorporation], component: CorporationComponent, children: [
       {path: 'drivers', component: DriversComponent},
-      {
-        path: 'history',
-        component: OrderHistoryComponent,
-        resolve: {history: CorporationHistoryResolver}
-      },
-      {path: 'profile', component: ProfileComponent, resolve: {profile: CorporationProfileResolver}}
+      {path: 'history', component: OrderHistoryComponent},
+      {path: 'profile', component: ProfileComponent}
     ]
     }
   ]
