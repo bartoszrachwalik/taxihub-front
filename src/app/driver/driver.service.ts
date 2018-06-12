@@ -4,7 +4,7 @@ import {Driver} from './driver.model';
 
 @Injectable()
 export class DriverService {
-  getDriversUrl = 'https://taxihub-backend.herokuapp.com/corporation/17/drivers';
+  getDriversUrl = 'https://taxihub-backend.herokuapp.com/corporation/';
 
   constructor(private http: HttpClient) {
   }
@@ -14,7 +14,7 @@ export class DriverService {
   }
 
   getDrivers() {
-    return this.http.get<Driver[]>(this.getDriversUrl);
+    return this.http.get<Driver[]>(this.getDriversUrl + localStorage.getItem('id') + '/drivers');
   }
 }
 
