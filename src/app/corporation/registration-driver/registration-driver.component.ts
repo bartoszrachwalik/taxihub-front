@@ -19,7 +19,7 @@ export class RegistrationDriverComponent implements OnInit {
   carColor: FormControl;
   carPlates: FormControl;
 
-  constructor(private service: CorporationService, private notify: NotificationService, private router: Router) {
+  constructor(private corporationService: CorporationService, private notify: NotificationService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class RegistrationDriverComponent implements OnInit {
 
   onSubmit() {
     if (this.registrationFormDriver.valid) {
-      this.service.registerDriver({
+      this.corporationService.registerDriver({
         name: this.driverFirstName.value,
         surname: this.driverLastName.value,
         email: this.driverLastName.value,
