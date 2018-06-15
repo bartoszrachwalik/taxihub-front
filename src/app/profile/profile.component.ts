@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
           this.user = data;
           this.user.role = localStorage.getItem('user');
           this.profileService.getCorpName(this.user.corporationId).subscribe((name: string) => {
-            this.user.corpName = name;
+            this.user.corpName = name['name'];
           });
         }
       );
