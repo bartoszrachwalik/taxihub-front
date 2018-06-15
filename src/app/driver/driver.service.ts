@@ -10,7 +10,7 @@ export class DriverService {
   }
 
   verifyPassword(password: string, token: string) {
-    return this.http.post('https://taxihub-backend.herokuapp.com/confirm', {password, token});
+    return this.http.post('https://taxihub-backend.herokuapp.com/confirm', {'password': password, 'token': token});
   }
 
   getDrivers() {
