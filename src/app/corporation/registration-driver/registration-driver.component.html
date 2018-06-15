@@ -9,13 +9,10 @@
                 [formGroup]="registrationFormDriver"
                 novalidate
                 (ngSubmit)="onSubmit()">
-
             <div class="card-header card-header-primary text-center">
               <h4>Registration</h4>
             </div>
-
             <div class="card-body">
-
               <div class="input-group"
                    [ngClass]="{'no-margin-b': isValid(driverFirstName)}">
                 <span class="input-group-addon"><i class="material-icons">face</i></span>
@@ -28,10 +25,8 @@
                   required
                   formControlName="driverFirstName"
                   id="driverFirstName">
-
               </div>
               <span class="help-block" *ngIf="isValid(driverFirstName)">Please enter driver's first name!</span>
-
               <div class="input-group"
                    [ngClass]="{'no-margin-b': isValid(driverLastName)}">
                 <span class="input-group-addon"><i class="material-icons">face</i></span>
@@ -44,10 +39,8 @@
                   required
                   formControlName="driverLastName"
                   id="driverLastName">
-
               </div>
               <span class="help-block" *ngIf="isValid(driverLastName)">Please enter driver's last name!</span>
-
               <div class="input-group"
                    [ngClass]="{'no-margin-b': isValid(driverEmail)}">
                 <span class="input-group-addon"><i class="material-icons">email</i></span>
@@ -61,10 +54,8 @@
                   email
                   required
                   id="driverEmail">
-
               </div>
               <span class="help-block" *ngIf="isValid(driverEmail)">Please enter a valid email!</span>
-
               <div class="card-footer justify-content-left">
                 <button
                   type="submit"

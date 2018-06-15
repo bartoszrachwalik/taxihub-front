@@ -28,13 +28,14 @@ export class RegistrationDriverComponent implements OnInit {
       this.service.registerDriver({
         name: this.driverFirstName.value,
         surname: this.driverLastName.value,
-        email: this.driverLastName.value
+        email: this.driverEmail.value,
+        corporationId: +localStorage.getItem('id')
       }).subscribe(() => {
           this.router.navigate(['/corporation']);
           this.notify.success('Driver registered');
         },
-        () =>
-          this.notify.error('Could not register, try again!'));
+        () => this.notify.error('Could not register, try again!')
+      );
     }
   }
 

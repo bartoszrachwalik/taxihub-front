@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../login/login.service';
-import {User} from './user.model';
 import * as Rx from 'rxjs/Observable';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
@@ -12,8 +11,6 @@ import {AuthService} from '../auth/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  user: User;
 
   constructor(private service: AuthService,
               private loginService: LoginService,

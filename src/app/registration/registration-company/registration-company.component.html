@@ -8,13 +8,10 @@
                 [formGroup]="registrationCompanyForm"
                 novalidate
                 (ngSubmit)="onSubmit()">
-
             <div class="card-header card-header-primary text-center">
               <h4>Registration</h4>
             </div>
-
             <div class="card-body">
-
               <div class="input-group"
                    [ngClass]="{'no-margin-b': isValid(companyName)}">
                 <span class="input-group-addon"><i class="material-icons">face</i></span>
@@ -27,10 +24,8 @@
                   required
                   formControlName="companyName"
                   id="companyName">
-
               </div>
               <span class="help-block" *ngIf="isValid(companyName)">Please enter your first name!</span>
-
               <div class="input-group"
                    [ngClass]="{'no-margin-b': isValid(companyEmail)}">
                 <span class="input-group-addon"><i class="material-icons">email</i></span>
@@ -44,13 +39,10 @@
                   email
                   required
                   id="companyEmail">
-
               </div>
               <span class="help-block" *ngIf="isValid(companyEmail)">Please enter a valid email!</span>
-
               <div class="input-group"
                    [ngClass]="{'no-margin-b': isValid(companyPassword)}">
-
                 <span class="input-group-addon"><i class="material-icons">lock_outline</i></span>
                 <label for="companyPassword"></label>
                 <input
@@ -61,11 +53,9 @@
                   name="companyPassword"
                   formControlName="companyPassword"
                   id="companyPassword">
-
               </div>
               <div class="help-block" *ngIf="isValid(companyPassword)">Please enter password!</div>
               <div class="help-block" *ngIf="isValid(companyPassword)">At least 6 characters long!</div>
-
               <div class="input-group"
                    [ngClass]="{'no-margin-b': isValid(companyPasswordConfirmation)}">
                 <span class="input-group-addon"><i class="material-icons">lock_outline</i></span>
@@ -77,12 +67,10 @@
                   formControlName="companyPasswordConfirmation"
                   required
                   id="companyPasswordConfirmation">
-
               </div>
               <span class="help-block" *ngIf="(registrationCompanyForm.hasError('mismatch'))">Password mismatch!</span>
-
-
               <div class="card-footer justify-content-left">
+                <a routerLink="../" class="btn btn-link btn-primary btn-lg">Back</a>
                 <button
                   type="submit"
                   class="btn btn-link btn-primary btn-lg"

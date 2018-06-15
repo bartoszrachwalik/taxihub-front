@@ -7,7 +7,8 @@ import {MapService} from '../../map/map.service';
 @Component({
   selector: 'app-active-order',
   templateUrl: './active-order.component.html',
-  styleUrls: ['./active-order.component.css']
+  styleUrls: ['./active-order.component.css'],
+  providers: [OrderService]
 })
 export class ActiveOrderComponent implements OnInit {
   activeOrder: Order;

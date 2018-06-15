@@ -6,7 +6,8 @@ import {Order} from '../order.model';
 @Component({
   selector: 'app-order-history',
   templateUrl: './order-history.component.html',
-  styleUrls: ['./order-history.component.css']
+  styleUrls: ['./order-history.component.css'],
+  providers: [OrderService]
 })
 export class OrderHistoryComponent implements OnInit {
   orderHistory: Order[];
@@ -16,11 +17,11 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.route.snapshot.data['history'] === 'client')
+    if (localStorage.getItem('user') === 'client')
       this.orderService.getClientsHistory().subscribe((data: Order[]) => this.orderHistory = data);
-    if (this.route.snapshot.data['history'] === 'driver')
+    if (localStorage.getItem('user') === 'driver')
       this.orderService.getDriverHistory().subscribe((data: Order[]) => this.orderHistory = data);
-    if (this.route.snapshot.data['history'] === 'corporation')
+    if (localStorage.getItem('user') === 'corporation')
       this.orderService.getCorporationHistory().subscribe((data: Order[]) => this.orderHistory = data);
   }
 

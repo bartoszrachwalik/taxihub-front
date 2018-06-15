@@ -2,8 +2,8 @@
   <div class="card-header card-header-primary text-center">
     <h4>Drivers</h4>
   </div>
-  <ul>
-    <li *ngFor="let driver of drivers | paginate: { itemsPerPage: 3, currentPage: p }"> {{driver}}</li>
-  </ul>
+  <app-drivers-list-item class="list-group list-group-flush"
+                         *ngFor="let currentDriver of drivers"
+                         [driver]="currentDriver"></app-drivers-list-item>
   <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
 </div>

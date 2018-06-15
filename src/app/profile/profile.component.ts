@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ProfileService} from './profile.service';
-import {ActivatedRoute} from '@angular/router';
 import {User} from '../login/user.model';
 import {NgForm} from '@angular/forms';
 import {NotificationService} from '../notification/notification.service';
@@ -8,36 +7,37 @@ import {NotificationService} from '../notification/notification.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  providers: [ProfileService]
 })
 export class ProfileComponent implements OnInit {
   @ViewChild('f') form: NgForm;
   user: User;
   editMode = false;
 
-  constructor(private profileService: ProfileService, private route: ActivatedRoute, private notificationService: NotificationService) {
+  constructor(private profileService: ProfileService, private notificationService: NotificationService) {
   }
 
   ngOnInit() {
-    if (this.route.snapshot.data['profile'] === 'client')
+    if (localStorage.getItem('user') === 'client')
       this.profileService.getClientProfile().subscribe((data: User) => {
           this.user = data;
-          this.user.role = this.route.snapshot.data['profile'];
+          this.user.role = localStorage.getItem('user');
         }
       );
-    if (this.route.snapshot.data['profile'] === 'driver')
+    if (localStorage.getItem('user') === 'driver')
       this.profileService.getDriverProfile().subscribe((data: User) => {
           this.user = data;
-          this.user.role = this.route.snapshot.data['profile'];
+          this.user.role = localStorage.getItem('user');
           this.profileService.getCorpName(this.user.corporationId).subscribe((name: string) => {
-            this.user.corpName = name;
+            this.user.corpName = name['name'];
           });
         }
       );
-    if (this.route.snapshot.data['profile'] === 'corporation')
+    if (localStorage.getItem('user') === 'corporation')
       this.profileService.getCorporationProfile().subscribe((data: User) => {
           this.user = data;
-          this.user.role = this.route.snapshot.data['profile'];
+          this.user.role = localStorage.getItem('user');
         }
       );
   }
