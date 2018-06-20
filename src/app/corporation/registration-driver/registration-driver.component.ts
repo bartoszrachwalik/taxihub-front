@@ -32,7 +32,8 @@ export class RegistrationDriverComponent implements OnInit {
       this.corporationService.registerDriver({
         name: this.driverFirstName.value,
         surname: this.driverLastName.value,
-        email: this.driverLastName.value,
+        email: this.driverEmail.value,
+        corporationId: +localStorage.getItem('id'),
         car: {
           make: this.carMake,
           model: this.carModel,
@@ -43,8 +44,8 @@ export class RegistrationDriverComponent implements OnInit {
           this.router.navigate(['/corporation']);
           this.notify.success('Driver registered');
         },
-        () =>
-          this.notify.error('Could not register, try again!'));
+        () => this.notify.error('Could not register, try again!')
+      );
     }
   }
 

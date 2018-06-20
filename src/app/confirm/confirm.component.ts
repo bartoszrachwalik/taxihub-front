@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {DriverService} from '../driver/driver.service';
+import {NotificationService} from '../notification/notification.service';
 
 @Component({
   selector: 'app-confirm',
@@ -9,14 +10,24 @@ import {DriverService} from '../driver/driver.service';
 })
 export class ConfirmComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private service: DriverService) { }
   token: string;
+
+  constructor(private route: ActivatedRoute,
+              private driverService: DriverService,
+              private notificationService: NotificationService,
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.token = this.route.snapshot.params['token'];
   }
 
   sendPassword(password: string) {
-    this.service.verifyPassword(password, this.token);
+    this.driverService.verifyPassword(password, this.token).subscribe(
+      () => {
+        this.notificationService.success('Password saved!');
+        this.router.navigate(['../../']);
+      },
+      () => this.notificationService.error('Password not saved!'));
   }
 }
