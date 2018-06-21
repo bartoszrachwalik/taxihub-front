@@ -1,3 +1,46 @@
-<p>
-  car-edit works!
-</p>
+<div class="card card-signup">
+  <div class="card-header card-header-primary text-center">
+    <h4>My car</h4>
+  </div>
+  <div class="card-body">
+    <form *ngIf="carEditForm!=undefined" [formGroup]="carEditForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="make">Cars make:</label>
+        <div class="input-group-text">
+          <i class="material-icons">drive_eta</i>
+          <input type="text" class="form-control car_edit_input" id="make" formControlName="make">
+        </div>
+        <small *ngIf="!carEditForm.get('make').valid" class="form-text text-center text-danger">Field is required.
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="model">Cars model:</label>
+        <div class="input-group-text">
+          <i class="material-icons">drive_eta</i>
+          <input type="text" class="form-control car_edit_input" id="model" formControlName="model">
+        </div>
+        <small *ngIf="!carEditForm.get('model').valid" class="form-text text-center text-danger">Field is required.
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="color">Cars color:</label>
+        <div class="input-group-text">
+          <i class="material-icons">drive_eta</i>
+          <input type="text" class="form-control car_edit_input" id="color" formControlName="color">
+        </div>
+        <small *ngIf="!carEditForm.get('color').valid" class="form-text text-center text-danger">Field is required.
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="plates">Cars plates:</label>
+        <div class="input-group-text">
+          <i class="material-icons">drive_eta</i>
+          <input type="text" class="form-control car_edit_input" id="plates" formControlName="plates">
+        </div>
+        <small *ngIf="!carEditForm.get('plates').valid" class="form-text text-center text-danger">Field is required.
+        </small>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!carEditForm.valid">Submit changes</button>
+    </form>
+  </div>
+</div>

@@ -47,7 +47,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {RegistrationDriverComponent} from './corporation/registration-driver/registration-driver.component';
 import {MapService} from './map/map.service';
 import {CarEditComponent} from './car/car-edit/car-edit.component';
-import {CarService} from './car/car.service';
 
 @NgModule({
   declarations: [
@@ -104,7 +103,6 @@ import {CarService} from './car/car.service';
     CorporationService,
     ClientService,
     MapService,
-    CarService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
