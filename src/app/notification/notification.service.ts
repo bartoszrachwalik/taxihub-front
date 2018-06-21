@@ -15,7 +15,11 @@ export class NotificationService {
     this.toasterService.pop('info', title ? title : 'Information', text);
   }
 
-  error(text: string, title?: string) {
-    this.toasterService.pop('error', title ? title : 'Error', text);
+  error(error: any, title?: string) {
+    let errors = '';
+    for (const message of error.error) {
+      errors += message['description'] + '\n';
+    }
+    this.toasterService.pop('error', title ? title : 'Error', errors);
   }
 }
