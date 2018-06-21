@@ -36,8 +36,8 @@ export class RegistrationCompanyComponent implements OnInit {
           this.router.navigate(['']);
           this.notify.success('Corporation registered');
         },
-        () =>
-          this.notify.error('Could not register, try again!'));
+        (error) => this.notify.error(error)
+      );
     }
   }
 
@@ -57,7 +57,7 @@ export class RegistrationCompanyComponent implements OnInit {
     ]),
       this.companyEmail = new FormControl('', [
         Validators.required,
-        Validators.pattern("[^ @]*@[^ @]*")
+        Validators.pattern('[^ @]*@[^ @]*')
       ]);
     this.companyPassword = new FormControl('', [
       Validators.required,

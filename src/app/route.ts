@@ -19,6 +19,7 @@ import {RegistrationCompanyComponent} from './registration/registration-company/
 import {ConfirmComponent} from './confirm/confirm.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {RegistrationDriverComponent} from './corporation/registration-driver/registration-driver.component';
+import {CarEditComponent} from './car/car-edit/car-edit.component';
 
 export const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -36,6 +37,7 @@ export const appRoutes: Routes = [
       path: 'driver', component: DriverComponent, canActivate: [AuthGuardDriver], children: [
       {path: 'show-order', component: ShowOrderComponent},
       {path: 'history', component: OrderHistoryComponent},
+      {path: 'car', component: CarEditComponent},
       {path: 'profile', component: ProfileComponent}
     ]
     },
