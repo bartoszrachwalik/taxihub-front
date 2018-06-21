@@ -28,6 +28,6 @@ export class ConfirmComponent implements OnInit {
         this.notificationService.success('Password saved!');
         this.router.navigate(['../../']);
       },
-      () => this.notificationService.error('Password not saved!'));
+      (error) => this.notificationService.error(error));
   }
 }

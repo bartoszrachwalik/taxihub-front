@@ -44,13 +44,7 @@ export class RegistrationDriverComponent implements OnInit {
           this.router.navigate(['/corporation']);
           this.notify.success('Driver registered');
         },
-        (error) => {
-          let errors = '';
-          for (const message of error.error) {
-            errors += message['description'] + '\n';
-          }
-          this.notify.error(errors);
-        }
+        (error) => this.notify.error(error)
       );
     }
   }

@@ -36,7 +36,8 @@ export class RegistrationClientComponent implements OnInit {
           this.router.navigate(['']);
           this.notify.success('User registered');
         },
-        () => this.notify.error('Could not register, try again!'));
+        (error) => this.notify.error(error)
+      );
     }
   }
 
@@ -55,7 +56,7 @@ export class RegistrationClientComponent implements OnInit {
     this.clientLastName = new FormControl('', Validators.required);
     this.clientEmailAddress = new FormControl('', [
       Validators.required,
-      Validators.pattern("[^ @]*@[^ @]*")
+      Validators.pattern('[^ @]*@[^ @]*')
     ]);
     this.clientPassword = new FormControl('', [
       Validators.required,

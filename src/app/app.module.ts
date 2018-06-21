@@ -46,6 +46,7 @@ import {OrderHistoryItemComponent} from './order/order-history/order-history-ite
 import {NgxPaginationModule} from 'ngx-pagination';
 import {RegistrationDriverComponent} from './corporation/registration-driver/registration-driver.component';
 import {MapService} from './map/map.service';
+import {CarEditComponent} from './car/car-edit/car-edit.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import {MapService} from './map/map.service';
     RegistrationCompanyComponent,
     ProfileComponent,
     RegistrationComponent,
-    RegistrationDriverComponent
+    RegistrationDriverComponent,
+    CarEditComponent
   ],
   imports: [
     BrowserModule,
