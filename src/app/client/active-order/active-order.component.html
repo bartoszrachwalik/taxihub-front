@@ -3,24 +3,30 @@
     <h4>Active order</h4>
   </div>
   <div class="card-body">
-    <div class="list-group-item img-raised rounded">
-      <div *ngIf="activeOrder!==undefined">
-        <p>From {{activeOrder.fromLatitude}},{{activeOrder.fromLongitude}} to {{activeOrder.toLatitude}},
-          {{activeOrder.toLongitude}}</p>
-        <p>{{activeOrder.status}}</p>
-        <button type="submit"
-                class="btn btn-primary"
-                (click)="onCancelOrder()">Cancel order
-        </button>
-      </div>
-      <div *ngIf="activeOrder===undefined">
-        <div>
-          <h4>No active orders!</h4>
-        </div>
-      </div>
+    <div *ngIf="activeOrder!==undefined; else info">
+      <p>From {{activeOrder.fromLatitude}},{{activeOrder.fromLongitude}} to {{activeOrder.toLatitude}},
+        {{activeOrder.toLongitude}}</p>
+      <p>{{activeOrder.status}}</p>
+      <button type="submit"
+              class="btn btn-primary"
+              (click)="onCancelOrder()">Cancel order
+      </button>
     </div>
     <agm-map [scrollwheel]="true" [zoom]=1>
       <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
     </agm-map>
   </div>
+  <ng-template #info>
+    <div class="info text-center">
+      <div class="icon icon-primary">
+        <i class="material-icons">warning</i>
+      </div>
+      <h6>There are no active orders!</h6>
+      <p>You have currently no active orders. Please go to Make Order to create one!</p>
+      <button
+        class="btn btn-link btn-primary btn-lg"
+        (click)="goToMakeOrder()">Go to Make Order
+      </button>
+    </div>
+  </ng-template>
 </div>

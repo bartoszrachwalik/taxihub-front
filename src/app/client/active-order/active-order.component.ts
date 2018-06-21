@@ -3,6 +3,7 @@ import {OrderService} from '../../order/order.service';
 import {NotificationService} from '../../notification/notification.service';
 import {Order} from '../../order/order.model';
 import {MapService} from '../../map/map.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-active-order',
@@ -16,7 +17,8 @@ export class ActiveOrderComponent implements OnInit {
 
   constructor(private orderService: OrderService,
               private notificationService: NotificationService,
-              private mapService: MapService) {
+              private mapService: MapService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -35,5 +37,10 @@ export class ActiveOrderComponent implements OnInit {
       this.notificationService.error('There is no order to cancel!');
     }
     return false;
+  }
+
+  goToMakeOrder() {
+    this.router.navigate(['/client/make-order']);
+
   }
 }

@@ -3,7 +3,7 @@
     <h4>Drivers</h4>
   </div>
   <app-drivers-list-item class="list-group list-group-flush"
-                         *ngFor="let currentDriver of drivers"
+                         *ngFor="let currentDriver of drivers | paginate: { itemsPerPage: 3, currentPage: p }"
                          [driver]="currentDriver"></app-drivers-list-item>
   <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
 </div>
