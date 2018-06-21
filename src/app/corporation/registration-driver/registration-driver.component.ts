@@ -35,16 +35,22 @@ export class RegistrationDriverComponent implements OnInit {
         email: this.driverEmail.value,
         corporationId: +localStorage.getItem('id'),
         car: {
-          make: this.carMake,
-          model: this.carModel,
-          color: this.carColor,
-          plates: this.carPlates
+          make: this.carMake.value,
+          model: this.carModel.value,
+          color: this.carColor.value,
+          plates: this.carPlates.value
         }
       }).subscribe(() => {
           this.router.navigate(['/corporation']);
           this.notify.success('Driver registered');
         },
-        () => this.notify.error('Could not register, try again!')
+        (error) => {
+          let errors = '';
+          for (const message of error.error) {
+            errors += message['description'] + '\n';
+          }
+          this.notify.error(errors);
+        }
       );
     }
   }
