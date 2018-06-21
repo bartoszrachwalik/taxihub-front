@@ -2,7 +2,7 @@
 <div class="registration_page">
   <div class="container">
     <div class="row container_registration">
-      <div class="col-xs-12 ">
+      <div class="col-xs-12">
         <div class="card card-signup">
           <form class="form"
                 method="post"
@@ -56,6 +56,62 @@
                   id="driverEmail">
               </div>
               <span class="help-block" *ngIf="isValid(driverEmail)">Please enter a valid email!</span>
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(carMake)}">
+                <span class="input-group-addon"><i class="material-icons">drive_eta</i></span>
+                <label for="carMake"></label>
+                <input
+                  type="carMake"
+                  class="form-control login_input"
+                  placeholder="Enter car's make"
+                  name="carMake"
+                  formControlName="carMake"
+                  required
+                  id="carMake">
+              </div>
+              <span class="help-block" *ngIf="isValid(carMake)">Please enter car's make!</span>
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(carModel)}">
+                <span class="input-group-addon"><i class="material-icons">drive_eta</i></span>
+                <label for="carModel"></label>
+                <input
+                  type="carModel"
+                  class="form-control login_input"
+                  placeholder="Enter car's model"
+                  name="carModel"
+                  formControlName="carModel"
+                  required
+                  id="carModel">
+              </div>
+              <span class="help-block" *ngIf="isValid(carModel)">Please enter car's model!</span>
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(carColor)}">
+                <span class="input-group-addon"><i class="material-icons">drive_eta</i></span>
+                <label for="carColor"></label>
+                <input
+                  type="carColor"
+                  class="form-control login_input"
+                  placeholder="Enter car's color"
+                  name="carColor"
+                  formControlName="carColor"
+                  required
+                  id="carColor">
+              </div>
+              <span class="help-block" *ngIf="isValid(carColor)">Please enter car's color!</span>
+              <div class="input-group"
+                   [ngClass]="{'no-margin-b': isValid(carPlates)}">
+                <span class="input-group-addon"><i class="material-icons">drive_eta</i></span>
+                <label for="carPlates"></label>
+                <input
+                  type="carPlates"
+                  class="form-control login_input"
+                  placeholder="Enter car's plates"
+                  name="carPlates"
+                  formControlName="carPlates"
+                  required
+                  id="carPlates">
+              </div>
+              <span class="help-block" *ngIf="isValid(carPlates)">Please enter car's color!</span>
               <div class="card-footer justify-content-left">
                 <button
                   type="submit"
