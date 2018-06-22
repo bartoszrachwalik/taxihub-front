@@ -1,6 +1,6 @@
 <div class="card card-signup">
   <div class="card-header card-header-primary text-center">
-    <h4>Orders</h4>
+    <h4>Open orders</h4>
   </div>
   <app-order-item class="list-group list-group-flush"
                   *ngFor="let currentOrder of orders | paginate: { itemsPerPage: 3, currentPage: p }"

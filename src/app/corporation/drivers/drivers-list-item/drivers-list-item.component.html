@@ -1,8 +1,32 @@
 <div class="list-group-item img-raised rounded">
-  <div>
-    <p>Name and surname:</p>
-    <h4>{{driver.name}} {{driver.surname}}</h4>
-    <p>E-mail:</p>
-    <h4>{{driver.email}}</h4>
+  <div class="row">
+    <div class="card-body">
+      <div class="row">
+        <img class="img-raised rounded"
+             src="https://image.ibb.co/ffF3QS/23756321_2088088871205083_494723355_n.jpg"
+             height="100">
+        <div class="card-text">
+          <label>Name and surname:</label>
+          <h4>{{driver.name}} {{driver.surname}}</h4>
+          <label>E-mail:</label>
+          <h4>{{driver.email}}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="card-body" *ngIf="driver.car!=undefined">
+      <div class="row">
+        <img class="img-raised rounded"
+             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9Q3jc16gO5k1uWfPaAEOGeGYzzb-OiEI8-c3qPsSrzABIcfOAgg"
+             height="100">
+        <div class="card-text">
+          <label>Car:</label>
+          <h4>{{driver.car.make}} {{driver.car.model}}</h4>
+          <label>Car color:</label>
+          <h4>{{driver.car.color}}</h4>
+          <label>Car plates:</label>
+          <h4>{{driver.car.plates}}</h4>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
