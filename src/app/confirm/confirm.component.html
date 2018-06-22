@@ -3,21 +3,45 @@
     <div class="row container_login">
       <div class="col-xs-12">
         <div class="card card-signup">
-          <form class="form" (submit)="sendPassword(password.value)">
+          <form [formGroup]="confirmForm" (ngSubmit)="sendPassword(password.value)">
             <div class="card-header card-header-primary text-center">
               <h4>Type new password</h4>
             </div>
             <div class="card-body">
-              <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">lock_outline</i>
-                                        </span>
-                <label for="password"></label>
-                <input #password type="password" class="form-control login_input" placeholder="Password..."
-                       id="password">
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <div class="input-group-text">
+                  <i class="material-icons">lock_outline</i>
+                  <input type="password" class="form-control login_input" id="password" formControlName="password">
+                </div>
+                <span *ngIf="!confirmForm.get('password').valid && confirmForm.get('password').touched"
+                      class="form-text text-center text-danger">
+                <small class="text-danger"
+                       *ngIf="confirmForm.get('password').errors['required']">Field is required!</small>
+                <small class="text-danger">Password must by at least 6 signs long.</small>
+                </span>
+              </div>
+              <div class="form-group">
+                <label for="confirm">Confirm password:</label>
+                <div class="input-group-text">
+                  <i class="material-icons">lock_outline</i>
+                  <input type="password" class="form-control login_input" id="confirm" formControlName="confirm">
+                </div>
+                <span *ngIf="!confirmForm.get('confirm').valid && confirmForm.get('confirm').touched"
+                      class="form-text text-center text-danger">
+                <small class="text-danger"
+                       *ngIf="confirmForm.get('confirm').errors['required']">Field is required!</small>
+                  <small class="text-danger">Password must by at least 6 signs long.</small>
+                </span>
+                <small *ngIf="!passwordConfirmed && confirmForm.valid"
+                       class="form-text text-center text-danger">Password is not matched.
+                </small>
               </div>
               <div class="card-footer justify-content-center">
-                <button type="submit" class="btn btn-link btn-primary btn-lg">Save</button>
+                <button type="submit"
+                        class="btn btn-link btn-primary btn-lg"
+                        [disabled]="!confirmForm.valid || !passwordConfirmed">Save
+                </button>
               </div>
             </div>
           </form>
